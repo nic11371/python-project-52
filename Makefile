@@ -1,6 +1,5 @@
 install:
 	pip install uv
-	uv pip install -r requirements.txt
 
 check:
 	uv run ruff check .

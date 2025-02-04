@@ -13,5 +13,6 @@ dependencies = [
 
 [dependency-groups]
 dev = [
+    "bcc>=0.1.10",
     "ruff>=0.9.4",
 ]
