@@ -1,6 +1,5 @@
 install:
 	pip install uv
-    pip install django==5.0.1
 	pip install gunicorn uvicorn
 
 check:
