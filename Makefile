@@ -12,7 +12,7 @@ start:
 	python manage.py runserver
 
 render-start:
-	python manage.py runserver
+	gunicorn task_manager.wsgi
 
 build:
 	./build.sh
