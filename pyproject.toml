@@ -9,6 +9,7 @@ dependencies = [
     "django>=5.1.5",
     "psycopg2-binary>=2.9.10",
     "gunicorn>=23.0.0",
+    "uvicorn>=0.34.0",
 ]
 
 [dependency-groups]
