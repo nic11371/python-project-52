@@ -1,6 +1,6 @@
 install:
 	pip install uv
-    pip install gunicorn uvicorn
+	pip install gunicorn uvicorn
 
 check:
 	uv run ruff check .
