@@ -1,7 +1,7 @@
 install:
 	pip install uv
 	pip install gunicorn uvicorn
-	pip freeze > requirements.txt
+	uv pip install -r requirements.txt
 
 check:
 	uv run ruff check .
