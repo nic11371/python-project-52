@@ -13,7 +13,7 @@ start:
 	python manage.py runserver
 
 render-start:
-	python -m gunicorn task_manager.asgi:application -k uvicorn.workers.UvicornWorker
+	gunicorn task_manager.wsgi
 
 build:
 	./build.sh
