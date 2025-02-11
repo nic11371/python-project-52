@@ -12,7 +12,10 @@ django==5.1.6
     # via
     #   python-project-52 (pyproject.toml)
     #   dj-database-url
+    #   django-bootstrap5
 django-admin==2.0.2
+    # via python-project-52 (pyproject.toml)
+django-bootstrap5==24.3
     # via python-project-52 (pyproject.toml)
 django-excel-response2==3.0.6
     # via django-admin
