@@ -49,6 +49,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -117,6 +118,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
+    '/opt/render/project/src/static',
 ]
 
 STORAGES = {
