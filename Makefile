@@ -24,5 +24,8 @@ sync:
 migrate:
 	python manage.py makemigrations
 
+migrations:
+	python manage.py migrate
+
 collectstatic:
 	python manage.py collectstatic --no-input

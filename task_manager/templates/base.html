@@ -13,17 +13,26 @@
     <!-- Bootstrap CSS -->
     {% bootstrap_css %}
     {% bootstrap_messages %}
+    <!-- Bootstrap JavaScript if it is in head -->
+    {% if BOOTSTRAP_JAVASCRIPT_IN_HEAD %}{% bootstrap_javascript %}{% endif %}
 </head>
 <body>
-<header class="flex-shrink-0">
+<header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Fifth navbar example">
         {% block navigation %}
         (no navbar)
         {% endblock %}
     </nav>
 </header>
+<main>
+    {% block main %}
+    {% endblock %}
+</main>
 
 {% block bootstrap5_after_content %}{% endblock %}
 
+{% if not BOOTSTRAP_JAVASCRIPT_IN_HEAD %}{% bootstrap_javascript %}{% endif %}
+
+{% block bootstrap5_extra_script %}{% endblock %}
 </body>
 </html>
