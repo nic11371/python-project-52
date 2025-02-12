@@ -119,7 +119,6 @@ AUTH_PASSWORD_VALIDATORS = [
 
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
-    '/opt/render/project/src/static',
 ]
 
 STORAGES = {

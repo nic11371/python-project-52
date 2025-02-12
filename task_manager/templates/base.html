@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+{% load django_bootstrap5 %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+{% bootstrap_setting "color_mode" as COLOR_MODE %}
+<html lang="{{ LANGUAGE_CODE|default:'en_us' }}"{% if COLOR_MODE %} data-bs-theme="{{ COLOR_MODE }}"{% endif %}>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Page title -->
+    <title>{% block bootstrap5_title %}Task manager{% endblock %}</title>
+    <!-- Bootstrap CSS -->
+    {% bootstrap_css %}
+    {% bootstrap_messages %}
+</head>
+<body>
+<header class="flex-shrink-0">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Fifth navbar example">
+        {% block navigation %}
+        (no navbar)
+        {% endblock %}
+    </nav>
+</header>
+
+{% block bootstrap5_after_content %}{% endblock %}
+
+</body>
+</html>
