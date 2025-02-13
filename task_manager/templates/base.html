@@ -4,35 +4,20 @@
 {% get_current_language as LANGUAGE_CODE %}
 {% bootstrap_setting "color_mode" as COLOR_MODE %}
 <html lang="{{ LANGUAGE_CODE|default:'en_us' }}"{% if COLOR_MODE %} data-bs-theme="{{ COLOR_MODE }}"{% endif %}>
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Page title -->
-    <title>{% block bootstrap5_title %}Task manager{% endblock %}</title>
-    <!-- Bootstrap CSS -->
-    {% bootstrap_css %}
-    {% bootstrap_messages %}
-    <!-- Bootstrap JavaScript if it is in head -->
-    {% if BOOTSTRAP_JAVASCRIPT_IN_HEAD %}{% bootstrap_javascript %}{% endif %}
-</head>
-<body>
-<header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Fifth navbar example">
-        {% block navigation %}
-        (no navbar)
-        {% endblock %}
-    </nav>
-</header>
-<main>
-    {% block main %}
-    {% endblock %}
-</main>
-
-{% block bootstrap5_after_content %}{% endblock %}
-
-{% if not BOOTSTRAP_JAVASCRIPT_IN_HEAD %}{% bootstrap_javascript %}{% endif %}
-
-{% block bootstrap5_extra_script %}{% endblock %}
-</body>
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- Page title -->
+        <title>{% block bootstrap5_title %}Task manager{% endblock %}</title>
+        <!-- Bootstrap CSS -->
+        {% bootstrap_css %}
+        {% bootstrap_messages %}
+    </head>
+    <body class="min-vh-100 d-flex flex-column">
+        {% block navigation %}(no navbar){% endblock %}
+        {% block main %}(no main){% endblock %}
+        {% block footer %}(no footer){% endblock %}
+        {% if not BOOTSTRAP_JAVASCRIPT_IN_HEAD %}{% bootstrap_javascript %}{% endif %}
+    </body>
 </html>
