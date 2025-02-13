@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 
+{% load i18n %}
 {% load django_bootstrap5 %}
 
 {% block navigation %}
@@ -8,20 +9,20 @@
 <header class="flex-shrink-0">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Fifth navbar example">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Task manager</a>
+            <a class="navbar-brand" href="#">{% translate "Task manager" %}</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#task_manager" aria-controls="task_manager" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="task_manager">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Users</a>
+                        <a class="nav-link" href="#">{% translate "Users" %}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Sign in</a>
+                        <a class="nav-link" href="#">{% translate "Sign in" %}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Sign out</a>
+                        <a class="nav-link" href="#">{% translate "Sign up" %}</a>
                     </li>
                 </ul>
             </div>

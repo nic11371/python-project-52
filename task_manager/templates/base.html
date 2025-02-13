@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-{% load django_bootstrap5 %}
 {% load i18n %}
+{% load django_bootstrap5 %}
 {% get_current_language as LANGUAGE_CODE %}
 {% bootstrap_setting "color_mode" as COLOR_MODE %}
 <html lang="{{ LANGUAGE_CODE|default:'en_us' }}"{% if COLOR_MODE %} data-bs-theme="{{ COLOR_MODE }}"{% endif %}>
