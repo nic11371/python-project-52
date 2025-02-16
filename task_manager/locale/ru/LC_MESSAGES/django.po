@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-15 15:52+0300\n"
+"POT-Creation-Date: 2025-02-16 17:50+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,30 +20,54 @@ msgstr ""
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
 "(n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: task_manager/templates/home.html:12
+#: templates/home.html:12
 msgid "Hello from Hexlet"
 msgstr "Привет от хекслета"
 
-#: task_manager/templates/home.html:13
+#: templates/home.html:13
 msgid "The practic courses by a programming"
 msgstr "Практические курсы по программированию"
 
-#: task_manager/templates/home.html:15
+#: templates/home.html:15
 msgid "To know is large"
 msgstr "Узнать больше"
 
-#: task_manager/templates/index.html:12
+#: templates/index.html:12
 msgid "Task manager"
 msgstr "Менеджер задач"
 
-#: task_manager/templates/index.html:19
+#: templates/index.html:33 templates/users/index.html:8
 msgid "Users"
 msgstr "Пользователи"
 
-#: task_manager/templates/index.html:22
+#: templates/index.html:36
 msgid "Sign in"
 msgstr "Вход"
 
-#: task_manager/templates/index.html:25
+#: templates/index.html:39
 msgid "Sign up"
 msgstr "Регистрация"
+
+#: templates/users/index.html:13
+msgid "ID"
+msgstr "ID"
+
+#: templates/users/index.html:14
+msgid "First name"
+msgstr "Имя пользователя"
+
+#: templates/users/index.html:15
+msgid "Last name"
+msgstr "Полное имя"
+
+#: templates/users/index.html:16
+msgid "Created date"
+msgstr "Дата создания"
+
+#: templates/users/index.html:27
+msgid "Edit"
+msgstr "Изменить"
+
+#: templates/users/index.html:29
+msgid "Remove"
+msgstr "Удалить"

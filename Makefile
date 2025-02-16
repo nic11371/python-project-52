@@ -30,5 +30,5 @@ migrations:
 collectstatic:
 	python manage.py collectstatic --no-input
 
-translate:
+translate-compile:
 	django-admin compilemessages

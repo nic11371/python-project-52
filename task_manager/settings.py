@@ -38,6 +38,7 @@ ALLOWED_HOSTS = ["webserver", "127.0.0.1", "localhost", "python-project-52-jsnv.
 
 INSTALLED_APPS = [
     'task_manager',
+    'task_manager.user',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
