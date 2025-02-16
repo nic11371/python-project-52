@@ -10,6 +10,20 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark" aria-label="Fifth navbar example">
         <div class="container-fluid">
             <a class="navbar-brand" href="{{ home }}">{% translate "Task manager" %}</a>
+            {% get_current_language as CURRENT_LANGUAGE %}
+            {% if CURRENT_LANGUAGE == "ru" %}
+            <form method="post" action="{% url 'set_language' %}">
+                {% csrf_token %}
+                <input type="hidden" name="language" value="en" />
+                <button class="btn btn-dark" type="submit">English</button>
+            </form>
+            {% elif CURRENT_LANGUAGE == "en" %}
+            <form method="post" action="{% url 'set_language' %}">
+                {% csrf_token %}
+                <input type="hidden" name="language" value="ru" />
+                <button class="btn btn-dark" type="submit">Русский</button>
+            </form>
+            {% endif %}
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#task_manager" aria-controls="task_manager" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
