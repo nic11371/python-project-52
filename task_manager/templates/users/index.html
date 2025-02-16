@@ -11,24 +11,26 @@
             <thead>
                 <tr>
                     <th>{% translate "ID" %}</th>
-                    <th>{% translate "First name" %}</th>
-                    <th>{% translate "Last name" %}</th>
+                    <th>{% translate "Nic name" %}</th>
+                    <th>{% translate "Full name" %}</th>
                     <th>{% translate "Created date" %}</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
+                {% for user in users %}
                 <tr>
-                    <td>1</td>
-                    <td>ФИО</td>
-                    <td>Имя изм Фамилия</td>
-                    <td>27.01.2025 10:31</td>
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.nic_name }}</td>
+                    <td>{{ user.full_name }}</td>
+                    <td>{{ user.created_at|date:'d.m.Y H:i' }}</td>
                     <td>
                         <a href="/users/1/update/">{% translate "Edit" %}</a>
                         <br>
                         <a href="/users/1/delete/">{% translate "Remove" %}</a>
                     </td>
                 </tr>
+                {% endfor %}
             </tbody>
         </table>
     </div>

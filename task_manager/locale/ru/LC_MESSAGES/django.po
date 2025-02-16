@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-16 17:50+0300\n"
+"POT-Creation-Date: 2025-02-16 21:51+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -53,11 +53,11 @@ msgid "ID"
 msgstr "ID"
 
 #: templates/users/index.html:14
-msgid "First name"
+msgid "Nic name"
 msgstr "Имя пользователя"
 
 #: templates/users/index.html:15
-msgid "Last name"
+msgid "Full name"
 msgstr "Полное имя"
 
 #: templates/users/index.html:16

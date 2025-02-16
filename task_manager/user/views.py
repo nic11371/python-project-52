@@ -1,8 +1,12 @@
 from django.shortcuts import render
 from django.views import View
+from task_manager.user.models import User
 
 
 class IndexUserView(View):
 
     def get(self, request, *args, **kwargs):
-        return render(request, 'users/index.html')
+        users = User.objects.all()
+        return render(request, 'users/index.html', context={
+            'users': users,
+        })
