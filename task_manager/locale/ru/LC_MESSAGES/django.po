@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-16 21:51+0300\n"
+"POT-Creation-Date: 2025-02-17 22:58+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,54 +20,118 @@ msgstr ""
 "n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
 "(n%100>=11 && n%100<=14)? 2 : 3);\n"
 
-#: templates/home.html:12
+#: task_manager/templates/home.html:12
 msgid "Hello from Hexlet"
 msgstr "Привет от хекслета"
 
-#: templates/home.html:13
+#: task_manager/templates/home.html:13
 msgid "The practic courses by a programming"
 msgstr "Практические курсы по программированию"
 
-#: templates/home.html:15
+#: task_manager/templates/home.html:15
 msgid "To know is large"
 msgstr "Узнать больше"
 
-#: templates/index.html:12
+#: task_manager/templates/index.html:12
 msgid "Task manager"
 msgstr "Менеджер задач"
 
-#: templates/index.html:33 templates/users/index.html:8
+#: task_manager/templates/index.html:33
+#: task_manager/templates/users/index.html:8
 msgid "Users"
 msgstr "Пользователи"
 
-#: templates/index.html:36
+#: task_manager/templates/index.html:36
+#: task_manager/templates/users/login.html:7
 msgid "Sign in"
 msgstr "Вход"
 
-#: templates/index.html:39
+#: task_manager/templates/index.html:39
 msgid "Sign up"
 msgstr "Регистрация"
 
-#: templates/users/index.html:13
+#: task_manager/templates/users/create.html:16
+msgid "Registration"
+msgstr "Регистрация"
+
+#: task_manager/templates/users/create.html:20
+#: task_manager/templates/users/create.html:21
+msgid "Name"
+msgstr "Имя"
+
+#: task_manager/templates/users/create.html:24
+#: task_manager/templates/users/create.html:25
+msgid "Last_name"
+msgstr "Фамилия"
+
+#: task_manager/templates/users/create.html:28
+#: task_manager/templates/users/create.html:29
+#: task_manager/templates/users/login.html:11
+#: task_manager/templates/users/login.html:12
+msgid "Username"
+msgstr "Имя пользователя"
+
+#: task_manager/templates/users/create.html:30
+msgid ""
+"It's require field. No more 150 symbols. Only letters, numbers and symbols "
+"@/./+/-/_."
+msgstr "Обязательное поле. Не более 150 символов. Только буквы, цифры и символы @/./+/-/_."
+
+#: task_manager/templates/users/create.html:33
+#: task_manager/templates/users/create.html:34
+#: task_manager/templates/users/login.html:15
+#: task_manager/templates/users/login.html:16
+msgid "Password"
+msgstr "Пароль"
+
+#: task_manager/templates/users/create.html:37
+msgid "Your passwords should contain at least 3 symbols."
+msgstr "Ваш пароль должен содержать как минимум 3 символа."
+
+#: task_manager/templates/users/create.html:42
+msgid "Confirm password."
+msgstr "Подтверждение пароля"
+
+#: task_manager/templates/users/create.html:43
+msgid "Confirmation of the password"
+msgstr "Подтверждение пароля"
+
+#: task_manager/templates/users/create.html:44
+msgid "To сonfirm your password, enter it again."
+msgstr "Для подтверждения введите, пожалуйста, пароль ещё раз."
+
+#: task_manager/templates/users/create.html:46
+#, fuzzy
+#| msgid "Sign up"
+msgid "To sign up"
+msgstr "Регистрация"
+
+#: task_manager/templates/users/index.html:13
 msgid "ID"
 msgstr "ID"
 
-#: templates/users/index.html:14
+#: task_manager/templates/users/index.html:14
 msgid "Nic name"
 msgstr "Имя пользователя"
 
-#: templates/users/index.html:15
+#: task_manager/templates/users/index.html:15
 msgid "Full name"
 msgstr "Полное имя"
 
-#: templates/users/index.html:16
+#: task_manager/templates/users/index.html:16
 msgid "Created date"
 msgstr "Дата создания"
 
-#: templates/users/index.html:27
+#: task_manager/templates/users/index.html:28
 msgid "Edit"
 msgstr "Изменить"
 
-#: templates/users/index.html:29
+#: task_manager/templates/users/index.html:30
 msgid "Remove"
 msgstr "Удалить"
+
+#: task_manager/templates/users/login.html:18
+#, fuzzy
+#| msgid "Sign in"
+msgid "Sign"
+msgstr "Вход"

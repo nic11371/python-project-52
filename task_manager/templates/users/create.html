@@ -12,11 +12,38 @@
         </ul>
     </div>
     {% endif %}
-    <form action="{% url 'user_create' %}" method="post">
-        {% csrf_token %}
-        <table>
-            {{ form }}
-        </table>
-    </form>
-    <input type="submit" value="{% translate 'Sign out' %}">
+    <div class="container wrapper flex-grow-1">
+        <h1 class="my-4"> {% translate "Registration" %} </h1>
+        <form action="{% url "user_create" %}" method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label class="form-label" for="id_first_name">{% translate "Name" %}</label>
+                <input type="text" name="first_name" maxlength="150" class="form-control" placeholder={% translate "Name" %} id="id_first_name">
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="id_last_name">{% translate "Last_name" %}</label>
+                <input type="text" name="last_name" maxlength="150" class="form-control" placeholder={% translate "Last_name" %} id="id_last_name">
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="id_username">{% translate "Username" %}</label>
+                <input type="text" name="username" maxlength="150" autofocus="" class="form-control" placeholder={% translate "Username" %} aria-describedby="id_username_helptext" id="id_username">
+                <div class="form-text">{% translate "It's require field. No more 150 symbols. Only letters, numbers and symbols @/./+/-/_." %}</div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="id_password1">{% translate "Password" %}</label>
+                <input type="password" name="password1" autocomplete="new-password" class="form-control" placeholder={% translate "Password" %} aria-describedby="id_password1_helptext" id="id_password1">
+                <div class="form-text">
+                    <ul>
+                        <li>{% translate "Your passwords should contain at least 3 symbols." %}</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="id_password2">{% translate "Confirm password." %}</label>
+                <input type="password" name="password2" autocomplete="new-password" class="form-control" placeholder={% translate "Confirmation of the password" %} aria-describedby="id_password2_helptext" id="id_password2">
+                <div class="form-text">{% translate "To сonfirm your password, enter it again." %}</div>
+            </div>
+            <input class="btn btn-primary" type="submit" value="{% translate 'To sign up' %}">
+        </form>
+    </div>
 {% endblock %}

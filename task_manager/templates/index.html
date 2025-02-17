@@ -30,13 +30,13 @@
             <div class="collapse navbar-collapse" id="task_manager">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="/users/">{% translate "Users" %}</a>
+                        <a class="nav-link" href="{% url "users" %}">{% translate "Users" %}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/user_create/">{% translate "Sign in" %}</a>
+                        <a class="nav-link" href="{% url "login" %}">{% translate "Sign in" %}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">{% translate "Sign up" %}</a>
+                        <a class="nav-link" href="{% url "user_create" %}">{% translate "Sign up" %}</a>
                     </li>
                 </ul>
             </div>

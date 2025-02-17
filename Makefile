@@ -21,10 +21,10 @@ build:
 sync:
 	uv sync
 
-migrate:
+migrations:
 	python manage.py makemigrations
 
-migrations:
+migrate:
 	python manage.py migrate
 
 collectstatic:
@@ -32,3 +32,6 @@ collectstatic:
 
 translate-compile:
 	django-admin compilemessages
+
+translate-makemessages:
+	django-admin makemessages -l ru
