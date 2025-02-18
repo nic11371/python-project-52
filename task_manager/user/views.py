@@ -32,11 +32,11 @@ class LoginUserView(View):
 
     def get(self, request, *args, **kwargs):
         form = LoginForm()
-        return render(request, 'users/login.html', {'form': form})
+        return render(request, 'users/login.html', {'login': form})
 
     def post(self, request, *args, **kwargs):
         form = LoginForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('home')
-        return render(request, 'users/login.html', {'form': form})
+        return render(request, 'users/login.html', {'login': form})
