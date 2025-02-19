@@ -1,14 +1,15 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login, logout
 from django.views import View
-from task_manager.user.models import User
-from task_manager.user.forms import UserForm
-from task_manager.user.forms import LoginForm
+from .models import CustomUser
+from .forms import UserForm
+from .forms import LoginForm
 
 
 class IndexUserView(View):
 
     def get(self, request, *args, **kwargs):
-        users = User.objects.all()
+        users = CustomUser.objects.all()
         return render(request, 'users/index.html', context={
             'users': users,
         })
@@ -25,7 +26,7 @@ class UserFormCreateView(View):
         if form.is_valid():
             form.save()
             return redirect('login')
-        return render(request, 'user/create.html', {'form': form})
+        return render(request, 'users/create.html', {'form': form})
 
 
 class LoginUserView(View):
@@ -37,6 +38,16 @@ class LoginUserView(View):
     def post(self, request, *args, **kwargs):
         form = LoginForm(request.POST)
         if form.is_valid():
-            form.save()
-            return redirect('home')
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            user = authenticate(request, username=username, password=password)
+            if user:
+                login(request, user)
+                return redirect('home')
         return render(request, 'users/login.html', {'login': form})
+
+
+class LogoutUserView(View):
+    def post(self, request, *args, **kwargs):
+        logout(request)
+        return redirect('home')

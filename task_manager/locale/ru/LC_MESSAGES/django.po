@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-17 22:58+0300\n"
+"POT-Creation-Date: 2025-02-19 19:56+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -47,6 +47,7 @@ msgid "Sign in"
 msgstr "Вход"
 
 #: task_manager/templates/index.html:39
+#: task_manager/templates/users/create.html:46
 msgid "Sign up"
 msgstr "Регистрация"
 
@@ -54,20 +55,17 @@ msgstr "Регистрация"
 msgid "Registration"
 msgstr "Регистрация"
 
-#: task_manager/templates/users/create.html:20
-#: task_manager/templates/users/create.html:21
+#: task_manager/templates/users/create.html:20 task_manager/user/forms.py:14
 msgid "Name"
 msgstr "Имя"
 
-#: task_manager/templates/users/create.html:24
-#: task_manager/templates/users/create.html:25
-msgid "Last_name"
+#: task_manager/templates/users/create.html:24 task_manager/user/forms.py:20
+msgid "Last name"
 msgstr "Фамилия"
 
 #: task_manager/templates/users/create.html:28
-#: task_manager/templates/users/create.html:29
-#: task_manager/templates/users/login.html:11
-#: task_manager/templates/users/login.html:12
+#: task_manager/templates/users/login.html:11 task_manager/user/forms.py:26
+#: task_manager/user/forms.py:60
 msgid "Username"
 msgstr "Имя пользователя"
 
@@ -75,12 +73,13 @@ msgstr "Имя пользователя"
 msgid ""
 "It's require field. No more 150 symbols. Only letters, numbers and symbols "
 "@/./+/-/_."
-msgstr "Обязательное поле. Не более 150 символов. Только буквы, цифры и символы @/./+/-/_."
+msgstr ""
+"Обязательное поле. Не более 150 символов. Только буквы, цифры и символы @/./"
+"+/-/_."
 
 #: task_manager/templates/users/create.html:33
-#: task_manager/templates/users/create.html:34
-#: task_manager/templates/users/login.html:15
-#: task_manager/templates/users/login.html:16
+#: task_manager/templates/users/login.html:15 task_manager/user/forms.py:34
+#: task_manager/user/forms.py:43 task_manager/user/forms.py:70
 msgid "Password"
 msgstr "Пароль"
 
@@ -92,19 +91,9 @@ msgstr "Ваш пароль должен содержать как миниму�
 msgid "Confirm password."
 msgstr "Подтверждение пароля"
 
-#: task_manager/templates/users/create.html:43
-msgid "Confirmation of the password"
-msgstr "Подтверждение пароля"
-
 #: task_manager/templates/users/create.html:44
 msgid "To сonfirm your password, enter it again."
 msgstr "Для подтверждения введите, пожалуйста, пароль ещё раз."
-
-#: task_manager/templates/users/create.html:46
-#, fuzzy
-#| msgid "Sign up"
-msgid "To sign up"
-msgstr "Регистрация"
 
 #: task_manager/templates/users/index.html:13
 msgid "ID"
@@ -131,7 +120,5 @@ msgid "Remove"
 msgstr "Удалить"
 
 #: task_manager/templates/users/login.html:18
-#, fuzzy
-#| msgid "Sign in"
-msgid "Sign"
-msgstr "Вход"
+msgid "Login"
+msgstr "Войти"

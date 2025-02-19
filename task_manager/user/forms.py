@@ -1,10 +1,10 @@
-from django.forms import ModelForm
-from .models import User
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from .models import CustomUser
 from django import forms
 from django.utils.translation import gettext as _
 
 
-class UserForm(ModelForm):
+class UserForm(UserCreationForm):
     first_name = forms.CharField(
         label="First name",
         max_length=100,
@@ -45,12 +45,12 @@ class UserForm(ModelForm):
         required=True)
 
     class Meta:
-        model = User
+        model = CustomUser
         fields = [
             'first_name', 'last_name', 'username', 'password1', 'password2']
 
 
-class LoginForm(ModelForm):
+class LoginForm(AuthenticationForm):
     username = forms.CharField(
         label="Username",
         max_length=150,
@@ -71,5 +71,5 @@ class LoginForm(ModelForm):
         required=True)
 
     class Meta:
-        model = User
+        model = CustomUser
         fields = ['username', 'password']

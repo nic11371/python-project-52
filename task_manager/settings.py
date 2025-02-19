@@ -118,6 +118,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTH_USER_MODEL = 'user.CustomUser'
+
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
