@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser, \
-    PermissionsMixin, Group, Permission
+    PermissionsMixin, Group, Permission, BaseUserManager
 from django.utils.translation import gettext as _
 
 
@@ -19,6 +19,3 @@ class CustomUser(AbstractUser):
 
     USERNAME_FIELD = "username"
     REQUIRED_FIELDS = ["password1", "password2"]
-
-    def __str__(self):
-        return self.username
