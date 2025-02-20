@@ -37,8 +37,6 @@ ALLOWED_HOSTS = ["webserver", "127.0.0.1", "localhost", "python-project-52-jsnv.
 # Application definition
 
 INSTALLED_APPS = [
-    'task_manager',
-    'task_manager.user',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -46,6 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_bootstrap5',
+    'task_manager',
+    'task_manager.user',
 ]
 
 MIDDLEWARE = [

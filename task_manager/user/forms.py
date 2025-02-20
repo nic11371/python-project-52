@@ -69,7 +69,3 @@ class LoginForm(AuthenticationForm):
             'placeholder': _('Password'),
             'autocomplete': 'current-password'}),
         required=True)
-
-    class Meta:
-        model = CustomUser
-        fields = ['username', 'password']
