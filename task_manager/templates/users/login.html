@@ -9,11 +9,11 @@
             {% csrf_token %}
             <div class="mb-3">
                 <label class="form-label" for="id_username">{% translate "Username" %}</label>
-                {{ login.username }}
+                {{ form.username }}
             </div>
             <div class="mb-3">
                 <label class="form-label" for="id_password">{% translate "Password" %}</label>
-                {{ login.password }}
+                {{ form.password }}
             </div>
             <input class="btn btn-primary" type="submit" value={% translate "Login" %}>
         </form>

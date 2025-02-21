@@ -16,6 +16,7 @@
         <h1 class="my-4"> {% translate "Registration" %} </h1>
         <form action="{% url "user_create" %}" method="post">
             {% csrf_token %}
+            {{ from.as_p }}
             <div class="mb-3">
                 <label class="form-label" for="id_first_name">{% translate "Name" %}</label>
                 {{ form.first_name }}

@@ -28,7 +28,7 @@ class UserForm(UserCreationForm):
     password1 = forms.CharField(
         label="Password",
         min_length=3,
-        widget=forms.PasswordInput(attrs={
+        widget=forms.TextInput(attrs={
             'class': 'form-control',
             'placeholder': _('Password'),
             'autocomplete': 'new-password'}),
@@ -37,7 +37,7 @@ class UserForm(UserCreationForm):
     password2 = forms.CharField(
         label="Confirm password",
         min_length=3,
-        widget=forms.PasswordInput(attrs={
+        widget=forms.TextInput(attrs={
             'class': 'form-control',
             'placeholder': _('Password'),
             'autocomplete': 'new-password'}),
@@ -61,7 +61,7 @@ class LoginForm(AuthenticationForm):
             'autocomplete': 'username'}),
         help_text="id_username",
         required=True)
-    password = forms.CharField(
+    password1 = forms.CharField(
         label="Password",
         min_length=3,
         widget=forms.PasswordInput(attrs={
