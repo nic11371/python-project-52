@@ -14,9 +14,6 @@
                     <th>{% translate "Nic name" %}</th>
                     <th>{% translate "Full name" %}</th>
                     <th>{% translate "Created date" %}</th>
-                    <th>Pass1</th>
-                    <th>Pass</th>
-                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -26,8 +23,6 @@
                     <td>{{ user.username }}</td>
                     <td>{{ user.first_name }} {{ user.last_name }}</td>
                     <td>{{ user.created_at|date:'d.m.Y H:i' }}</td>
-                    <td>{{ user.password1 }}</td>
-                    <td>{{ user.password }}</td>
                     <td>
                         <a href="/users/1/update/">{% translate "Edit" %}</a>
                         <br>
