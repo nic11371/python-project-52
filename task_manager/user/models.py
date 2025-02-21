@@ -15,7 +15,7 @@ class CustomUser(AbstractUser):
         max_length=150)
     password2 = models.CharField(
         max_length=150)
-    created_at = models.DateTimeField(auto_created=True)
+    created_at = models.DateTimeField(auto_now_add=True)
 
     USERNAME_FIELD = "username"
     REQUIRED_FIELDS = ["password1", "password2"]

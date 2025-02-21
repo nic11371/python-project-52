@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
+from django.views.generic import CreateView, ListView, UpdateView, DeleteView
 from django.views import View
 from .models import CustomUser
 from .forms import UserForm
