@@ -16,34 +16,7 @@
         <h1 class="my-4"> {% translate "Registration" %} </h1>
         <form action="{% url "user_create" %}" method="post">
             {% csrf_token %}
-            {{ from.as_p }}
-            <div class="mb-3">
-                <label class="form-label" for="id_first_name">{% translate "Name" %}</label>
-                {{ form.first_name }}
-            </div>
-            <div class="mb-3">
-                <label class="form-label" for="id_last_name">{% translate "Last name" %}</label>
-                {{ form.last_name }}
-            </div>
-            <div class="mb-3">
-                <label class="form-label" for="id_username">{% translate "Username" %}</label>
-                {{ form.username }}
-                <div class="form-text">{% translate "It's require field. No more 150 symbols. Only letters, numbers and symbols @/./+/-/_." %}</div>
-            </div>
-            <div class="mb-3">
-                <label class="form-label" for="id_password1">{% translate "Password" %}</label>
-                {{ form.password1 }}
-                <div class="form-text">
-                    <ul>
-                        <li>{% translate "Your passwords should contain at least 3 symbols." %}</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="mb-3">
-                <label class="form-label" for="id_password2">{% translate "Confirm password." %}</label>
-                {{ form.password2 }}
-                <div class="form-text">{% translate "To сonfirm your password, enter it again." %}</div>
-            </div>
+            {{ form.as_p }}
             <input class="btn btn-primary" type="submit" value="{% translate 'Sign up' %}">
         </form>
     </div>
