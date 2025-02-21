@@ -4,6 +4,8 @@ from django.views import View
 from .models import CustomUser
 from .forms import UserForm
 from .forms import LoginForm
+from django.urls import reverse
+
 
 
 class IndexUserView(View):
@@ -25,7 +27,7 @@ class UserFormCreateView(View):
         form = UserForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('login')
+            return redirect(reverse('login'))
         return render(request, 'users/create.html', {'form': form})
 
 
@@ -43,11 +45,11 @@ class LoginUserView(View):
             user = authenticate(request, username=username, password=password)
             if user:
                 login(request, user)
-                return redirect('home')
+                return redirect(reverse('home'))
         return render(request, 'users/login.html', {'login': form})
 
 
 class LogoutUserView(View):
     def post(self, request, *args, **kwargs):
         logout(request)
-        return redirect('home')
+        return redirect(reverse('home'))
