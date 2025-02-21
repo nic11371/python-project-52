@@ -61,7 +61,7 @@ class LoginForm(AuthenticationForm):
             'autocomplete': 'username'}),
         help_text="id_username",
         required=True)
-    password = forms.CharField(
+    password1 = forms.CharField(
         label="Password",
         min_length=3,
         widget=forms.PasswordInput(attrs={

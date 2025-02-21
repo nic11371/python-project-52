@@ -35,21 +35,29 @@ class LoginUserView(View):
 
     def get(self, request, *args, **kwargs):
         form = LoginForm()
-        return render(request, 'users/login.html', {'login': form})
+        return render(request, 'users/login.html', {'form': form})
 
     def post(self, request, *args, **kwargs):
         form = LoginForm(request.POST)
         if form.is_valid():
             username = form.cleaned_data['username']
-            password = form.cleaned_data['password']
-            user = authenticate(request, username=username, password=password)
-            if user:
+            password1 = form.cleaned_data['password1']
+            user = authenticate(username=username, password=password1)
+            if user is not None:
                 login(request, user)
-                return redirect(reverse('home'))
-        return render(request, 'users/login.html', {'login': form})
+                return redirect('users/')
+            else:
+                return render(request, 'users/login.html')
+        else:
+            form = LoginForm()
+        return render(request, 'users/login.html', {'form': form})
+
+    class Meta:
+        model = CustomUser
+        fields = ['username', 'password']
 
 
 class LogoutUserView(View):
     def post(self, request, *args, **kwargs):
         logout(request)
-        return redirect(reverse('home'))
+        return redirect(reverse('login'))
