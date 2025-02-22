@@ -1,4 +1,5 @@
-from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm
+from django.contrib.auth.forms import UserCreationForm, \
+    UserChangeForm, PasswordChangeForm
 from .models import CustomUser
 from django import forms
 from django.utils.translation import gettext as _
@@ -20,13 +21,15 @@ class UserRegisterForm(UserCreationForm):
     username = forms.CharField(
         label=_("Username"),
         max_length=150,
+        help_text=_('Required field. No more than 150 characters. Only letters, numbers and symbols @/./+/-/_.'),
         widget=forms.TextInput(attrs={
             'class': 'form-control',
-            'placeholder': _('Username')}),
+            'placeholder': _('Username'), }),
         required=True)
     password1 = forms.CharField(
         label=_("Password"),
         min_length=3,
+        help_text=_('Your password must contain at least 3 characters.'),
         widget=forms.PasswordInput(attrs={
             'class': 'form-control',
             'placeholder': _('Password'),
@@ -35,6 +38,7 @@ class UserRegisterForm(UserCreationForm):
     password2 = forms.CharField(
         label=_("Confirm password"),
         min_length=3,
+        help_text=_('To confirm, please enter your password again.'),
         widget=forms.PasswordInput(attrs={
             'class': 'form-control',
             'placeholder': _('Password'),
@@ -68,7 +72,6 @@ class UserUpdateForm(UserChangeForm):
             'placeholder': _('Username')}),
         required=True)
     password = None
-
 
     class Meta:
         model = CustomUser

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-02-19 19:56+0300\n"
+"POT-Creation-Date: 2025-02-22 16:16+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,7 +22,7 @@ msgstr ""
 
 #: task_manager/templates/home.html:12
 msgid "Hello from Hexlet"
-msgstr "Привет от хекслета"
+msgstr "Привет от Хекслета"
 
 #: task_manager/templates/home.html:13
 msgid "The practic courses by a programming"
@@ -47,53 +47,13 @@ msgid "Sign in"
 msgstr "Вход"
 
 #: task_manager/templates/index.html:39
-#: task_manager/templates/users/create.html:46
+#: task_manager/templates/users/create.html:20
 msgid "Sign up"
 msgstr "Регистрация"
 
 #: task_manager/templates/users/create.html:16
 msgid "Registration"
 msgstr "Регистрация"
-
-#: task_manager/templates/users/create.html:20 task_manager/user/forms.py:14
-msgid "Name"
-msgstr "Имя"
-
-#: task_manager/templates/users/create.html:24 task_manager/user/forms.py:20
-msgid "Last name"
-msgstr "Фамилия"
-
-#: task_manager/templates/users/create.html:28
-#: task_manager/templates/users/login.html:11 task_manager/user/forms.py:26
-#: task_manager/user/forms.py:60
-msgid "Username"
-msgstr "Имя пользователя"
-
-#: task_manager/templates/users/create.html:30
-msgid ""
-"It's require field. No more 150 symbols. Only letters, numbers and symbols "
-"@/./+/-/_."
-msgstr ""
-"Обязательное поле. Не более 150 символов. Только буквы, цифры и символы @/./"
-"+/-/_."
-
-#: task_manager/templates/users/create.html:33
-#: task_manager/templates/users/login.html:15 task_manager/user/forms.py:34
-#: task_manager/user/forms.py:43 task_manager/user/forms.py:70
-msgid "Password"
-msgstr "Пароль"
-
-#: task_manager/templates/users/create.html:37
-msgid "Your passwords should contain at least 3 symbols."
-msgstr "Ваш пароль должен содержать как минимум 3 символа."
-
-#: task_manager/templates/users/create.html:42
-msgid "Confirm password."
-msgstr "Подтверждение пароля"
-
-#: task_manager/templates/users/create.html:44
-msgid "To сonfirm your password, enter it again."
-msgstr "Для подтверждения введите, пожалуйста, пароль ещё раз."
 
 #: task_manager/templates/users/index.html:13
 msgid "ID"
@@ -111,14 +71,83 @@ msgstr "Полное имя"
 msgid "Created date"
 msgstr "Дата создания"
 
-#: task_manager/templates/users/index.html:28
+#: task_manager/templates/users/index.html:27
+#: task_manager/templates/users/update.html:16
 msgid "Edit"
 msgstr "Изменить"
 
-#: task_manager/templates/users/index.html:30
+#: task_manager/templates/users/index.html:31
 msgid "Remove"
 msgstr "Удалить"
 
-#: task_manager/templates/users/login.html:18
+#: task_manager/templates/users/login.html:11
 msgid "Login"
 msgstr "Войти"
+
+#: task_manager/templates/users/update.html:21
+msgid "Change Password"
+msgstr "Изменить пароль"
+
+#: task_manager/templates/users/update.html:23
+#: task_manager/templates/users/update_password.html:20
+msgid "Save"
+msgstr "Сохранить"
+
+#: task_manager/templates/users/update_password.html:16
+msgid "Edit Password"
+msgstr "Редактирование пароля"
+
+#: task_manager/user/forms.py:10 task_manager/user/forms.py:56
+msgid "First name"
+msgstr "Фамилия"
+
+#: task_manager/user/forms.py:14 task_manager/user/forms.py:60
+msgid "Name"
+msgstr "Имя"
+
+#: task_manager/user/forms.py:16 task_manager/user/forms.py:20
+#: task_manager/user/forms.py:62 task_manager/user/forms.py:66
+msgid "Last name"
+msgstr "Фамилия"
+
+#: task_manager/user/forms.py:22 task_manager/user/forms.py:27
+#: task_manager/user/forms.py:68 task_manager/user/forms.py:72
+#: task_manager/user/forms.py:115 task_manager/user/forms.py:119
+msgid "Username"
+msgstr "Имя пользователя"
+
+#: task_manager/user/forms.py:24
+msgid ""
+"Required field. No more than 150 characters. Only letters, numbers and "
+"symbols @/./+/-/_."
+msgstr "Обязательное поле. Не более 150 символов. Только буквы, цифры и символы @/./+/-/_."
+
+#: task_manager/user/forms.py:30 task_manager/user/forms.py:35
+#: task_manager/user/forms.py:44 task_manager/user/forms.py:124
+#: task_manager/user/forms.py:128
+msgid "Password"
+msgstr "Пароль"
+
+#: task_manager/user/forms.py:32
+msgid "Your password must contain at least 3 characters."
+msgstr "Ваш пароль должен содержать как минимум 3 символа."
+
+#: task_manager/user/forms.py:39 task_manager/user/forms.py:96
+msgid "Confirm password"
+msgstr "Подтверждение пароля"
+
+#: task_manager/user/forms.py:41
+msgid "To confirm, please enter your password again."
+msgstr "Для подтверждения введите, пожалуйста, пароль ещё раз."
+
+#: task_manager/user/forms.py:84 task_manager/user/forms.py:88
+msgid "New password"
+msgstr "Новый пароль"
+
+#: task_manager/user/forms.py:92
+msgid "Confirm new password"
+msgstr "Подтверждение нового пароля"
+
+#: task_manager/user/forms.py:100 task_manager/user/forms.py:104
+msgid "Old password"
+msgstr "Старый пароль"
