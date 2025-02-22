@@ -123,6 +123,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 AUTH_USER_MODEL = 'user.CustomUser'
 
+LOGIN_URL = '/login'
+
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]

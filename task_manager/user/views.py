@@ -44,12 +44,8 @@ class LoginUserView(View):
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
-                return redirect(reverse('users'))
+                return redirect(reverse('home'))
         return render(request, 'users/login.html', {'form': form})
-
-    class Meta:
-        model = CustomUser
-        fields = ['username', 'password']
 
 
 class LogoutUserView(View):
