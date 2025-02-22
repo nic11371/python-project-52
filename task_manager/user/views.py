@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.views.generic import CreateView, ListView, UpdateView, DeleteView
 from django.views import View
 from .models import CustomUser
-from .forms import UserCreateForm, LoginForm
+from .forms import UserRegisterForm, LoginForm, UserUpdateForm, UserPasswordChange
 from django.urls import reverse
 
 
@@ -19,11 +19,11 @@ class IndexUserView(View):
 class UserFormCreateView(View):
 
     def get(self, request, *args, **kwargs):
-        form = UserCreateForm()
+        form = UserRegisterForm()
         return render(request, 'users/create.html', {'form': form})
 
     def post(self, request, *args, **kwargs):
-        form = UserCreateForm(request.POST)
+        form = UserRegisterForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect(reverse('login'))
@@ -34,19 +34,38 @@ class UserFormUpdateView(View):
     def get(self, request, *args, **kwargs):
         user_id = kwargs.get('pk')
         user = CustomUser.objects.get(id=user_id)
-        form = UserCreateForm(instance=user)
+        form = UserUpdateForm(instance=user)
         return render(
             request, 'users/update.html', {'form': form, 'user_id': user_id})
 
     def post(self, request, *args, **kwargs):
         user_id = kwargs.get('pk')
         user = CustomUser.objects.get(id=user_id)
-        form = UserCreateForm(request.POST, instance=user)
+        form = UserUpdateForm(request.POST, instance=user)
         if form.is_valid():
             form.save()
             return redirect(reverse('users'))
         return render(
             request, 'users/update.html', {'form': form, 'user_id': user_id})
+
+
+class UserFormUpdatePasswordView(View):
+    def get(self, request, *args, **kwargs):
+        user_id = kwargs.get('pk')
+        user = CustomUser.objects.get(id=user_id)
+        form = UserPasswordChange(user)
+        return render(
+            request, 'users/update_password.html', {'form': form, 'user_id': user_id})
+
+    def post(self, request, *args, **kwargs):
+        user_id = kwargs.get('pk')
+        user = CustomUser.objects.get(id=user_id)
+        form = UserPasswordChange(user, request.POST or None)
+        if form.is_valid():
+            form.save()
+            return redirect(reverse('users'))
+        return render(
+            request, 'users/update_password.html', {'form': form})
 
 
 class UserFormDeleteView(View):
