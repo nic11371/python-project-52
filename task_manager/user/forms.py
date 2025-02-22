@@ -4,7 +4,7 @@ from django import forms
 from django.utils.translation import gettext as _
 
 
-class UserForm(UserCreationForm):
+class UserCreateForm(UserCreationForm):
     first_name = forms.CharField(
         label=_("First name"),
         max_length=100,

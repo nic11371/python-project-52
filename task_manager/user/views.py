@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.views.generic import CreateView, ListView, UpdateView, DeleteView
 from django.views import View
 from .models import CustomUser
-from .forms import UserForm, LoginForm
+from .forms import UserCreateForm, LoginForm
 from django.urls import reverse
 
 
@@ -19,15 +19,43 @@ class IndexUserView(View):
 class UserFormCreateView(View):
 
     def get(self, request, *args, **kwargs):
-        form = UserForm()
+        form = UserCreateForm()
         return render(request, 'users/create.html', {'form': form})
 
     def post(self, request, *args, **kwargs):
-        form = UserForm(request.POST)
+        form = UserCreateForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect(reverse('login'))
         return render(request, 'users/create.html', {'form': form})
+
+
+class UserFormUpdateView(View):
+    def get(self, request, *args, **kwargs):
+        user_id = kwargs.get('pk')
+        user = CustomUser.objects.get(id=user_id)
+        form = UserCreateForm(instance=user)
+        return render(
+            request, 'users/update.html', {'form': form, 'user_id': user_id})
+
+    def post(self, request, *args, **kwargs):
+        user_id = kwargs.get('pk')
+        user = CustomUser.objects.get(id=user_id)
+        form = UserCreateForm(request.POST, instance=user)
+        if form.is_valid():
+            form.save()
+            return redirect(reverse('users'))
+        return render(
+            request, 'users/update.html', {'form': form, 'user_id': user_id})
+
+
+class UserFormDeleteView(View):
+    def post(self, request, *args, **kwargs):
+        user_id = kwargs.get('pk')
+        user = CustomUser.objects.get(id=user_id)
+        if user:
+            user.delete()
+        return redirect(reverse('users'))
 
 
 class LoginUserView(View):
