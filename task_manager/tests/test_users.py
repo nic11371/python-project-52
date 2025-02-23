@@ -5,8 +5,7 @@ from django.urls import reverse
 
 class UserCustomTestCase(TestCase):
 
-    @classmethod
-    def setUpTestData(cls):
+    def setUp(self):
         CustomUser.objects.create(
             first_name='Ivan',
             last_name='Grozniy',
