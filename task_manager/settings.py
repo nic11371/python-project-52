@@ -130,6 +130,11 @@ STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
 
+FIXTURE_DIRS = [
+    BASE_DIR / 'user' / 'fixtures' / 'user_test.json',
+    BASE_DIR / 'user' / 'fixtures' / 'user_signup_test.json'
+]
+
 STORAGES = {
     "staticfiles": {
         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
