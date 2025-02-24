@@ -17,8 +17,8 @@ class UserCustomTestCase(TestCase):
             first_name='Mariya',
             last_name='Petrova',
             username='Masha003',
-            email='masha@mail.ru',
-            password='quni'
+            password1='Te1@',
+            password2='Te1@'
         )
 
     def test_signUp(self):
@@ -50,9 +50,9 @@ class UserCustomTestCase(TestCase):
 
     def test_UpdateUser(self):
         user = CustomUser.objects.get(id=1)
-        resp = self.client.get(
-            reverse('user_update', kwargs={'pk': user.id})
-        )
+        # resp = self.client.get(
+        #     reverse('user_update', kwargs={'pk': user.id})
+        # )
         # self.assertEqual(resp.status_code, 302)
         # self.assertRedirects(resp, reverse('login'))
         self.client.force_login(user)
@@ -76,7 +76,7 @@ class UserCustomTestCase(TestCase):
         self.assertEqual(user.first_name, 'Petya')
 
     def test_DeleteUser(self):
-        user = CustomUser.objects.get(username='Masha003')
+        user = CustomUser.objects.get(id=2)
         # resp = self.client.get(
         #     reverse('user_delete', kwargs={'pk': user.id})
         # )
@@ -86,7 +86,7 @@ class UserCustomTestCase(TestCase):
         resp = self.client.get(
             reverse('user_delete', kwargs={'pk': user.id})
         )
-        # self.assertEqual(resp.status_code, 200)
+        self.assertEqual(resp.status_code, 200)
         resp = self.client.post(
             reverse('user_delete', kwargs={'pk': user.id})
         )
