@@ -27,6 +27,9 @@ migrations:
 migrate:
 	python manage.py migrate
 
+migrations-user:
+	python manage.py makemigrations user
+
 collectstatic:
 	python manage.py collectstatic --no-input
 

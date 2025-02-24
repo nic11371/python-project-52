@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
-from django.views.generic import CreateView, ListView, UpdateView, DeleteView
 from django.views import View
 from .models import CustomUser
-from .forms import UserRegisterForm, LoginForm, UserUpdateForm, UserPasswordChange
+from .forms import UserRegisterForm, LoginForm, \
+    UserUpdateForm, UserPasswordChange
 from django.urls import reverse
 
 
@@ -55,7 +55,8 @@ class UserFormUpdatePasswordView(View):
         user = CustomUser.objects.get(id=user_id)
         form = UserPasswordChange(user)
         return render(
-            request, 'users/update_password.html', {'form': form, 'user_id': user_id})
+            request, 'users/update_password.html', {
+                'form': form, 'user_id': user_id})
 
     def post(self, request, *args, **kwargs):
         user_id = kwargs.get('pk')
