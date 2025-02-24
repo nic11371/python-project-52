@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import IndexUserView, UserFormUpdatePasswordView
+from .views import IndexUserView
 from .views import UserFormCreateView
 from .views import UserFormUpdateView
 from .views import UserFormUpdatePasswordView
