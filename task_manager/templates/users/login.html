@@ -3,12 +3,10 @@
 {% load i18n %}
 
 {% block main %}
-    <div class="container wrapper flex-grow-1">
         <h1 class="my-4">{% translate "Sign in" %}</h1>
         <form method="post">
             {% csrf_token %}
             {{ form.as_p }}
             <input class="btn btn-primary" type="submit" value={% translate "Login" %}>
         </form>
-    </div>
 {% endblock %}

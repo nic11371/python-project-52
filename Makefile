@@ -38,3 +38,6 @@ translate-compile:
 
 translate-makemessages:
 	django-admin makemessages -l ru
+
+test:
+	python manage.py test

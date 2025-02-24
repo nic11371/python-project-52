@@ -110,6 +110,10 @@ class UserPasswordChange(PasswordChangeForm):
         fields = ['passsword1', 'password2']
 
 
+class UserDeleteForm(forms.Form):
+    pass
+
+
 class LoginForm(forms.Form):
     username = forms.CharField(
         label=_("Username"),

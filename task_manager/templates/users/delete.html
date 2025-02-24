@@ -1,0 +1,14 @@
+{% extends "home.html" %}
+
+{% load i18n %}
+
+{% block main %}
+        <h1 class="my-4">
+            {% translate "Deleting user" %}
+        </h1>
+        <p>{% translate "Are you sure that want to delete" %} {{ user.first_name }} {{ user.last_name }}?</p>
+        <form method="post">
+            {% csrf_token %}
+            <input class="btn btn-danger" type="submit" value={% translate "Yes,delete" %}>
+        </form>
+{% endblock %}

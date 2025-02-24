@@ -3,7 +3,6 @@
 {% load i18n %}
 
 {% block main %}
-    <div class="container wrapper flex-grow-1">
         <h1 class="my-4">
             {% translate "Users" %}
         </h1>
@@ -26,14 +25,11 @@
                     <td>
                         <a href="/users/{{ user.id }}/update/">{% translate "Edit" %}</a>
                         <br>
-                        <form action="{% url 'user_delete' user.id %}" method="post">
-                            {% csrf_token %}
-                            <input class="btn btn-link" type="submit" value={% translate "Remove" %}>
+                        <a href="/users/{{ user.id }}/delete/">{% translate "Delete" %}</a>
                         </form>
                     </td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
-    </div>
 {% endblock %}

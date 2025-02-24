@@ -12,11 +12,13 @@
         <title>{% block bootstrap5_title %}Task manager{% endblock %}</title>
         <!-- Bootstrap CSS -->
         {% bootstrap_css %}
-        {% bootstrap_messages %}
     </head>
     <body class="min-vh-100 d-flex flex-column">
         {% block navigation %}(no navbar){% endblock %}
-        {% block main %}(no main){% endblock %}
+        <div class="container wrapper flex-grow-1">
+            {% bootstrap_messages %}
+            {% block main %}(no main){% endblock %}
+        </div>
         {% block footer %}(no footer){% endblock %}
         {% if not BOOTSTRAP_JAVASCRIPT_IN_HEAD %}{% bootstrap_javascript %}{% endif %}
     </body>
