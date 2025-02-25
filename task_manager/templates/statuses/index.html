@@ -1,0 +1,36 @@
+{% extends "home.html" %}
+
+{% load i18n %}
+
+{% block main %}
+        <h1 class="my-4">
+            {% translate "Statuses" %}
+        </h1>
+        <a href="/statuses/create/">
+            <button class="btn btn-primary">{% translate "Create Status" %}</button>
+        </a>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>{% translate "ID" %}</th>
+                    <th>{% translate "Name" %}</th>
+                    <th>{% translate "Created date" %}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for statuses in status %}
+                <tr>
+                    <td>{{ status.id }}</td>
+                    <td>{{ status.status_name }}</td>
+                    <td>{{ status.created_at|date:'d.m.Y H:i' }}</td>
+                    <td>
+                        <a href="/statuses/{{ status.id }}/update/">{% translate "Edit" %}</a>
+                        <br>
+                        <a href="/statuses/{{ status.id }}/delete/">{% translate "Delete" %}</a>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+{% endblock %}

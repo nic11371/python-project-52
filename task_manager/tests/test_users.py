@@ -1,7 +1,6 @@
 from django.test import TestCase
 from task_manager.user.models import CustomUser
 from django.urls import reverse
-import pytest
 
 
 class UserCustomTestCase(TestCase):

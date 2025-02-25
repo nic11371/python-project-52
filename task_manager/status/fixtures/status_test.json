@@ -1,0 +1,16 @@
+[
+    {
+        "model": "status.CustomStatus",
+        "pk": 1,
+        "fields": {
+            "status_name": "online"
+        }
+    },
+    {
+        "model": "status.CustomStatus",
+        "pk": 2,
+        "fields": {
+            "status_name": "offline"
+        } 
+    }
+]

@@ -20,8 +20,9 @@ from django.urls import path, include
 from task_manager.views import HomePageView
 
 urlpatterns = [
-    path('', HomePageView.as_view(), name="home"),
-    path("i18n/", include("django.conf.urls.i18n")),
-    path('users/', include("task_manager.user.urls")),
+    path('', HomePageView.as_view(), name='home'),
+    path('i18n/', include('django.conf.urls.i18n')),
+    path('statuses/', include('task_manager.status.urls')),
+    path('users/', include('task_manager.user.urls')),
     path('admin/', admin.site.urls),
 ]
