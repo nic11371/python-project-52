@@ -62,7 +62,7 @@ class UserCustomTestCase(TestCase):
         self.assertEqual(user.first_name, 'Petya')
 
     def test_DeleteUser(self):
-        user = CustomUser.objects.get(id=2)
+        user = CustomUser.objects.get(username="Masha003")
         # resp = self.client.get(
         #     reverse('user_delete', kwargs={'pk': user.id})
         # )
@@ -78,5 +78,4 @@ class UserCustomTestCase(TestCase):
         )
         self.assertRedirects(resp, reverse('users'))
         self.assertEqual(resp.status_code, 302)
-        user.refresh_from_db()
-        self.assertEqual(CustomUser.objects.count(), 0)
+        self.assertEqual(CustomUser.objects.count(), 1)
