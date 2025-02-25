@@ -1,4 +1,5 @@
 {% extends "home.html" %}
+{% load django_bootstrap5 %}
 
 {% load i18n %}
 
@@ -6,7 +7,7 @@
         <h1 class="my-4"> {% translate "Edit" %} </h1>
         <form action="{% url "user_update" pk=user_id %}" method="post">
             {% csrf_token %}
-            {{ form.as_p }}
+            {% bootstrap_form form %}
             <div>
                 <a href="{% url 'user_update_password' user_id %}">{% translate "Change Password" %}</a>
             </div>

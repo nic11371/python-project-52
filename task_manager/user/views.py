@@ -29,7 +29,7 @@ class UserFormCreateView(View):
         if form.is_valid():
             form.save()
             messages.success(
-                request, "User was registered successfully."
+                request, _("User was registered successfully.")
             )
             return redirect(reverse('login'))
         return render(request, 'users/create.html', {'form': form})

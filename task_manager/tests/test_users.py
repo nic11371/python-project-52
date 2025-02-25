@@ -1,26 +1,11 @@
 from django.test import TestCase
 from task_manager.user.models import CustomUser
 from django.urls import reverse
+import pytest
 
 
 class UserCustomTestCase(TestCase):
-    # fixtures = ["user_test", "user_signup_test"]
-
-    def setUp(self):
-        CustomUser.objects.create(
-            first_name='Ivan',
-            last_name='Grozniy',
-            username='IvGroz1',
-            password1='Test123@#',
-            password2='Test123@#'
-        )
-        CustomUser.objects.create(
-            first_name='Mariya',
-            last_name='Petrova',
-            username='Masha004',
-            password1='Te1@',
-            password2='Te1@'
-        )
+    fixtures = ["user_test"]
 
     def test_signUp(self):
         resp = self.client.get(reverse('user_create'))

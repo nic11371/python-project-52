@@ -1,4 +1,5 @@
 {% extends "home.html" %}
+{% load django_bootstrap5 %}
 
 {% load i18n %}
 
@@ -9,6 +10,7 @@
         <p>{% translate "Are you sure that want to delete" %} {{ user.first_name }} {{ user.last_name }}?</p>
         <form method="post">
             {% csrf_token %}
+            {% bootstrap_form form %}
             <input class="btn btn-danger" type="submit" value={% translate "Yes,delete" %}>
         </form>
 {% endblock %}

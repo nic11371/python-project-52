@@ -3,6 +3,7 @@ from django.contrib.auth.forms import UserCreationForm, \
 from .models import CustomUser
 from django import forms
 from django.utils.translation import gettext_lazy as _
+from django.utils.safestring import mark_safe
 
 
 class UserRegisterForm(UserCreationForm):
@@ -10,28 +11,25 @@ class UserRegisterForm(UserCreationForm):
         label=_("First name"),
         max_length=100,
         widget=forms.TextInput(attrs={
-            'class': 'form-control form-label',
             'placeholder': _('Name')}))
     last_name = forms.CharField(
         label=_("Last name"),
         max_length=100,
         widget=forms.TextInput(attrs={
-            'class': 'form-control form-label',
             'placeholder': _('Last name')}))
     username = forms.CharField(
         label=_("Username"),
         max_length=150,
         help_text=_('Required field. No more than 150 characters. Only letters, numbers and symbols @/./+/-/_.'),
         widget=forms.TextInput(attrs={
-            'class': 'form-control  form-label',
             'placeholder': _('Username'), }),
         required=True)
     password1 = forms.CharField(
         label=_("Password"),
         min_length=3,
-        help_text=_('Your password must contain at least 3 characters.'),
+        help_text=_(
+            'Your password must contain at least 3 characters.'),
         widget=forms.PasswordInput(attrs={
-            'class': 'form-control form-label',
             'placeholder': _('Password'),
             'autocomplete': 'new-password'}),
         required=True)
@@ -40,7 +38,6 @@ class UserRegisterForm(UserCreationForm):
         min_length=3,
         help_text=_('To confirm, please enter your password again.'),
         widget=forms.PasswordInput(attrs={
-            'class': 'form-control form-label',
             'placeholder': _('Password'),
             'autocomplete': 'new-password'}),
         required=True)
@@ -56,19 +53,16 @@ class UserUpdateForm(UserChangeForm):
         label=_("First name"),
         max_length=100,
         widget=forms.TextInput(attrs={
-            'class': 'form-control form-label',
             'placeholder': _('Name')}))
     last_name = forms.CharField(
         label=_("Last name"),
         max_length=100,
         widget=forms.TextInput(attrs={
-            'class': 'form-control form-label',
             'placeholder': _('Last name')}))
     username = forms.CharField(
         label=_("Username"),
         max_length=150,
         widget=forms.TextInput(attrs={
-            'class': 'form-control form-label',
             'placeholder': _('Username')}),
         required=True)
     password = None
@@ -84,7 +78,6 @@ class UserPasswordChange(PasswordChangeForm):
         label=_("New password"),
         min_length=3,
         widget=forms.PasswordInput(attrs={
-            'class': 'form-control form-label',
             'placeholder': _('New password'),
             'autocomplete': 'new-password'}),
         required=True)
@@ -92,7 +85,6 @@ class UserPasswordChange(PasswordChangeForm):
         label=_("Confirm new password"),
         min_length=3,
         widget=forms.PasswordInput(attrs={
-            'class': 'form-control form-label',
             'placeholder': _('Confirm password'),
             'autocomplete': 'new-password'}),
         required=True)
@@ -100,7 +92,6 @@ class UserPasswordChange(PasswordChangeForm):
         label=_("Old password"),
         min_length=3,
         widget=forms.PasswordInput(attrs={
-            'class': 'form-control form-label',
             'placeholder': _('Old password'),
             'autocomplete': 'new-password'}),
         required=True)
@@ -119,7 +110,6 @@ class LoginForm(forms.Form):
         label=_("Username"),
         max_length=150,
         widget=forms.TextInput(attrs={
-            'class': 'form-control form-label',
             'placeholder': _('Username'),
             'autocapitalize': 'none',
             'autocomplete': 'username'}),
@@ -128,7 +118,6 @@ class LoginForm(forms.Form):
         label=_("Password"),
         min_length=3,
         widget=forms.PasswordInput(attrs={
-            'class': 'form-control form-label',
             'placeholder': _('Password'),
             'autocomplete': 'current-password'}),
         required=True)
