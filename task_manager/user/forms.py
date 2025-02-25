@@ -1,9 +1,8 @@
 from django.contrib.auth.forms import UserCreationForm, \
-    UserChangeForm, PasswordChangeForm
+    UserChangeForm, PasswordChangeForm, AuthenticationForm
 from .models import CustomUser
 from django import forms
 from django.utils.translation import gettext_lazy as _
-from django.utils.safestring import mark_safe
 
 
 class UserRegisterForm(UserCreationForm):
@@ -105,7 +104,7 @@ class UserDeleteForm(forms.Form):
     pass
 
 
-class LoginForm(forms.Form):
+class LoginForm(AuthenticationForm):
     username = forms.CharField(
         label=_("Username"),
         max_length=150,

@@ -102,7 +102,7 @@ class LoginUserView(View):
         return render(request, 'users/login.html', {'form': form})
 
     def post(self, request, *args, **kwargs):
-        form = LoginForm(request.POST)
+        form = LoginForm(data=request.POST)
         if form.is_valid():
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
