@@ -17,12 +17,15 @@ Including another URLconf
 from django.conf import settings
 from django.contrib import admin
 from django.urls import path, include
-from task_manager.views import HomePageView
+from .views import HomePageView, LoginView, LogoutView
+from django.urls import reverse
 
 urlpatterns = [
     path('', HomePageView.as_view(), name='home'),
     path('i18n/', include('django.conf.urls.i18n')),
     path('statuses/', include('task_manager.status.urls')),
     path('users/', include('task_manager.user.urls')),
+    path('login/', LoginView.as_view(), name='login'),
+    path('logout/', LogoutView.as_view(), name='logout'),
     path('admin/', admin.site.urls),
 ]
