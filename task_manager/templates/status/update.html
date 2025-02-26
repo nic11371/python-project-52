@@ -5,7 +5,7 @@
 
 {% block main %}
         <h1 class="my-4"> {% translate "Edit status" %} </h1>
-        <form action="{% url "status_update" pk=status_id %}" method="post">
+        <form action="{% url "status_update" pk=status.id %}" method="post">
             {% csrf_token %}
             {% bootstrap_form form %}
             <input class="btn btn-primary mt-3" type="submit" value="{% translate 'Edit' %}">

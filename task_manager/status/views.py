@@ -1,66 +1,46 @@
-from django.shortcuts import render, redirect
-from django.views import View
-from .models import CustomStatus
-from .forms import StatusForm
-from django.urls import reverse
+from django.views.generic import CreateView, ListView, UpdateView, DeleteView
+from django.contrib.messages.views import SuccessMessageMixin
+from django.shortcuts import redirect
+from .models import Status
+from django.db.models import ProtectedError
+from django.urls import reverse_lazy
 from django.contrib import messages
 from django.utils.translation import gettext_lazy as _
 
 
-class IndexStatusView(View):
-
-    def get(self, request, *args, **kwargs):
-        status = CustomStatus.objects.all()
-        return render(request, 'statuses/index.html', context={
-            'statuses': status,
-        })
+class StatusMixin(SuccessMessageMixin):
+    model = Status
+    extra_context = {'title': _("Statuses"), 'button': _("create")}
+    success_url = reverse_lazy('statuses')
+    fields = ['status_name']
 
 
-class StatusCreateView(View):
-
-    def get(self, request, *args, **kwargs):
-        form = StatusForm()
-        return render(request, 'statuses/create.html', {'form': form})
-
-    def post(self, request, *args, **kwargs):
-        form = StatusForm(request.POST)
-        form.save()
-        messages.success(
-            request, _("Status was created successfully.")
-        )
-        return redirect(reverse('statuses'))
+class ListStatuses(StatusMixin, ListView):
+    context_object_name = 'statuses'
 
 
-class StatusUpdateView(View):
-    def get(self, request, *args, **kwargs):
-        status_id = kwargs.get('pk')
-        status = CustomStatus.objects.get(id=status_id)
-        form = StatusForm(instance=status)
-        return render(
-            request, 'statuses/update.html', {
-                'form': form, 'status_id': status_id})
+class CreateStatus(StatusMixin, CreateView):
+    success_message = _("Status created successfully")
+    template_name = 'status/create.html'
+
+
+class UpdateStatus(StatusMixin, UpdateView):
+    success_message = _("Status created successfully")
+    template_name = 'status/update.html'
+    extra_context = {'title': _('Statuses'), 'button': _('Change')}
+
+
+class DeleteStatus(StatusMixin, DeleteView):
+    template_name = 'status/delete.html'
 
     def post(self, request, *args, **kwargs):
-        status_id = kwargs.get('pk')
-        status = CustomStatus.objects.get(id=status_id)
-        form = StatusForm(request.POST, instance=status)
-        form.save()
-        messages.success(request, _("Status was changed successfully"))
-        return redirect(reverse('statuses'))
-
-
-class StatusDeleteView(View):
-    def get(self, request, *args, **kwargs):
-        status_id = kwargs.get('pk')
-        status = CustomStatus.objects.get(id=status_id)
-        form = StatusForm(status)
-        return render(
-            request, 'statuses/delete.html', {
-                'form': form, 'status': status})
-
-    def post(self, request, *args, **kwargs):
-        status_id = kwargs.get('pk')
-        status = CustomStatus.objects.get(id=status_id)
-        status.delete()
-        messages.success(request, _("Status was deleted successfully"))
-        return redirect(reverse('statuses'))
+        try:
+            self.delete(request, *args, **kwargs)
+            messages.success(self.request, _("Status was deleted successfully"))
+            return redirect(reverse_lazy('statuses'))
+        except ProtectedError:
+            messages.error(
+                self.request,
+                _("Error! Can't delete, status in use")
+            )
+            return redirect(reverse_lazy('statuses'))

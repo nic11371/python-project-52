@@ -1,5 +1,5 @@
 from django.test import TestCase
-from task_manager.status.models import CustomStatus
+from task_manager.status.models import Status
 from task_manager.user.models import CustomUser
 from django.urls import reverse
 
@@ -27,7 +27,7 @@ class StatusCustomTestCase(TestCase):
         })
         self.assertEqual(resp.status_code, 302)
         self.assertRedirects(resp, reverse('statuses'))
-        status = CustomStatus.objects.last()
+        status = Status.objects.last()
         self.assertEqual(status.status_name, 'test')
 
         resp = self.client.get(reverse('statuses'))
@@ -35,7 +35,7 @@ class StatusCustomTestCase(TestCase):
 
     def test_UpdateStatus(self):
         self.login()
-        status = CustomStatus.objects.get(id=1)
+        status = Status.objects.get(id=1)
         resp = self.client.get(
             reverse('status_update', kwargs={'pk': status.id})
         )
@@ -51,7 +51,7 @@ class StatusCustomTestCase(TestCase):
 
     def test_DeleteStatus(self):
         self.login()
-        status = CustomStatus.objects.get(status_name="welcome")
+        status = Status.objects.get(status_name="welcome")
         resp = self.client.get(
             reverse('status_delete', kwargs={'pk': status.id})
         )
@@ -61,4 +61,4 @@ class StatusCustomTestCase(TestCase):
         )
         self.assertRedirects(resp, reverse('statuses'))
         self.assertEqual(resp.status_code, 302)
-        self.assertEqual(CustomStatus.objects.count(), 1)
+        self.assertEqual(Status.objects.count(), 1)

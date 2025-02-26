@@ -1,4 +1,4 @@
-from .models import CustomStatus
+from .models import Status
 from django import forms
 from django.utils.translation import gettext_lazy as _
 
@@ -11,7 +11,7 @@ class StatusForm(forms.Form):
             'placeholder': _('Name')}))
 
     class Meta:
-        model = CustomStatus
+        model = Status
         fields = ['status_name']
 
 
