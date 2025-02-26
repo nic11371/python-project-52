@@ -2,10 +2,15 @@ from django.contrib.auth.forms import UserCreationForm, \
     UserChangeForm, PasswordChangeForm, AuthenticationForm
 from .models import CustomUser
 from django import forms
+from django.utils.safestring import mark_safe
 from django.utils.translation import gettext_lazy as _
 
 
 class UserRegisterForm(UserCreationForm):
+    help_text = _(
+            'Your password must contain at least 3 characters.')
+    formatted_help_text = mark_safe(f'<ul><li>{help_text}</li></ul>')
+
     first_name = forms.CharField(
         label=_("First name"),
         max_length=100,
@@ -26,8 +31,7 @@ class UserRegisterForm(UserCreationForm):
     password1 = forms.CharField(
         label=_("Password"),
         min_length=3,
-        help_text=_(
-            'Your password must contain at least 3 characters.'),
+        help_text=formatted_help_text,
         widget=forms.PasswordInput(attrs={
             'placeholder': _('Password'),
             'autocomplete': 'new-password'}),
