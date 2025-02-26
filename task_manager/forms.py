@@ -1,5 +1,5 @@
 from django.contrib.auth.forms import AuthenticationForm
-from .user.models import CustomUser
+from .user.models import User
 from django import forms
 from django.utils.translation import gettext_lazy as _
 
@@ -22,5 +22,5 @@ class LoginForm(AuthenticationForm):
         required=True)
 
     class Meta:
-        model = CustomUser
+        model = User
         fields = ['username', 'password']

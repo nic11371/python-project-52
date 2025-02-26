@@ -1,6 +1,6 @@
 from django.test import TestCase
 from task_manager.status.models import Status
-from task_manager.user.models import CustomUser
+from task_manager.user.models import User
 from django.urls import reverse
 
 
@@ -8,7 +8,7 @@ class StatusCustomTestCase(TestCase):
     fixtures = ["status_test"]
 
     def login(self):
-        user = CustomUser.objects.get(id=1)
+        user = User.objects.get(id=1)
         self.client.force_login(user)
 
     def test_ListStatuses(self):

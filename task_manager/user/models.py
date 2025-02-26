@@ -4,7 +4,7 @@ from django.contrib.auth.models import AbstractUser, \
 from django.utils.translation import gettext as _
 
 
-class CustomUser(AbstractUser):
+class User(AbstractUser):
     password1 = models.CharField(
         max_length=150)
     password2 = models.CharField(

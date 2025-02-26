@@ -1,6 +1,6 @@
 from django.contrib.auth.forms import UserCreationForm, \
     UserChangeForm, PasswordChangeForm, AuthenticationForm
-from .models import CustomUser
+from .models import User
 from django import forms
 from django.utils.safestring import mark_safe
 from django.utils.translation import gettext_lazy as _
@@ -46,7 +46,7 @@ class UserRegisterForm(UserCreationForm):
         required=True)
 
     class Meta:
-        model = CustomUser
+        model = User
         fields = [
             'first_name', 'last_name', 'username', 'password1', 'password2']
 
@@ -71,7 +71,7 @@ class UserUpdateForm(UserChangeForm):
     password = None
 
     class Meta:
-        model = CustomUser
+        model = User
         fields = [
             'first_name', 'last_name', 'username']
 
@@ -100,7 +100,7 @@ class UserPasswordChange(PasswordChangeForm):
         required=True)
 
     class Meta:
-        model = CustomUser
+        model = User
         fields = ['passsword1', 'password2']
 
 

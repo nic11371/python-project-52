@@ -5,11 +5,11 @@
 
 {% block main %}
         <h1 class="my-4"> {% translate "Edit" %} </h1>
-        <form action="{% url "user_update" pk=user_id %}" method="post">
+        <form action="{% url "user_update" pk=user.id %}" method="post">
             {% csrf_token %}
             {% bootstrap_form form %}
             <div>
-                <a href="{% url 'user_update_password' user_id %}">{% translate "Change Password" %}</a>
+                <a href="{% url 'user_update_password' user.id %}">{% translate "Change Password" %}</a>
             </div>
             <input class="btn btn-primary mt-3" type="submit" value="{% translate 'Save' %}">
         </form>

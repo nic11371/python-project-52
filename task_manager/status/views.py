@@ -2,15 +2,17 @@ from django.views.generic import CreateView, ListView, UpdateView, DeleteView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import redirect
 from .models import Status
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import ProtectedError
 from django.urls import reverse_lazy
 from django.contrib import messages
 from django.utils.translation import gettext_lazy as _
 
 
-class StatusMixin(SuccessMessageMixin):
+class StatusMixin(LoginRequiredMixin, SuccessMessageMixin):
     model = Status
     extra_context = {'title': _("Statuses"), 'button': _("create")}
+    login_url = reverse_lazy('login')
     success_url = reverse_lazy('statuses')
     fields = ['status_name']
 
