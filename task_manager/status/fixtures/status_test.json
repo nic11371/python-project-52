@@ -1,13 +1,13 @@
 [
     {
-        "model": "status.CustomStatus",
+        "model": "status.Status",
         "pk": 1,
         "fields": {
             "status_name": "online"
         }
     },
     {
-        "model": "status.CustomStatus",
+        "model": "status.Status",
         "pk": 2,
         "fields": {
             "status_name": "offline"

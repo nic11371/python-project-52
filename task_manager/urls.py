@@ -18,11 +18,11 @@ from django.conf import settings
 from django.contrib import admin
 from django.urls import path, include
 from .views import HomePageView, LoginView, LogoutView
-from django.urls import reverse
 
 urlpatterns = [
     path('', HomePageView.as_view(), name='home'),
     path('i18n/', include('django.conf.urls.i18n')),
+    path('tasks/', include('task_manager.task.urls')),
     path('statuses/', include('task_manager.status.urls')),
     path('users/', include('task_manager.user.urls')),
     path('login/', LoginView.as_view(), name='login'),

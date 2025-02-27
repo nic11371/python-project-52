@@ -1,0 +1,42 @@
+{% extends "home.html" %}
+
+{% load i18n %}
+
+{% block main %}
+        <h1 class="my-4">
+            {% translate "Tasks" %}
+        </h1>
+        <a href="/tasks/create/">
+            <button class="btn btn-primary">{% translate "Create Task" %}</button>
+        </a>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>{% translate "ID" %}</th>
+                    <th>{% translate "Name" %}</th>
+                    <th>{% translate "Status" %}</th>
+                    <th>{% translate "Author" %}</th>
+                    <th>{% translate "Execute" %}</th>
+                    <th>{% translate "Created date" %}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for task in tasks %}
+                <tr>
+                    <td>{{ task.id }}</td>
+                    <td>{{ task.task_name }}</td>
+                    <td>{{ task.status }}</td>
+                    <td>{{ task.author }}</td>
+                    <td>{{ task.execute }}</td>
+                    <td>{{ task.created_at|date:'d.m.Y H:i' }}</td>
+                    <td>
+                        <a href="/tasks/{{ status.id }}/update/">{% translate "Edit" %}</a>
+                        <br>
+                        <a href="/tasks/{{ status.id }}/delete/">{% translate "Delete" %}</a>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+{% endblock %}

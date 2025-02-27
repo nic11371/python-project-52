@@ -1,9 +1,6 @@
 from django.urls import path
-from .views import ListUsers
-from .views import SignUpUser
-from .views import UpdateUser
-from .views import UpdateUserPassword
-from .views import DeleteUser
+from .views import ListUsers, SignUpUser, UpdateUser, \
+    UpdateUserPassword, DeleteUser
 
 
 urlpatterns = [
