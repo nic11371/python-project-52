@@ -20,7 +20,7 @@ class StatusMixin(LoginRequiredMixin, SuccessMessageMixin):
 
 
 class Rules(PermissionRequiredMixin, View):
-    permission_required = ["status.add_status"]
+    permission_required = ["status.change_status", "status.delete_status"]
 
 
 class ListStatuses(StatusMixin, ListView):
