@@ -7,6 +7,8 @@ from django.db.models import ProtectedError
 from django.urls import reverse_lazy
 from django.contrib import messages
 from django.utils.translation import gettext_lazy as _
+from django.contrib.auth.mixins import PermissionRequiredMixin
+from django.views import View
 
 
 class StatusMixin(LoginRequiredMixin, SuccessMessageMixin):
@@ -15,6 +17,10 @@ class StatusMixin(LoginRequiredMixin, SuccessMessageMixin):
     login_url = reverse_lazy('login')
     success_url = reverse_lazy('statuses')
     fields = ['status_name']
+
+
+class Rules(PermissionRequiredMixin, View):
+    permission_required = ["status.add_status"]
 
 
 class ListStatuses(StatusMixin, ListView):
@@ -26,13 +32,13 @@ class CreateStatus(StatusMixin, CreateView):
     template_name = 'status/create.html'
 
 
-class UpdateStatus(StatusMixin, UpdateView):
+class UpdateStatus(Rules, StatusMixin, UpdateView):
     success_message = _("Status created successfully")
     template_name = 'status/update.html'
     extra_context = {'title': _('Statuses'), 'button': _('Change')}
 
 
-class DeleteStatus(StatusMixin, DeleteView):
+class DeleteStatus(Rules, StatusMixin, DeleteView):
     template_name = 'status/delete.html'
 
     def post(self, request, *args, **kwargs):

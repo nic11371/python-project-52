@@ -1,0 +1,16 @@
+[
+    {
+        "model": "label.Label",
+        "pk": 1,
+        "fields": {
+            "label_name": "online"
+        }
+    },
+    {
+        "model": "label.Label",
+        "pk": 2,
+        "fields": {
+            "label_name": "offline"
+        } 
+    }
+]
