@@ -22,7 +22,7 @@ class taskCustomTestCase(TestCase):
         self.assertRedirects(resp, reverse('login'))
 
         task = Task.objects.last()
-        self.assertEqual(task.task_name, 'Nikolay')
+        self.assertEqual(task.name, 'Nikolay')
         self.assertEqual(task.status, 'online')
         self.assertEqual(task.author, 'nic')
 
@@ -58,7 +58,7 @@ class taskCustomTestCase(TestCase):
         )
         self.assertEqual(resp.status_code, 302)
         task.refresh_from_db()
-        self.assertEqual(task.task_name, 'Nasty')
+        self.assertEqual(task.name, 'Nasty')
 
     def test_DeleteTask(self):
         task = Task.objects.get(task_name="Nasty")

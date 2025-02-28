@@ -4,7 +4,7 @@ from django.utils.translation import gettext_lazy as _
 
 
 class TaskForm(forms.Form):
-    task_name = forms.CharField(
+    name = forms.CharField(
         label=_("Name"),
         max_length=150,
         widget=forms.TextInput(attrs={
@@ -17,7 +17,7 @@ class TaskForm(forms.Form):
 
     class Meta:
         model = Task
-        fields = ['task_name']
+        fields = ['name']
 
 
 class TaskDeleteForm(forms.Form):

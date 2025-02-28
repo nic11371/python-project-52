@@ -14,22 +14,26 @@ class TaskMixin(LoginRequiredMixin, SuccessMessageMixin):
     extra_context = {'title': _("New task"), 'button': _("Create")}
     login_url = reverse_lazy('login')
     success_url = reverse_lazy('tasks')
-    fields = ['task_name', 'description', 'status', 'execute', 'labels']
+    fields = ['name', 'description', 'status', 'execute', 'labels']
 
 
 class ListTask(TaskMixin, ListView):
     context_object_name = 'tasks'
     extra_context = {'title': _("Tasks")}
-    template_name = 'task/tasks_list.html'
+    template_name = 'task/task_list.html'
 
 
 class CreateTask(TaskMixin, CreateView):
     success_message = _("Task created successfully")
     template_name = 'task/create.html'
 
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
 
 class ViewTask(TaskMixin, DetailView):
-    context_object_name = 'task'
+    context_object_name = 'tasks'
     extra_context = {'title': _('Show task')}
 
 

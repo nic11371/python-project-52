@@ -11,14 +11,14 @@ from django.utils.translation import gettext_lazy as _
 
 class LabelMixin(LoginRequiredMixin, SuccessMessageMixin):
     model = Label
-    extra_context = {'title': _("Labeles"), 'button': _("create")}
+    extra_context = {'title': _("Labels"), 'button': _("create")}
     login_url = reverse_lazy('login')
-    success_url = reverse_lazy('Labels')
+    success_url = reverse_lazy('labels')
     fields = ['label_name']
 
 
 class ListLabels(LabelMixin, ListView):
-    context_object_name = 'Labels'
+    context_object_name = 'labels'
 
 
 class CreateLabel(LabelMixin, CreateView):
@@ -29,7 +29,7 @@ class CreateLabel(LabelMixin, CreateView):
 class UpdateLabel(LabelMixin, UpdateView):
     success_message = _("Label created successfully")
     template_name = 'label/update.html'
-    extra_context = {'title': _('Labeles'), 'button': _('Change')}
+    extra_context = {'title': _('Labels'), 'button': _('Change')}
 
 
 class DeleteLabel(LabelMixin, DeleteView):
@@ -39,10 +39,10 @@ class DeleteLabel(LabelMixin, DeleteView):
         try:
             self.delete(request, *args, **kwargs)
             messages.success(self.request, _("Label was deleted successfully"))
-            return redirect(reverse_lazy('Labels'))
+            return redirect(reverse_lazy('labels'))
         except ProtectedError:
             messages.error(
                 self.request,
                 _("Error! Can't delete, label in use")
             )
-            return redirect(reverse_lazy('Labels'))
+            return redirect(reverse_lazy('labels'))
