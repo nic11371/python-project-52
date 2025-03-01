@@ -128,10 +128,6 @@ AUTH_USER_MODEL = 'user.User'
 
 LOGIN_URL = '/login'
 
-STATICFILES_DIRS = [
-    BASE_DIR / 'static',
-]
-
 FIXTURE_DIRS = [
     BASE_DIR / 'user' / 'fixtures' / 'user_test.json',
     BASE_DIR / 'user' / 'fixtures' / 'user_signup_test.json'
@@ -142,8 +138,6 @@ STORAGES = {
         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
     },
 }
-
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
@@ -172,6 +166,12 @@ LOCALE_PATHS = (
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',
+]
 
 
 # Default primary key field type

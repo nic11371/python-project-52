@@ -2,19 +2,34 @@ from django.views.generic import CreateView, ListView, UpdateView, DeleteView, D
 from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import redirect
 from .models import Task
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.db.models import ProtectedError
+from django.contrib.auth.mixins import UserPassesTestMixin
 from django.urls import reverse_lazy
 from django.contrib import messages
+from ..views import AuthentificationMixin
 from django.utils.translation import gettext_lazy as _
 
 
-class TaskMixin(LoginRequiredMixin, SuccessMessageMixin):
+class AuthorizationTaskMixin():
+
+    def test_func(self):
+        return self.get_object().author.pk == self.request.user.pk
+
+    def dispatch(self, request, *args, **kwargs):
+        if not self.test_func():
+            messages.error(
+                request,
+                messages.error(
+                    self.request, _("The task can only be deleted by its author."))
+            )
+            return redirect(reverse_lazy("tasks"))
+        return super().dispatch(request, *args, **kwargs)
+
+
+class TaskMixin(AuthentificationMixin, SuccessMessageMixin):
     model = Task
     extra_context = {'title': _("New task"), 'button': _("Create")}
-    login_url = reverse_lazy('login')
     success_url = reverse_lazy('tasks')
-    fields = ['name', 'description', 'status', 'execute', 'labels']
+    fields = ['name', 'description', 'status', 'execute', 'label']
 
 
 class ListTask(TaskMixin, ListView):
@@ -24,8 +39,8 @@ class ListTask(TaskMixin, ListView):
 
 
 class CreateTask(TaskMixin, CreateView):
-    success_message = _("Task created successfully")
     template_name = 'task/create.html'
+    success_message = _("Task created successfully")
 
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -33,7 +48,7 @@ class CreateTask(TaskMixin, CreateView):
 
 
 class ViewTask(TaskMixin, DetailView):
-    context_object_name = 'tasks'
+    context_object_name = 'task'
     extra_context = {'title': _('Show task')}
 
 
@@ -43,18 +58,6 @@ class UpdateTask(TaskMixin, UpdateView):
     extra_context = {'title': _('Tasks'), 'button': _('Edit')}
 
 
-class DeleteTask(TaskMixin, DeleteView):
+class DeleteTask(TaskMixin, AuthorizationTaskMixin, DeleteView):
     template_name = 'task/delete.html'
     success_message = _('Task successfully deleted')
-
-    def post(self, request, *args, **kwargs):
-        try:
-            self.delete(request, *args, **kwargs)
-            messages.success(self.request, _("Task was deleted successfully"))
-            return redirect(reverse_lazy('statuses'))
-        except ProtectedError:
-            messages.error(
-                self.request,
-                _("Error! Can't delete, task in use")
-            )
-            return redirect(reverse_lazy('statuses'))

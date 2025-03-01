@@ -2,14 +2,14 @@ from django.views.generic import CreateView, ListView, UpdateView, DeleteView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import redirect
 from .models import Label
-from django.contrib.auth.mixins import LoginRequiredMixin
+from ..views import AuthentificationMixin
 from django.db.models import ProtectedError
 from django.urls import reverse_lazy
 from django.contrib import messages
 from django.utils.translation import gettext_lazy as _
 
 
-class LabelMixin(LoginRequiredMixin, SuccessMessageMixin):
+class LabelMixin(AuthentificationMixin, SuccessMessageMixin):
     model = Label
     extra_context = {'title': _("Labels"), 'button': _("create")}
     login_url = reverse_lazy('login')

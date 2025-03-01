@@ -2,25 +2,19 @@ from django.views.generic import CreateView, ListView, UpdateView, DeleteView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import redirect
 from .models import Status
-from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import ProtectedError
 from django.urls import reverse_lazy
 from django.contrib import messages
 from django.utils.translation import gettext_lazy as _
-from django.contrib.auth.mixins import PermissionRequiredMixin
-from django.views import View
+from ..views import AuthentificationMixin
 
 
-class StatusMixin(LoginRequiredMixin, SuccessMessageMixin):
+class StatusMixin(AuthentificationMixin, SuccessMessageMixin):
     model = Status
     extra_context = {'title': _("Statuses"), 'button': _("create")}
     login_url = reverse_lazy('login')
     success_url = reverse_lazy('statuses')
     fields = ['status_name']
-
-
-class Rules(PermissionRequiredMixin, View):
-    permission_required = ["status.change_status", "status.delete_status"]
 
 
 class ListStatuses(StatusMixin, ListView):
@@ -32,13 +26,13 @@ class CreateStatus(StatusMixin, CreateView):
     template_name = 'status/create.html'
 
 
-class UpdateStatus(Rules, StatusMixin, UpdateView):
+class UpdateStatus(StatusMixin, UpdateView):
     success_message = _("Status created successfully")
     template_name = 'status/update.html'
     extra_context = {'title': _('Statuses'), 'button': _('Change')}
 
 
-class DeleteStatus(Rules, StatusMixin, DeleteView):
+class DeleteStatus(StatusMixin, DeleteView):
     template_name = 'status/delete.html'
 
     def post(self, request, *args, **kwargs):

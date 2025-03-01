@@ -24,15 +24,15 @@
                 {% for task in tasks %}
                 <tr>
                     <td>{{ task.id }}</td>
-                    <td>{{ task.name }}</td>
+                    <td><a href="{% url 'view_task' task.id %}">{{ task.name }}</a></td>
                     <td>{{ task.status }}</td>
                     <td>{{ task.author }}</td>
                     <td>{{ task.execute }}</td>
                     <td>{{ task.created_at|date:'d.m.Y H:i' }}</td>
                     <td>
-                        <a href="/tasks/{{ status.id }}/update/">{% translate "Edit" %}</a>
+                        <a href="/tasks/{{ task.id }}/update/">{% translate "Edit" %}</a>
                         <br>
-                        <a href="/tasks/{{ status.id }}/delete/">{% translate "Delete" %}</a>
+                        <a href="/tasks/{{ task.id }}/delete/">{% translate "Delete" %}</a>
                         </form>
                     </td>
                 </tr>
