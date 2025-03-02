@@ -20,11 +20,13 @@ class Task(models.Model):
         related_name='author',
         verbose_name=_('Author')
     )
-    execute = models.ForeignKey(
+    executor = models.ForeignKey(
         User,
         on_delete=models.PROTECT,
-        related_name='execute',
-        verbose_name=_('Execute')
+        related_name='executor',
+        null=True,
+        blank=True,
+        verbose_name=_('Executor')
     )
     label = models.ManyToManyField(
         Label,
@@ -34,6 +36,9 @@ class Task(models.Model):
         verbose_name=_('Label')
     )
     created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.name
 
 
 class TaskRelationLabel(models.Model):

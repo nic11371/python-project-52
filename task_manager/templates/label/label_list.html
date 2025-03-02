@@ -21,7 +21,7 @@
                 {% for label in labels %}
                 <tr>
                     <td>{{ label.id }}</td>
-                    <td>{{ label.label_name }}</td>
+                    <td>{{ label.name }}</td>
                     <td>{{ label.created_at|date:'d.m.Y H:i' }}</td>
                     <td>
                         <a href="/labels/{{ label.id }}/update/">{% translate "Edit" %}</a>

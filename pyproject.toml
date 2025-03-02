@@ -10,6 +10,7 @@ dependencies = [
     "django>=5.1.6",
     "django-admin>=2.0.2",
     "django-bootstrap5>=24.3",
+    "django-filter",
     "gettext",
     "gunicorn>=23.0.0",
     "load-dotenv>=0.1.0",

@@ -14,7 +14,7 @@ class LabelMixin(AuthentificationMixin, SuccessMessageMixin):
     extra_context = {'title': _("Labels"), 'button': _("create")}
     login_url = reverse_lazy('login')
     success_url = reverse_lazy('labels')
-    fields = ['label_name']
+    fields = ['name']
 
 
 class ListLabels(LabelMixin, ListView):
@@ -43,6 +43,6 @@ class DeleteLabel(LabelMixin, DeleteView):
         except ProtectedError:
             messages.error(
                 self.request,
-                _("Error! Can't delete, label in use")
+                _("Can't delete, label in use")
             )
             return redirect(reverse_lazy('labels'))

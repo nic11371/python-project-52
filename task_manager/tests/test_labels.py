@@ -28,7 +28,7 @@ class LabelTestCase(TestCase):
         self.assertEqual(resp.label_code, 302)
         self.assertRedirects(resp, reverse('labels'))
         label = Label.objects.last()
-        self.assertEqual(label.label_name, 'test')
+        self.assertEqual(label.name, 'test')
 
         resp = self.client.get(reverse('labels'))
         self.assertTrue(len(resp.context['labels']) == 3)
@@ -47,7 +47,7 @@ class LabelTestCase(TestCase):
             })
         self.assertEqual(resp.label_code, 302)
         label.refresh_from_db()
-        self.assertEqual(label.label_name, 'test_label')
+        self.assertEqual(label.name, 'test_label')
 
     def test_DeleteLabel(self):
         self.login()

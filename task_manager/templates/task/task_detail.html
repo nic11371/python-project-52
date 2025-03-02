@@ -19,7 +19,7 @@
             </div>
             <div class="row p-1">
               <div class="col">{% translate "Executor" %}</div>
-              <div class="col">{{ task.execute }}</div>
+              <div class="col">{{ task.executor }}</div>
             </div>
             <div class="row p-1">
               <div class="col">{% translate "Status" %}</div>
@@ -33,9 +33,9 @@
               <div class="col">
                 <h6>{% translate "Labels" %}:</h6>
                 <ul>
-
-                    <li>{{ task.label }}</li>
-
+                    {% for label in task.label.all %}
+                    <li>{{ label.label_name }}</li>
+                    {% endfor %}
                 </ul>
               </div>
             </div>

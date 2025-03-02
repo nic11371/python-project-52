@@ -13,3 +13,6 @@ class User(AbstractUser):
 
     USERNAME_FIELD = "username"
     REQUIRED_FIELDS = ["password1", "password2"]
+
+    # def __str__(self):
+    #     return self.username

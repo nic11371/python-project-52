@@ -11,7 +11,7 @@ from ..views import AuthentificationMixin
 
 class StatusMixin(AuthentificationMixin, SuccessMessageMixin):
     model = Status
-    extra_context = {'title': _("Statuses"), 'button': _("create")}
+    extra_context = {'title': _("Statuses"), 'button': _("Сreate")}
     login_url = reverse_lazy('login')
     success_url = reverse_lazy('statuses')
     fields = ['status_name']
@@ -43,6 +43,6 @@ class DeleteStatus(StatusMixin, DeleteView):
         except ProtectedError:
             messages.error(
                 self.request,
-                _("Error! Can't delete, status in use")
+                _("Can't delete, status in use")
             )
             return redirect(reverse_lazy('statuses'))

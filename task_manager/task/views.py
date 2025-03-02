@@ -1,4 +1,5 @@
-from django.views.generic import CreateView, ListView, UpdateView, DeleteView, DetailView
+from django.views.generic import CreateView, UpdateView, DeleteView, DetailView
+from django_filters.views import FilterView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import redirect
 from .models import Task
@@ -6,10 +7,11 @@ from django.contrib.auth.mixins import UserPassesTestMixin
 from django.urls import reverse_lazy
 from django.contrib import messages
 from ..views import AuthentificationMixin
+from .filters import TaskFilter
 from django.utils.translation import gettext_lazy as _
 
 
-class AuthorizationTaskMixin():
+class AuthorizationTaskMixin(UserPassesTestMixin):
 
     def test_func(self):
         return self.get_object().author.pk == self.request.user.pk
@@ -29,13 +31,14 @@ class TaskMixin(AuthentificationMixin, SuccessMessageMixin):
     model = Task
     extra_context = {'title': _("New task"), 'button': _("Create")}
     success_url = reverse_lazy('tasks')
-    fields = ['name', 'description', 'status', 'execute', 'label']
+    fields = ['name', 'description', 'status', 'executor', 'label']
 
 
-class ListTask(TaskMixin, ListView):
+class ListTask(TaskMixin, FilterView):
     context_object_name = 'tasks'
     extra_context = {'title': _("Tasks")}
     template_name = 'task/task_list.html'
+    filterset_class = TaskFilter
 
 
 class CreateTask(TaskMixin, CreateView):

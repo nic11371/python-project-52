@@ -33,7 +33,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["webserver", "127.0.0.1", "localhost", "python-project-52-jsnv.onrender.com"]
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -49,6 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_bootstrap5',
+    'django_filters',
 ]
 
 MIDDLEWARE = [
