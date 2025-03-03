@@ -7,7 +7,7 @@
         <h1 class="my-4">
             {% translate "Deleting status" %}
         </h1>
-        <p>{% translate "Are you sure that want to delete" %} {{ status.status_name }}?</p>
+        <p>{% translate "Are you sure that want to delete" %} {{ status.name }}?</p>
         <form method="post">
             {% csrf_token %}
             {% bootstrap_form form %}

@@ -14,7 +14,7 @@ class StatusMixin(AuthentificationMixin, SuccessMessageMixin):
     extra_context = {'title': _("Statuses"), 'button': _("Сreate")}
     login_url = reverse_lazy('login')
     success_url = reverse_lazy('statuses')
-    fields = ['status_name']
+    fields = ['name']
 
 
 class ListStatuses(StatusMixin, ListView):

@@ -1,73 +1,104 @@
 from django.test import TestCase
 from task_manager.task.models import Task
+from task_manager.user.models import User
 from django.urls import reverse
 
 
-class taskCustomTestCase(TestCase):
-    fixtures = ["task_test"]
+class TaskTestCase(TestCase):
+    fixtures = ["user_test", "label_test", "status_test", "task_test"]
+
+    def test_access(self):
+        resp1 = self.client.get(reverse('task_create'))
+        self.assertEqual(resp1.status_code, 302)
+        resp1 = self.client.get(reverse('tasks'))
+        self.assertEqual(resp1.status_code, 302)
+        resp1 = self.client.get(reverse('task_update', kwargs={'pk': 1}))
+        self.assertEqual(resp1.status_code, 302)
+        resp1 = self.client.get(reverse('task_delete', kwargs={'pk': 1}))
+        self.assertEqual(resp1.status_code, 302)
+
+        self.login()
+        resp1 = self.client.get(reverse('task_create'))
+        self.assertEqual(resp1.status_code, 200)
+        resp1 = self.client.get(reverse('tasks'))
+        self.assertEqual(resp1.status_code, 200)
+        resp1 = self.client.get(reverse('task_update', kwargs={'pk': 1}))
+        self.assertEqual(resp1.status_code, 200)
+        resp1 = self.client.get(reverse('task_delete', kwargs={'pk': 1}))
+        self.assertEqual(resp1.status_code, 200)
+
+    def login(self):
+        user = User.objects.get(id=1)
+        self.client.force_login(user)
 
     def test_TaskCreate(self):
+        self.login()
         resp = self.client.get(reverse('task_create'))
         self.assertEqual(resp.status_code, 200)
-        self.assertTemplateUsed(resp, template_name='tasks/create.html')
+        self.assertTemplateUsed(resp, template_name='task/create.html')
 
         resp = self.client.post(reverse('task_create'), {
-            'task_name': 'Nikolay',
-            'status': 'online',
-            'author': 'nic',
-            'executor': 'home',
+            'name': 'Welcome to out world',
             'description': 'My first project',
+            'status': 2,
+            'executor': 1,
+            'label': 1,
+            'author': 'IvGroz'
         })
         self.assertEqual(resp.status_code, 302)
-        self.assertRedirects(resp, reverse('login'))
+        self.assertRedirects(resp, reverse('tasks'))
 
         task = Task.objects.last()
-        self.assertEqual(task.name, 'Nikolay')
-        self.assertEqual(task.status, 'online')
-        self.assertEqual(task.author, 'nic')
+        self.assertEqual(task.name, 'Welcome to out world')
+        self.assertEqual(task.status.name, 'offline-test')
+        self.assertEqual(task.author.username, 'IvGroz')
 
         resp = self.client.get(reverse('tasks'))
         self.assertTrue(len(resp.context['tasks']) == 3)
 
     def test_ListTasks(self):
+        self.login()
         resp = self.client.get(reverse('tasks'))
         self.assertTrue(len(resp.context['tasks']) == 2)
 
-    def test_UpdateTask(self):
+    def test_ViewTask(self):
+        self.login()
         task = Task.objects.get(id=1)
-        # resp = self.client.get(
-        #     reverse('task_update', kwargs={'pk': task.id})
-        # )
-        # self.assertEqual(resp.status_code, 302)
-        # self.assertRedirects(resp, reverse('login'))
-        self.client.force_login(task)
+        resp = self.client.get(reverse('task_view', kwargs={'pk': task.id}))
+        self.assertEqual(resp.status_code, 200)
+        self.assertTemplateUsed(resp, template_name='task/task_detail.html')
+        self.assertEqual(task.name, 'test')
+        self.assertEqual(task.description, 'Welcome to the Internet')
+        self.assertEqual(task.status.name, 'online-test')
+        self.assertEqual(task.executor.username, 'IvGroz')
+        self.assertEqual(task.author.username, 'IvGroz')
+
+    def test_UpdateTask(self):
+        self.login()
+        task = Task.objects.get(id=1)
         resp = self.client.get(
             reverse('task_update', kwargs={'pk': task.id})
         )
         self.assertEqual(resp.status_code, 200)
-        self.assertTemplateUsed(resp, template_name='tasks/update.html')
+        self.assertTemplateUsed(resp, template_name='task/update.html')
         resp = self.client.post(
             reverse('task_update', kwargs={'pk': task.id}),
             {
-                'task_name': 'Nasty',
-                'status': 'offline',
-                'author': 'nas',
-                'executor': 'work',
-                'description': 'My second project',
-            }
-        )
+                'name': 'Do something',
+                'description': '',
+                'status': 2,
+                'executor': 2,
+                'label': 2,
+            })
         self.assertEqual(resp.status_code, 302)
         task.refresh_from_db()
-        self.assertEqual(task.name, 'Nasty')
+        self.assertEqual(task.name, 'Do something')
+        self.assertEqual(task.status.name, 'offline-test')
+        self.assertEqual(task.executor.username, 'Masha003')
 
     def test_DeleteTask(self):
-        task = Task.objects.get(task_name="Nasty")
-        # resp = self.client.get(
-        #     reverse('task_delete', kwargs={'pk': task.id})
-        # )
-        # self.assertEqual(resp.status_code, 302)
-        # self.assertRedirects(resp, reverse('login'))
-        self.client.force_login(task)
+        self.login()
+        task = Task.objects.get(name="test")
         resp = self.client.get(
             reverse('task_delete', kwargs={'pk': task.id})
         )

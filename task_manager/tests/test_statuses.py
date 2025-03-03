@@ -4,32 +4,52 @@ from task_manager.user.models import User
 from django.urls import reverse
 
 
-class StatusCustomTestCase(TestCase):
-    fixtures = ["status_test"]
+class StatusTestCase(TestCase):
+    fixtures = ["user_test", "status_test"]
+
+    def test_access(self):
+        resp1 = self.client.get(reverse('status_create'))
+        self.assertEqual(resp1.status_code, 302)
+        resp1 = self.client.get(reverse('statuses'))
+        self.assertEqual(resp1.status_code, 302)
+        resp1 = self.client.get(reverse('status_update', kwargs={'pk': 1}))
+        self.assertEqual(resp1.status_code, 302)
+        resp1 = self.client.get(reverse('status_delete', kwargs={'pk': 1}))
+        self.assertEqual(resp1.status_code, 302)
+
+        self.login()
+        resp1 = self.client.get(reverse('status_create'))
+        self.assertEqual(resp1.status_code, 200)
+        resp1 = self.client.get(reverse('statuses'))
+        self.assertEqual(resp1.status_code, 200)
+        resp1 = self.client.get(reverse('status_update', kwargs={'pk': 1}))
+        self.assertEqual(resp1.status_code, 200)
+        resp1 = self.client.get(reverse('status_delete', kwargs={'pk': 1}))
+        self.assertEqual(resp1.status_code, 200)
 
     def login(self):
         user = User.objects.get(id=1)
         self.client.force_login(user)
 
-    def test_ListStatuses(self):
-        self.login()
-        resp = self.client.get(reverse('statuses'))
-        self.assertTrue(len(resp.context['statuses']) == 2)
-
     def test_create_status(self):
         self.login()
         resp = self.client.get(reverse('status_create'))
         self.assertEqual(resp.status_code, 200)
-        self.assertTemplateUsed(resp, template_name='statuses/create.html')
+        self.assertTemplateUsed(resp, template_name='status/create.html')
 
         resp = self.client.post(reverse('status_create'), {
-            'status_name': 'test',
+            'name': 'test',
         })
         self.assertEqual(resp.status_code, 302)
         self.assertRedirects(resp, reverse('statuses'))
         status = Status.objects.last()
-        self.assertEqual(status.status_name, 'test')
+        self.assertEqual(status.name, 'test')
 
+        resp = self.client.get(reverse('statuses'))
+        self.assertTrue(len(resp.context['statuses']) == 4)
+
+    def test_ListStatuses(self):
+        self.login()
         resp = self.client.get(reverse('statuses'))
         self.assertTrue(len(resp.context['statuses']) == 3)
 
@@ -40,18 +60,18 @@ class StatusCustomTestCase(TestCase):
             reverse('status_update', kwargs={'pk': status.id})
         )
         self.assertEqual(resp.status_code, 200)
-        self.assertTemplateUsed(resp, template_name='statuses/update')
+        self.assertTemplateUsed(resp, template_name='status/update.html')
         resp = self.client.post(
             reverse('status_update', kwargs={'pk': status.id}), {
-                'status_name': 'test_status'
+                'name': 'test_status'
             })
         self.assertEqual(resp.status_code, 302)
         status.refresh_from_db()
-        self.assertEqual(status.status_name, 'test_status')
+        self.assertEqual(status.name, 'test_status')
 
     def test_DeleteStatus(self):
         self.login()
-        status = Status.objects.get(status_name="welcome")
+        status = Status.objects.get(name="online-test")
         resp = self.client.get(
             reverse('status_delete', kwargs={'pk': status.id})
         )
@@ -61,4 +81,4 @@ class StatusCustomTestCase(TestCase):
         )
         self.assertRedirects(resp, reverse('statuses'))
         self.assertEqual(resp.status_code, 302)
-        self.assertEqual(Status.objects.count(), 1)
+        self.assertEqual(Status.objects.count(), 2)

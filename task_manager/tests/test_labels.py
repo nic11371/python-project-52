@@ -5,7 +5,27 @@ from django.urls import reverse
 
 
 class LabelTestCase(TestCase):
-    fixtures = ["label_test"]
+    fixtures = ["user_test", "label_test"]
+
+    def test_access(self):
+        resp1 = self.client.get(reverse('label_create'))
+        self.assertEqual(resp1.status_code, 302)
+        resp1 = self.client.get(reverse('labels'))
+        self.assertEqual(resp1.status_code, 302)
+        resp1 = self.client.get(reverse('label_update', kwargs={'pk': 1}))
+        self.assertEqual(resp1.status_code, 302)
+        resp1 = self.client.get(reverse('label_delete', kwargs={'pk': 1}))
+        self.assertEqual(resp1.status_code, 302)
+
+        self.login()
+        resp1 = self.client.get(reverse('label_create'))
+        self.assertEqual(resp1.status_code, 200)
+        resp1 = self.client.get(reverse('labels'))
+        self.assertEqual(resp1.status_code, 200)
+        resp1 = self.client.get(reverse('label_update', kwargs={'pk': 1}))
+        self.assertEqual(resp1.status_code, 200)
+        resp1 = self.client.get(reverse('label_delete', kwargs={'pk': 1}))
+        self.assertEqual(resp1.status_code, 200)
 
     def login(self):
         user = User.objects.get(id=1)
@@ -16,16 +36,16 @@ class LabelTestCase(TestCase):
         resp = self.client.get(reverse('labels'))
         self.assertTrue(len(resp.context['labels']) == 2)
 
-    def test_create_label(self):
+    def test_CreateLabel(self):
         self.login()
         resp = self.client.get(reverse('label_create'))
-        self.assertEqual(resp.label_code, 200)
-        self.assertTemplateUsed(resp, template_name='labels/create.html')
+        self.assertEqual(resp.status_code, 200)
+        self.assertTemplateUsed(resp, template_name='label/create.html')
 
         resp = self.client.post(reverse('label_create'), {
-            'label_name': 'test',
+            'name': 'test',
         })
-        self.assertEqual(resp.label_code, 302)
+        self.assertEqual(resp.status_code, 302)
         self.assertRedirects(resp, reverse('labels'))
         label = Label.objects.last()
         self.assertEqual(label.name, 'test')
@@ -39,26 +59,26 @@ class LabelTestCase(TestCase):
         resp = self.client.get(
             reverse('label_update', kwargs={'pk': label.id})
         )
-        self.assertEqual(resp.label_code, 200)
-        self.assertTemplateUsed(resp, template_name='labels/update')
+        self.assertEqual(resp.status_code, 200)
+        self.assertTemplateUsed(resp, template_name='label/update.html')
         resp = self.client.post(
             reverse('label_update', kwargs={'pk': label.id}), {
-                'label_name': 'test_label'
+                'name': 'test_label'
             })
-        self.assertEqual(resp.label_code, 302)
+        self.assertEqual(resp.status_code, 302)
         label.refresh_from_db()
         self.assertEqual(label.name, 'test_label')
 
     def test_DeleteLabel(self):
         self.login()
-        label = Label.objects.get(label_name="welcome")
+        label = Label.objects.get(name="home-test")
         resp = self.client.get(
             reverse('label_delete', kwargs={'pk': label.id})
         )
-        self.assertEqual(resp.label_code, 200)
+        self.assertEqual(resp.status_code, 200)
         resp = self.client.post(
             reverse('label_delete', kwargs={'pk': label.id})
         )
         self.assertRedirects(resp, reverse('labels'))
-        self.assertEqual(resp.label_code, 302)
+        self.assertEqual(resp.status_code, 302)
         self.assertEqual(Label.objects.count(), 1)

@@ -3,14 +3,24 @@
         "model": "status.Status",
         "pk": 1,
         "fields": {
-            "status_name": "online"
+            "name": "online-test",
+            "created_at": "2025-01-01"
         }
     },
     {
         "model": "status.Status",
         "pk": 2,
         "fields": {
-            "status_name": "offline"
+            "name": "offline-test",
+            "created_at": "2025-01-01"
+        } 
+    },
+    {
+        "model": "status.Status",
+        "pk": 3,
+        "fields": {
+            "name": "active_test",
+            "created_at": "2025-01-01"
         } 
     }
 ]

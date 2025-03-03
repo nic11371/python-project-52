@@ -3,14 +3,24 @@
         "model": "label.Label",
         "pk": 1,
         "fields": {
-            "label_name": "online"
+            "name": "home-test",
+            "created_at": "2025-01-01"
         }
     },
     {
         "model": "label.Label",
         "pk": 2,
         "fields": {
-            "label_name": "offline"
+            "name": "work-test",
+            "created_at": "2025-01-01"
+        } 
+    },
+    {
+        "model": "label.Label",
+        "pk": 2,
+        "fields": {
+            "name": "travel-test",
+            "created_at": "2025-01-01"
         } 
     }
 ]
