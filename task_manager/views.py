@@ -6,6 +6,7 @@ from django.urls import reverse_lazy
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.utils.translation import gettext_lazy as _
+from django.http import HttpResponse
 
 
 class AuthentificationMixin(LoginRequiredMixin):
@@ -49,3 +50,9 @@ class LogoutView(View):
         logout(request)
         messages.info(request, _("You were logouted"))
         return redirect(reverse_lazy('home'))
+        
+
+def index(request):
+    a = None
+    a.hello() # Creating an error with an invalid line of code
+    return HttpResponse("Hello, world. You're at the pollapp index.")
