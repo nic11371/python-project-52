@@ -1,6 +1,7 @@
 install:
 	pip install uv
 	pip install gunicorn uvicorn
+	
 	uv pip install -r requirements.txt
 
 check:

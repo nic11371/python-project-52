@@ -21,6 +21,7 @@ jobs:
       - name: Install dependencies
         run: |
           curl -LsSf https://astral.sh/uv/install.sh | sh
+          uv venv
           make install
       - name: Run linter and pytest
         run: |
