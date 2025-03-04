@@ -51,7 +51,7 @@ class LogoutView(View):
         logout(request)
         messages.info(request, _("You were logout"))
         return redirect(reverse_lazy('home'))
-        
+
 
 def index(request):
     a = None
