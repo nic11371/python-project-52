@@ -50,6 +50,7 @@ python-dotenv==1.0.1
     # via
     #   python-project-52 (pyproject.toml)
     #   load-dotenv
+rollbar>=1.2.0
 screen==1.0.1
     # via excel-base
 six==1.17.0
