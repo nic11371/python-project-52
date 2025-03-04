@@ -1,5 +1,7 @@
 __pycache__/
 .venv/
+lib/
+bin/
 .github
 .idea
 .vscode
