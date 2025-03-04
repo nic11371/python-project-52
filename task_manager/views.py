@@ -1,12 +1,13 @@
-from django.shortcuts import render, redirect
-from django.views import View
-from django.contrib.auth import authenticate, login, logout
-from .forms import LoginForm
-from django.urls import reverse_lazy
 from django.contrib import messages
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.utils.translation import gettext_lazy as _
 from django.http import HttpResponse
+from django.shortcuts import redirect, render
+from django.urls import reverse_lazy
+from django.utils.translation import gettext_lazy as _
+from django.views import View
+
+from .forms import LoginForm
 
 
 class AuthentificationMixin(LoginRequiredMixin):
@@ -40,7 +41,7 @@ class LoginView(View):
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
-                messages.success(request, _("You were logined"))
+                messages.success(request, _("You were login"))
                 return redirect(reverse_lazy('home'))
         return render(request, 'login.html', {'form': form})
 
@@ -48,11 +49,11 @@ class LoginView(View):
 class LogoutView(View):
     def get(self, request, *args, **kwargs):
         logout(request)
-        messages.info(request, _("You were logouted"))
+        messages.info(request, _("You were logout"))
         return redirect(reverse_lazy('home'))
         
 
 def index(request):
     a = None
-    a.hello() # Creating an error with an invalid line of code
+    a.hello()  # Creating an error with an invalid line of code
     return HttpResponse("Hello, world. You're at the pollapp index.")

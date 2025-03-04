@@ -1,8 +1,9 @@
 import django_filters
-from task_manager.label.models import Label
-from task_manager.task.models import Task
 from django import forms
 from django.utils.translation import gettext_lazy as _
+
+from task_manager.label.models import Label
+from task_manager.task.models import Task
 
 
 class TaskFilter(django_filters.FilterSet):

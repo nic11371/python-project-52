@@ -4,10 +4,10 @@
 {% load i18n %}
 
 {% block main %}
-        <h1 class="my-4"> {% translate "Edit task" %} </h1>
+        <h1 class="my-4"> {% translate "Editing task" %} </h1>
         <form action="{% url "task_update" pk=task.id %}" method="post">
             {% csrf_token %}
             {% bootstrap_form form %}
-            <input class="btn btn-primary mt-3" type="submit" value="{% translate 'Edit' %}">
+            <input class="btn btn-primary mt-3" type="submit" value="{% translate 'Change' %}">
         </form>
 {% endblock %}

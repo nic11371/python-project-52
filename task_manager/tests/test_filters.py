@@ -1,6 +1,7 @@
 from django.test import TestCase
-from task_manager.user.models import User
+
 from task_manager.task.filters import TaskFilter
+from task_manager.user.models import User
 
 
 class FilterTestCase(TestCase):

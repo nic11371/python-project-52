@@ -1,9 +1,13 @@
-from django.contrib.auth.forms import UserCreationForm, \
-    UserChangeForm, PasswordChangeForm, AuthenticationForm
-from .models import User
 from django import forms
+from django.contrib.auth.forms import (
+    PasswordChangeForm,
+    UserChangeForm,
+    UserCreationForm,
+)
 from django.utils.safestring import mark_safe
 from django.utils.translation import gettext_lazy as _
+
+from .models import User
 
 
 class UserRegisterForm(UserCreationForm):
@@ -24,7 +28,9 @@ class UserRegisterForm(UserCreationForm):
     username = forms.CharField(
         label=_("Username"),
         max_length=150,
-        help_text=_('Required field. No more than 150 characters. Only letters, numbers and symbols @/./+/-/_.'),
+        help_text=_(
+            '''Required field. No more than 150 characters. 
+                    Only letters, numbers and symbols @/./+/-/_.'''),
         widget=forms.TextInput(attrs={
             'placeholder': _('Username'), }),
         required=True)

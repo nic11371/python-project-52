@@ -1,13 +1,16 @@
 from django.db import models
+from django.utils.translation import gettext_lazy as _
+
+from task_manager.label.models import Label
 from task_manager.status.models import Status
 from task_manager.user.models import User
-from task_manager.label.models import Label
-from django.utils.translation import gettext_lazy as _
 
 
 class Task(models.Model):
-    name = models.CharField(max_length=150, unique=True)
-    description = models.TextField(max_length=1000, blank=True)
+    name = models.CharField(
+        max_length=150, unique=True, verbose_name=_('Task name'))
+    description = models.TextField(
+        max_length=1000, blank=True, verbose_name=_('Description'))
     status = models.ForeignKey(
         Status,
         on_delete=models.PROTECT,
@@ -35,10 +38,15 @@ class Task(models.Model):
         through='TaskRelationLabel',
         verbose_name=_('Label')
     )
-    created_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(
+        auto_now_add=True, verbose_name=_('Created'))
 
     def __str__(self):
         return self.name
+
+    class Meta:
+        verbose_name = _("=Task=")
+        verbose_name_plural = _("=Tasks=")
 
 
 class TaskRelationLabel(models.Model):

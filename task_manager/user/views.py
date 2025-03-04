@@ -1,15 +1,14 @@
-from django.shortcuts import render, redirect
-from .models import User
-from django.views.generic import CreateView, ListView, \
-    UpdateView, DeleteView
-from django.contrib.messages.views import SuccessMessageMixin
-from .forms import UserRegisterForm, \
-    UserUpdateForm, UserPasswordChange, UserDeleteForm
-from django.urls import reverse_lazy
 from django.contrib import messages
-from ..views import AuthentificationMixin
 from django.contrib.auth.mixins import UserPassesTestMixin
+from django.contrib.messages.views import SuccessMessageMixin
+from django.shortcuts import redirect, render
+from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
+from django.views.generic import CreateView, DeleteView, ListView, UpdateView
+
+from ..views import AuthentificationMixin
+from .forms import UserPasswordChange, UserRegisterForm, UserUpdateForm
+from .models import User
 
 
 class AuthorizationMixin(UserPassesTestMixin):
@@ -38,19 +37,21 @@ class SignUpUser(SuccessMessageMixin, CreateView):
     form_class = UserRegisterForm
     success_url = reverse_lazy("login")
     template_name = 'user/create.html'
-    extra_context = {'title': _('Create user')}
+    extra_context = {'title': _('Registration')}
     success_message = _('User was registered successfully.')
 
 
-class UpdateUser(AuthentificationMixin, AuthorizationMixin, SuccessMessageMixin, UpdateView):
+class UpdateUser(
+    AuthentificationMixin, AuthorizationMixin, SuccessMessageMixin, UpdateView):
     model = User
     form_class = UserUpdateForm
     template_name = 'user/update.html'
     success_url = reverse_lazy('users')
-    success_message = 'User was changed successfully'
+    success_message = _('User was changed successfully')
 
 
-class UpdateUserPassword(AuthentificationMixin, SuccessMessageMixin, UpdateView):
+class UpdateUserPassword(
+    AuthentificationMixin, SuccessMessageMixin, UpdateView):
     def get(self, request, *args, **kwargs):
         user_id = kwargs.get('pk')
         user = User.objects.get(id=user_id)
@@ -72,14 +73,16 @@ class UpdateUserPassword(AuthentificationMixin, SuccessMessageMixin, UpdateView)
         messages.error(
             request,
             messages.error(
-                self.request, _("You haven't permission for changing another user."))
+                self.request, _(
+                    "You haven't permission for changing another user."))
         )
         return render(
             request, 'user/update_password.html', {'form': form})
 
 
-class DeleteUser(AuthentificationMixin, AuthorizationMixin, SuccessMessageMixin, DeleteView):
+class DeleteUser(
+    AuthentificationMixin, AuthorizationMixin, SuccessMessageMixin, DeleteView):
     model = User
     template_name = 'user/delete.html'
     success_url = reverse_lazy('users')
-    success_message = 'User was deleted successfully'
+    success_message = _('User was deleted successfully')
