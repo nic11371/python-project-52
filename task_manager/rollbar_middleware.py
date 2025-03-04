@@ -1,7 +1,7 @@
-from rollbar.contrib.django.middleware import RollbarNotifierMiddleware
+from task_manager.rollbar_middleware import CustomRollbarNotifierMiddleware
 
 
-class CustomRollbarNotifierMiddleware(RollbarNotifierMiddleware):
+class CustomRollbarNotifierMiddleware(CustomRollbarNotifierMiddleware):
     def get_extra_data(self, request, exc):
         extra_data = dict()
 
