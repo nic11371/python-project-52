@@ -53,7 +53,6 @@ Flask==3.0.2
 gunicorn==23.0.0
 gyp==0.1
 h11==0.14.0
-hexlet-code @ file:///home/nikolay/Documents/python/python-project-50/dist/hexlet_code-0.1.0-py3-none-any.whl#sha256=1041fdaa829f84dbd87228b53b36e7fcda69ec28730e98e3861ed3108b45040f
 html5lib==1.1
 httpie==3.2.2
 httplib2==0.20.4
