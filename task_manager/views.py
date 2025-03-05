@@ -1,12 +1,12 @@
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import UserPassesTestMixin
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from django.views import View
-
 from .forms import LoginForm
 
 
@@ -21,15 +21,20 @@ class AuthenticationMixin(LoginRequiredMixin):
         return super(LoginRequiredMixin, self).dispatch(request, *args, **kwargs)
 
 
-class AuthenticationPasswordMixin(LoginRequiredMixin):
+class AuthorizationMixin(UserPassesTestMixin):
+
+    def test_func(self):
+        return self.kwargs.get('pk') == self.request.user.pk
+
     def dispatch(self, request, *args, **kwargs):
-        if not request.user.is_authenticated or request.user.pk != self.kwargs.get('pk'):
+        if not self.test_func():
             messages.error(
                 request,
-                messages.error(self.request, _("You are not authenticated."))
+                messages.error(
+                    self.request, _("You haven't permission for changing another user."))
             )
-            return redirect(reverse_lazy("login"))
-        return super(LoginRequiredMixin, self).dispatch(request, *args, **kwargs)
+            return redirect(reverse_lazy("users"))
+        return super(UserPassesTestMixin, self).dispatch(request, *args, **kwargs)
 
 
 class HomePageView(View):

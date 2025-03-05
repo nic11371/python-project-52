@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-05 13:21+0300\n"
+"POT-Creation-Date: 2025-03-05 18:09+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,14 +22,13 @@ msgstr ""
 
 #: task_manager/forms.py:10 task_manager/forms.py:13
 #: task_manager/templates/user/user_list.html:13 task_manager/user/forms.py:29
-#: task_manager/user/forms.py:35 task_manager/user/forms.py:72
-#: task_manager/user/forms.py:75
+#: task_manager/user/forms.py:35
 msgid "Username"
 msgstr "Имя пользователя"
 
 #: task_manager/forms.py:18 task_manager/forms.py:21
 #: task_manager/user/forms.py:38 task_manager/user/forms.py:42
-#: task_manager/user/forms.py:50
+#: task_manager/user/forms.py:50 task_manager/user/models.py:13
 msgid "Password"
 msgstr "Пароль"
 
@@ -39,7 +38,7 @@ msgid "Label name"
 msgstr "Имя"
 
 #: task_manager/label/models.py:7 task_manager/status/models.py:7
-#: task_manager/task/models.py:42
+#: task_manager/task/models.py:41
 msgid "Created"
 msgstr "Создать"
 
@@ -74,8 +73,8 @@ msgid "Editing label"
 msgstr "Изменение метки"
 
 #: task_manager/label/views.py:34 task_manager/status/views.py:34
-#: task_manager/task/views.py:62 task_manager/templates/user/update.html:14
-#: task_manager/templates/user/update_password.html:11
+#: task_manager/task/views.py:62 task_manager/user/views.py:35
+#: task_manager/user/views.py:49
 msgid "Change"
 msgstr "Изменить"
 
@@ -84,8 +83,7 @@ msgid "Deleting label"
 msgstr "Удаление метки"
 
 #: task_manager/label/views.py:39 task_manager/status/views.py:39
-#: task_manager/task/views.py:67 task_manager/templates/user/delete.html:14
-#: task_manager/user/views.py:94
+#: task_manager/task/views.py:67 task_manager/user/views.py:57
 msgid "Yes,delete"
 msgstr "Да,удалить"
 
@@ -146,41 +144,41 @@ msgstr "Только свои задачи"
 msgid "Label filter"
 msgstr "Метка"
 
-#: task_manager/task/models.py:11 task_manager/templates/task/task_list.html:29
+#: task_manager/task/models.py:10 task_manager/templates/task/task_list.html:29
 msgid "Task name"
 msgstr "Имя"
 
-#: task_manager/task/models.py:13
+#: task_manager/task/models.py:12
 msgid "Description"
 msgstr "Описание"
 
-#: task_manager/task/models.py:18
+#: task_manager/task/models.py:17
 #: task_manager/templates/task/task_detail.html:25
 #: task_manager/templates/task/task_list.html:30
 msgid "Status"
 msgstr "Статус"
 
-#: task_manager/task/models.py:24
+#: task_manager/task/models.py:23
 #: task_manager/templates/task/task_detail.html:17
 #: task_manager/templates/task/task_list.html:31
 msgid "Author"
 msgstr "Автор"
 
-#: task_manager/task/models.py:32
+#: task_manager/task/models.py:31
 #: task_manager/templates/task/task_detail.html:21
 #: task_manager/templates/task/task_list.html:32
 msgid "Executor"
 msgstr "Исполнитель"
 
-#: task_manager/task/models.py:39
+#: task_manager/task/models.py:38
 msgid "Label"
 msgstr "Метка"
 
-#: task_manager/task/models.py:48
+#: task_manager/task/models.py:47
 msgid "=Task="
 msgstr "Задача"
 
-#: task_manager/task/models.py:49
+#: task_manager/task/models.py:48
 msgid "=Tasks="
 msgstr "Задачи"
 
@@ -223,7 +221,6 @@ msgid "Task successfully deleted"
 msgstr "Задача успешно удалена"
 
 #: task_manager/templates/general/general_delete_confirm.html:10
-#: task_manager/templates/user/delete.html:10
 msgid "Are you sure that want to delete"
 msgstr "Вы уверены, что хотите удалить "
 
@@ -243,7 +240,7 @@ msgstr "Узнать больше"
 msgid "Task manager"
 msgstr "Менеджер задач"
 
-#: task_manager/templates/index.html:33 task_manager/user/views.py:33
+#: task_manager/templates/index.html:33 task_manager/user/views.py:17
 msgid "Users"
 msgstr "Пользователи"
 
@@ -256,7 +253,7 @@ msgid "Sign in"
 msgstr "Вход"
 
 #: task_manager/templates/index.html:53
-#: task_manager/templates/user/create.html:11
+#: task_manager/templates/user/create.html:11 task_manager/user/views.py:25
 msgid "Sign up"
 msgstr "Регистрация"
 
@@ -302,44 +299,27 @@ msgstr "Удалить"
 msgid "Show"
 msgstr "Показать"
 
-#: task_manager/templates/user/create.html:7 task_manager/user/views.py:40
+#: task_manager/templates/user/create.html:7 task_manager/user/views.py:25
 msgid "Registration"
 msgstr "Регистрация"
-
-#: task_manager/templates/user/delete.html:8 task_manager/user/views.py:94
-msgid "Deleting user"
-msgstr "Удаление пользователя"
-
-#: task_manager/templates/user/update.html:7
-msgid "Editing user"
-msgstr "Изменение пользователя"
-
-#: task_manager/templates/user/update.html:12
-msgid "Change password"
-msgstr "Изменить пароль"
-
-#: task_manager/templates/user/update_password.html:7
-msgid "Editing password"
-msgstr "Изменение пароля"
 
 #: task_manager/templates/user/user_list.html:14
 msgid "Full name"
 msgstr "Полное имя"
 
-#: task_manager/user/forms.py:15
+#: task_manager/user/models.py:8
 msgid "Your password must contain at least 3 characters."
 msgstr "Ваш пароль должен содержать как минимум 3 символа."
 
-#: task_manager/user/forms.py:19 task_manager/user/forms.py:62
+#: task_manager/user/forms.py:19
 msgid "First name"
 msgstr "Имя"
 
-#: task_manager/user/forms.py:22 task_manager/user/forms.py:65
+#: task_manager/user/forms.py:22
 msgid "Name"
 msgstr "Имя"
 
 #: task_manager/user/forms.py:24 task_manager/user/forms.py:27
-#: task_manager/user/forms.py:67 task_manager/user/forms.py:70
 msgid "Last name"
 msgstr "Фамилия"
 
@@ -351,47 +331,47 @@ msgstr ""
 "Обязательное поле. Не более 150 символов. Только буквы, цифры и символы @/./"
 "+/-/_."
 
-#: task_manager/user/forms.py:46 task_manager/user/forms.py:97
+#: task_manager/user/forms.py:46 task_manager/user/models.py:19
 msgid "Confirm password"
-msgstr "Подтвердение пароля"
+msgstr "Подтверждение пароля"
 
-#: task_manager/user/forms.py:48
+#: task_manager/user/forms.py:48 task_manager/user/models.py:20
 msgid "To confirm, please enter your password again."
 msgstr "Для подтверждения введите, пожалуйста, пароль ещё раз."
 
-#: task_manager/user/forms.py:87 task_manager/user/forms.py:90
-msgid "New password"
-msgstr "Новый пароль"
-
-#: task_manager/user/forms.py:94
-msgid "Confirm new password"
-msgstr "Подтвердите новый пароль"
-
-#: task_manager/user/forms.py:101 task_manager/user/forms.py:104
-msgid "Old password"
-msgstr "Старый пароль"
-
-#: task_manager/user/views.py:24 task_manager/user/views.py:85
-msgid "You haven't permission for changing another user."
-msgstr "У вас нет прав для изменения другого пользователя."
-
-#: task_manager/user/views.py:41
+#: task_manager/user/views.py:26
 msgid "User was registered successfully."
 msgstr "Пользователь успешно зарегистрирован"
 
-#: task_manager/user/views.py:50
+#: task_manager/user/views.py:34
+msgid "Changing user"
+msgstr "Изменение пользователя"
+
+#: task_manager/user/views.py:36
+msgid "Change password"
+msgstr "Изменить пароль"
+
+#: task_manager/user/views.py:41
 msgid "User was changed successfully"
 msgstr "Пользователль успешно изменен"
 
-#: task_manager/user/views.py:78
+#: task_manager/user/views.py:49
+msgid "Changing password"
+msgstr "Изменение пароля"
+
+#: task_manager/user/views.py:51
 msgid "Password of the user was changed successfully"
 msgstr "Пароль пользователя успешно изменен"
 
-#: task_manager/user/views.py:100
+#: task_manager/user/views.py:57
+msgid "Deleting user"
+msgstr "Удаление пользователя"
+
+#: task_manager/user/views.py:63
 msgid "User was deleted successfully"
 msgstr "Пользователь успешно удален"
 
-#: task_manager/user/views.py:105
+#: task_manager/user/views.py:68
 msgid "Can't delete, user in use"
 msgstr "Невозможно удалить пользователя, потому что он используется"
 
@@ -399,13 +379,37 @@ msgstr "Невозможно удалить пользователя, потом
 msgid "You are not authenticated."
 msgstr "Вы не залогинены"
 
-#: task_manager/views.py:50
+#: task_manager/views.py:34
+msgid "You haven't permission for changing another user."
+msgstr "У вас нет прав для изменения другого пользователя."
+
+#: task_manager/views.py:60
 msgid "You were login"
 msgstr "Вы залогинены"
 
-#: task_manager/views.py:58
+#: task_manager/views.py:68
 msgid "You were logout"
 msgstr "Вы разлогинены"
+
+#, fuzzy
+#~| msgid "Sign up"
+#~ msgid "Sign out"
+#~ msgstr "Регистрация"
+
+#~ msgid "Editing user"
+#~ msgstr "Изменение пользователя"
+
+#~ msgid "Editing password"
+#~ msgstr "Изменение пароля"
+
+#~ msgid "New password"
+#~ msgstr "Новый пароль"
+
+#~ msgid "Confirm new password"
+#~ msgstr "Подтвердите новый пароль"
+
+#~ msgid "Old password"
+#~ msgstr "Старый пароль"
 
 #, fuzzy, python-format
 #~| msgid "Are you sure that want to delete"
