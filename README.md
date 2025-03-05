@@ -30,7 +30,7 @@ WEB-приложение представляет TODO-лист. Оно доба
 
 1. Для запуска приложения на локальной машине введите команду make start.
 2. На локальной машине перейдите по ссылке http://127.0.0.1:8000/ .
-3. Для запуска приложения на продакшн перейдите по ссылке https://python-project-52-jsnv.onrender.com .
+3. Для запуска приложения на продакшн перейдите по ссылке https://python-project-52-0cql.onrender.com .
 
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/nic11371/python-project-52/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/nic11371/python-project-52/actions)

@@ -31,7 +31,13 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["webserver", "127.0.0.1", "localhost", "python-project-52-jsnv.onrender.com"]
+ALLOWED_HOSTS = [
+    "webserver",
+    "127.0.0.1",
+    "localhost",
+    "python-project-52-jsnv.onrender.com",
+    "python-project-52-0cql.onrender.com"
+]
 
 # Application definition
 
