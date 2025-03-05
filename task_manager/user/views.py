@@ -6,7 +6,7 @@ from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import CreateView, DeleteView, ListView, UpdateView
 from django.db.models import ProtectedError
-from ..views import AuthentificationMixin
+from ..views import AuthenticationMixin, AuthenticationPasswordMixin
 from .forms import UserPasswordChange, UserRegisterForm, UserUpdateForm
 from .models import User
 
@@ -42,7 +42,7 @@ class SignUpUser(SuccessMessageMixin, CreateView):
 
 
 class UpdateUser(
-    AuthentificationMixin, AuthorizationMixin, SuccessMessageMixin, UpdateView):
+    AuthenticationMixin, AuthorizationMixin, SuccessMessageMixin, UpdateView):
     model = User
     form_class = UserUpdateForm
     template_name = 'user/update.html'
@@ -59,7 +59,7 @@ class UpdateUser(
 #     success_message = _('Password of the user was changed successfully')
 
 class UpdateUserPassword(
-    AuthentificationMixin, AuthorizationMixin, SuccessMessageMixin, UpdateView):
+    AuthenticationPasswordMixin, SuccessMessageMixin, UpdateView):
     def get(self, request, *args, **kwargs):
         user_id = kwargs.get('pk')
         user = User.objects.get(id=user_id)
@@ -89,7 +89,7 @@ class UpdateUserPassword(
 
 
 class DeleteUser(
-    AuthentificationMixin, AuthorizationMixin, SuccessMessageMixin, DeleteView):
+    AuthenticationMixin, AuthorizationMixin, SuccessMessageMixin, DeleteView):
     model = User
     extra_context = {'title': _('Deleting user'), 'button':_("Yes,delete")}
     template_name = 'general/general_delete_confirm.html'

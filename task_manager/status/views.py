@@ -6,11 +6,11 @@ from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import CreateView, DeleteView, ListView, UpdateView
 
-from ..views import AuthentificationMixin
+from ..views import AuthenticationMixin
 from .models import Status
 
 
-class StatusMixin(AuthentificationMixin, SuccessMessageMixin):
+class StatusMixin(AuthenticationMixin, SuccessMessageMixin):
     model = Status
     extra_context = {'title': _("Statuses"), 'button': _("Create status")}
     login_url = reverse_lazy('login')

@@ -7,7 +7,7 @@ from django.utils.translation import gettext_lazy as _
 from django.views.generic import CreateView, DeleteView, DetailView, UpdateView
 from django_filters.views import FilterView
 
-from ..views import AuthentificationMixin
+from ..views import AuthenticationMixin
 from .filters import TaskFilter
 from .models import Task
 
@@ -28,7 +28,7 @@ class AuthorizationTaskMixin(UserPassesTestMixin):
         return super().dispatch(request, *args, **kwargs)
 
 
-class TaskMixin(AuthentificationMixin, SuccessMessageMixin):
+class TaskMixin(AuthenticationMixin, SuccessMessageMixin):
     model = Task
     extra_context = {'title': _("Tasks"), 'button': _("Create task")}
     success_url = reverse_lazy('tasks')
