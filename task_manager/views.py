@@ -18,6 +18,12 @@ class AuthentificationMixin(LoginRequiredMixin):
                 messages.error(self.request, _("You are not authenticated."))
             )
             return redirect(reverse_lazy("login"))
+        elif request.user.pk != self.kwargs.get('pk'):
+            messages.error(
+                request,
+                messages.error(self.request, _("You are not authenticated."))
+            )
+            return redirect(reverse_lazy("login"))
         return super(LoginRequiredMixin, self).dispatch(request, *args, **kwargs)
 
 
