@@ -14,7 +14,7 @@ from .models import User
 class AuthorizationMixin(UserPassesTestMixin):
 
     def test_func(self):
-        return self.get_object().username == self.request.user.username
+        return self.get_object().pk == self.request.user.pk
 
     def dispatch(self, request, *args, **kwargs):
         if not self.test_func():
@@ -49,6 +49,14 @@ class UpdateUser(
     success_url = reverse_lazy('users')
     success_message = _('User was changed successfully')
 
+
+# class UpdateUserPassword(
+#     AuthentificationMixin, AuthorizationMixin, SuccessMessageMixin, UpdateView):
+#     model = User
+#     form_class = UserPasswordChange
+#     template_name = 'user/update_password.html'
+#     success_url = reverse_lazy('users')
+#     success_message = _('Password of the user was changed successfully')
 
 class UpdateUserPassword(
     AuthentificationMixin, SuccessMessageMixin, UpdateView):
