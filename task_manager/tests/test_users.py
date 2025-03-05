@@ -10,7 +10,7 @@ class UserTestCase(TestCase):
     def test_signUp(self):
         resp = self.client.get(reverse('user_create'))
         self.assertEqual(resp.status_code, 200)
-        self.assertTemplateUsed(resp, template_name='user/create.html')
+        self.assertTemplateUsed(resp, template_name='general/general_form.html')
 
         resp = self.client.post(reverse('user_create'), {
             'first_name': 'Nikolay',
@@ -46,7 +46,7 @@ class UserTestCase(TestCase):
             reverse('user_update', kwargs={'pk': user.id})
         )
         self.assertEqual(resp.status_code, 200)
-        self.assertTemplateUsed(resp, template_name='user/update.html')
+        self.assertTemplateUsed(resp, template_name='general/general_form.html')
         resp = self.client.post(
             reverse('user_update', kwargs={'pk': user.id}),
             {

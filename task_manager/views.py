@@ -1,13 +1,15 @@
 from django.contrib import messages
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import logout
+from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.mixins import UserPassesTestMixin
+from django.contrib.auth.views import LoginView
+from django.contrib.messages.views import SuccessMessageMixin
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from django.views import View
-from .forms import LoginForm
 
 
 class AuthenticationMixin(LoginRequiredMixin):
@@ -43,26 +45,14 @@ class HomePageView(View):
         return render(request, 'home.html')
 
 
-class LoginView(View):
-
-    def get(self, request, *args, **kwargs):
-        form = LoginForm()
-        return render(request, 'login.html', {'form': form})
-
-    def post(self, request, *args, **kwargs):
-        form = LoginForm(data=request.POST)
-        if form.is_valid():
-            username = form.cleaned_data['username']
-            password = form.cleaned_data['password']
-            user = authenticate(username=username, password=password)
-            if user is not None:
-                login(request, user)
-                messages.success(request, _("You were login"))
-                return redirect(reverse_lazy('home'))
-        return render(request, 'login.html', {'form': form})
+class LoginUser(SuccessMessageMixin, LoginView):
+    form_class = AuthenticationForm
+    template_name = 'general/general_form.html'
+    extra_context = {'title': _("Login"), 'button': _("Sign in")}
+    success_message = _('You were login')
 
 
-class LogoutView(View):
+class LogoutUser(View):
     def get(self, request, *args, **kwargs):
         logout(request)
         messages.info(request, _("You were logout"))

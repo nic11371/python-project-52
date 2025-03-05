@@ -128,6 +128,7 @@ AUTH_PASSWORD_VALIDATORS = [
 AUTH_USER_MODEL = 'user.User'
 
 LOGIN_URL = '/login'
+LOGIN_REDIRECT_URL = 'home'
 
 FIXTURE_DIRS = [
     BASE_DIR / 'user' / 'fixtures' / 'user_test.json',
