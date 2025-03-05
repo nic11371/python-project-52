@@ -12,12 +12,18 @@ from .forms import LoginForm
 
 class AuthentificationMixin(LoginRequiredMixin):
     def dispatch(self, request, *args, **kwargs):
-        if not request.user.is_authenticated or request.user.pk != self.kwargs.get('pk'):
+        if not request.user.is_authenticated:
             messages.error(
                 request,
                 messages.error(self.request, _("You are not authenticated."))
             )
             return redirect(reverse_lazy("login"))
+        # if not request.user.is_authenticated or request.user.pk != self.kwargs.get('pk'):
+        #     messages.error(
+        #         request,
+        #         messages.error(self.request, _("You are not authenticated."))
+        #     )
+        #     return redirect(reverse_lazy("login"))
         return super(LoginRequiredMixin, self).dispatch(request, *args, **kwargs)
 
 

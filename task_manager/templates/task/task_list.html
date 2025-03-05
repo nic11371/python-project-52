@@ -43,9 +43,9 @@
                     <td>{{ task.executor }}</td>
                     <td>{{ task.created_at|date:'d.m.Y H:i' }}</td>
                     <td>
-                        <a href="/tasks/{{ task.id }}/update/">{% translate "Edit" %}</a>
+                        <a href="{% url "task_update" task.id %}">{% translate "Edit" %}</a>
                         <br>
-                        <a href="/tasks/{{ task.id }}/delete/">{% translate "Delete" %}</a>
+                        <a href="{% url "task_delete" task.id %}">{% translate "Delete" %}</a>
                         </form>
                     </td>
                 </tr>
