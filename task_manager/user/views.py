@@ -46,7 +46,7 @@ class UpdateUserPassword(
     model = User
     template_name = 'general/general_form.html'
     extra_context = {'title': _('Changing password'), 'button': _("Change")}
-    success_url = reverse_lazy('users')
+    success_url = reverse_lazy('logout')
     success_message = _('Password of the user was changed successfully')
 
 
