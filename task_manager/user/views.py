@@ -1,11 +1,12 @@
 from django.contrib import messages
 from django.contrib.auth.views import PasswordChangeView
 from django.contrib.messages.views import SuccessMessageMixin
+from django.db.models import ProtectedError
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import CreateView, DeleteView, ListView, UpdateView
-from django.db.models import ProtectedError
+
 from ..views import AuthenticationMixin, AuthorizationMixin
 from .forms import UserRegisterForm
 from .models import User
@@ -53,7 +54,7 @@ class UpdateUserPassword(
 class DeleteUser(
     AuthenticationMixin, AuthorizationMixin, SuccessMessageMixin, DeleteView):
     model = User
-    extra_context = {'title': _('Deleting user'), 'button':_("Yes,delete")}
+    extra_context = {'title': _('Deleting user'), 'button': _("Yes,delete")}
     template_name = 'general/general_delete_confirm.html'
 
     def post(self, request, *args, **kwargs):

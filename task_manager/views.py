@@ -1,8 +1,7 @@
 from django.contrib import messages
 from django.contrib.auth import logout
 from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.mixins import UserPassesTestMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.views import LoginView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.http import HttpResponse
@@ -55,6 +54,7 @@ class LoginUser(SuccessMessageMixin, LoginView):
 class LogoutUser(View):
     def post(self, request, *args, **kwargs):
         return logout(request)
+
     def get(self, request, *args, **kwargs):
         messages.info(request, _("You were logout"))
         return redirect(reverse_lazy('home'))
