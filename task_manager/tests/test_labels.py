@@ -41,7 +41,7 @@ class LabelTestCase(TestCase):
         self.login()
         resp = self.client.get(reverse('label_create'))
         self.assertEqual(resp.status_code, 200)
-        self.assertTemplateUsed(resp, template_name='label/create.html')
+        self.assertTemplateUsed(resp, template_name='general/general_form.html')
 
         resp = self.client.post(reverse('label_create'), {
             'name': 'test',
@@ -61,7 +61,7 @@ class LabelTestCase(TestCase):
             reverse('label_update', kwargs={'pk': label.id})
         )
         self.assertEqual(resp.status_code, 200)
-        self.assertTemplateUsed(resp, template_name='label/update.html')
+        self.assertTemplateUsed(resp, template_name='general/general_form.html')
         resp = self.client.post(
             reverse('label_update', kwargs={'pk': label.id}), {
                 'name': 'test_label'

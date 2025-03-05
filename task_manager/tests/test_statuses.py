@@ -36,7 +36,7 @@ class StatusTestCase(TestCase):
         self.login()
         resp = self.client.get(reverse('status_create'))
         self.assertEqual(resp.status_code, 200)
-        self.assertTemplateUsed(resp, template_name='status/create.html')
+        self.assertTemplateUsed(resp, template_name='general/general_form.html')
 
         resp = self.client.post(reverse('status_create'), {
             'name': 'test',
@@ -61,7 +61,7 @@ class StatusTestCase(TestCase):
             reverse('status_update', kwargs={'pk': status.id})
         )
         self.assertEqual(resp.status_code, 200)
-        self.assertTemplateUsed(resp, template_name='status/update.html')
+        self.assertTemplateUsed(resp, template_name='general/general_form.html')
         resp = self.client.post(
             reverse('status_update', kwargs={'pk': status.id}), {
                 'name': 'test_status'

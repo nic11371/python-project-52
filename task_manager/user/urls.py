@@ -15,5 +15,5 @@ urlpatterns = [
     path(
         '<int:pk>/update/password/', UpdateUserPassword.as_view(), 
         name="user_update_password"),
-    path('<int:pk>/delete/', DeleteUser.as_view(), name="user_delete"),
+    path('<int:pk>/delete/', DeleteUser.as_view(success_url="/users/"), name="user_delete"),
 ]

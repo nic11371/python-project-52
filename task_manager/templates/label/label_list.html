@@ -4,10 +4,10 @@
 
 {% block main %}
         <h1 class="my-4">
-            {% translate "Labels" %}
+            {{ title }}
         </h1>
         <a href="/labels/create/">
-            <button class="btn btn-primary">{% translate "Create label" %}</button>
+            <button class="btn btn-primary">{{ button }}</button>
         </a>
         <table class="table table-striped">
             <thead>

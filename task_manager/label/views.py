@@ -12,7 +12,7 @@ from .models import Label
 
 class LabelMixin(AuthentificationMixin, SuccessMessageMixin):
     model = Label
-    extra_context = {'title': _("Labels"), 'button': _("Create")}
+    extra_context = {'title': _("Labels"), 'button': _("Create label")}
     login_url = reverse_lazy('login')
     success_url = reverse_lazy('labels')
     fields = ['name']
@@ -24,17 +24,19 @@ class ListLabels(LabelMixin, ListView):
 
 class CreateLabel(LabelMixin, CreateView):
     success_message = _("Label created successfully")
-    template_name = 'label/create.html'
+    template_name = 'general/general_form.html'
+    extra_context = {'title': _('Create label'), 'button': _('Create')}
 
 
 class UpdateLabel(LabelMixin, UpdateView):
     success_message = _("Label created successfully")
-    template_name = 'label/update.html'
-    extra_context = {'title': _('Labels'), 'button': _('Change')}
+    template_name = 'general/general_form.html'
+    extra_context = {'title': _('Editing label'), 'button': _('Change')}
 
 
 class DeleteLabel(LabelMixin, DeleteView):
-    template_name = 'label/delete.html'
+    template_name = 'general/general_delete_confirm.html'
+    extra_context = {'title': _("Deleting label"), 'button': _("Yes,delete")}
 
     def post(self, request, *args, **kwargs):
         try:

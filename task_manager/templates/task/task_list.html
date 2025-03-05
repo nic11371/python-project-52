@@ -5,10 +5,10 @@
 
 {% block main %}
         <h1 class="my-4">
-            {% translate "Tasks" %}
+            {{ title }}
         </h1>
         <a href="/tasks/create/">
-            <button class="btn btn-primary mb-3">{% translate "Create Task" %}</button>
+            <button class="btn btn-primary mb-3">{{ button }}</button>
         </a>
         <div class="card mb-3">
             <div class="card-body bg-light">

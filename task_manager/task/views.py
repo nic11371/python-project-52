@@ -30,21 +30,22 @@ class AuthorizationTaskMixin(UserPassesTestMixin):
 
 class TaskMixin(AuthentificationMixin, SuccessMessageMixin):
     model = Task
-    extra_context = {'title': _("New task"), 'button': _("Create")}
+    extra_context = {'title': _("Tasks"), 'button': _("Create task")}
     success_url = reverse_lazy('tasks')
     fields = ['name', 'description', 'status', 'executor', 'label']
 
 
 class ListTask(TaskMixin, FilterView):
     context_object_name = 'tasks'
-    extra_context = {'title': _("Tasks")}
+    extra_context = {'title': _("Tasks"), 'button': _("Create task")}
     template_name = 'task/task_list.html'
     filterset_class = TaskFilter
 
 
 class CreateTask(TaskMixin, CreateView):
-    template_name = 'task/create.html'
     success_message = _("Task created successfully")
+    extra_context = {'title': _("Create task"), 'button': _("Create")}
+    template_name = 'general/general_form.html'
 
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -58,10 +59,11 @@ class ViewTask(TaskMixin, DetailView):
 
 class UpdateTask(TaskMixin, UpdateView):
     success_message = _("Task edited successfully")
-    template_name = 'task/update.html'
-    extra_context = {'title': _('Tasks'), 'button': _('Edit')}
+    extra_context = {'title': _('Changing task'), 'button': _('Change')}
+    template_name = 'general/general_form.html'
 
 
 class DeleteTask(TaskMixin, AuthorizationTaskMixin, DeleteView):
-    template_name = 'task/delete.html'
+    extra_context = {'title': _('Deleting task'), 'button': _('Yes,delete')}
     success_message = _('Task successfully deleted')
+    template_name = 'general/general_delete_confirm.html'

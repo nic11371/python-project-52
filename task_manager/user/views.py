@@ -5,7 +5,7 @@ from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import CreateView, DeleteView, ListView, UpdateView
-
+from django.db.models import ProtectedError
 from ..views import AuthentificationMixin
 from .forms import UserPasswordChange, UserRegisterForm, UserUpdateForm
 from .models import User
@@ -59,7 +59,7 @@ class UpdateUser(
 #     success_message = _('Password of the user was changed successfully')
 
 class UpdateUserPassword(
-    AuthentificationMixin, SuccessMessageMixin, UpdateView):
+    AuthentificationMixin, AuthorizationMixin, SuccessMessageMixin, UpdateView):
     def get(self, request, *args, **kwargs):
         user_id = kwargs.get('pk')
         user = User.objects.get(id=user_id)
@@ -91,6 +91,17 @@ class UpdateUserPassword(
 class DeleteUser(
     AuthentificationMixin, AuthorizationMixin, SuccessMessageMixin, DeleteView):
     model = User
-    template_name = 'user/delete.html'
-    success_url = reverse_lazy('users')
-    success_message = _('User was deleted successfully')
+    extra_context = {'title': _('Deleting user'), 'button':_("Yes,delete")}
+    template_name = 'general/general_delete_confirm.html'
+
+    def post(self, request, *args, **kwargs):
+        try:
+            self.delete(request, *args, **kwargs)
+            messages.success(self.request, _("User was deleted successfully"))
+            return redirect(reverse_lazy('users'))
+        except ProtectedError:
+            messages.error(
+                self.request,
+                _("Can't delete, user in use")
+            )
+            return redirect(reverse_lazy('users'))

@@ -36,7 +36,7 @@ class TaskTestCase(TestCase):
         self.login()
         resp = self.client.get(reverse('task_create'))
         self.assertEqual(resp.status_code, 200)
-        self.assertTemplateUsed(resp, template_name='task/create.html')
+        self.assertTemplateUsed(resp, template_name='general/general_form.html')
 
         resp = self.client.post(reverse('task_create'), {
             'name': 'Welcome to out world',
@@ -81,7 +81,7 @@ class TaskTestCase(TestCase):
             reverse('task_update', kwargs={'pk': task.id})
         )
         self.assertEqual(resp.status_code, 200)
-        self.assertTemplateUsed(resp, template_name='task/update.html')
+        self.assertTemplateUsed(resp, template_name='general/general_form.html')
         resp = self.client.post(
             reverse('task_update', kwargs={'pk': task.id}),
             {

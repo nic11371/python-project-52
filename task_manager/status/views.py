@@ -12,7 +12,7 @@ from .models import Status
 
 class StatusMixin(AuthentificationMixin, SuccessMessageMixin):
     model = Status
-    extra_context = {'title': _("Statuses"), 'button': _("Create")}
+    extra_context = {'title': _("Statuses"), 'button': _("Create status")}
     login_url = reverse_lazy('login')
     success_url = reverse_lazy('statuses')
     fields = ['name']
@@ -24,17 +24,19 @@ class ListStatuses(StatusMixin, ListView):
 
 class CreateStatus(StatusMixin, CreateView):
     success_message = _("Status created successfully")
-    template_name = 'status/create.html'
+    extra_context = {'title': _("Create status"), 'button': _("Create")}
+    template_name = 'general/general_form.html'
 
 
 class UpdateStatus(StatusMixin, UpdateView):
     success_message = _("Status created successfully")
-    template_name = 'status/update.html'
+    template_name = 'general/general_form.html'
     extra_context = {'title': _('Changing status'), 'button': _('Change')}
 
 
 class DeleteStatus(StatusMixin, DeleteView):
-    template_name = 'status/delete.html'
+    template_name = 'general/general_delete_confirm.html'
+    extra_context = {'title': _('Deleting status'), 'button': _('Yes,delete')}
 
     def post(self, request, *args, **kwargs):
         try:
