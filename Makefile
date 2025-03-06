@@ -41,6 +41,7 @@ translate-makemessages:
 	django-admin makemessages -l ru
 
 tests:
+	export DJANGO_SETTINGS_MODULE=task_manager.settings
 	pytest
 
 tests-cov:

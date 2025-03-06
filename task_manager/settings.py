@@ -12,11 +12,8 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 import os
 import dj_database_url
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", __file__)
 from dotenv import load_dotenv
 from pathlib import Path
-import django
-django.setup()
 
 
 load_dotenv()
