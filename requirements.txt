@@ -32,6 +32,7 @@ python-dotenv==1.0.1
     # via
     #   hexlet-code (pyproject.toml)
     #   load-dotenv
+rollbar>=1.2.0
 sqlparse==0.5.3
     # via django
 typing-extensions==4.12.2
