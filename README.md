@@ -35,5 +35,5 @@ WEB-приложение представляет TODO-лист. Оно доба
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/nic11371/python-project-52/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/nic11371/python-project-52/actions)
 [![main](https://github.com/nic11371/python-project-52/actions/workflows/main.yml/badge.svg)](https://github.com/nic11371/python-project-52/actions/workflows/main.yml)
-[![Maintainability](https://api.codeclimate.com/v1/badges/42fb21ec39919d60636d/maintainability)](https://codeclimate.com/github/nic11371/python-project-52/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/42fb21ec39919d60636d/test_coverage)](https://codeclimate.com/github/nic11371/python-project-52/test_coverage)
+[![Maintainability](https://api.codeclimate.com/v1/badges/06376d17fb8d2b97f7ce/maintainability)](https://codeclimate.com/github/nic11371/python-project-52/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/06376d17fb8d2b97f7ce/test_coverage)](https://codeclimate.com/github/nic11371/python-project-52/test_coverage)
