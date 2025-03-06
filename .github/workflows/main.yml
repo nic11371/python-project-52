@@ -28,6 +28,8 @@ jobs:
         env:
           SECRET_KEY: ${{ secrets.SECRET_KEY }}
         run: |
+          source .env/bin/activate
+          pip install -R requirements.txt
           make tests
       - name: Test & publish code coverage
         uses: paambaati/codeclimate-action@v5.0.0
