@@ -41,5 +41,8 @@ translate-makemessages:
 	django-admin makemessages -l ru
 
 test:
+	pip install uv
+	pip install gunicorn uvicorn
+	uv venv
 	uv pip install -r requirements.txt
 	python manage.py test
