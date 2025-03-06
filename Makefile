@@ -41,4 +41,5 @@ translate-makemessages:
 	django-admin makemessages -l ru
 
 test:
+	uv pip install -r requirements.txt
 	python manage.py test
