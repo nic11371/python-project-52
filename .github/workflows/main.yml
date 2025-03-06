@@ -36,6 +36,7 @@ jobs:
           pip install django-filter
           pip install rollbar
           pip install whitenoise
+          pip install pytest
           make tests
       - name: Test & publish code coverage
         uses: paambaati/codeclimate-action@v5.0.0
