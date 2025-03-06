@@ -23,6 +23,3 @@ dev = [
     "coverage>=7.6.12",
     "ruff>=0.9.4",
 ]
-
-[tool.pytest.ini_options]
-DJANGO_SETTINGS_MODULE = "task_manager.settings"
