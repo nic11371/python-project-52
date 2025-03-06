@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-05 18:09+0300\n"
+"POT-Creation-Date: 2025-03-06 10:30+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,14 +21,11 @@ msgstr ""
 "(n%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #: task_manager/forms.py:10 task_manager/forms.py:13
-#: task_manager/templates/user/user_list.html:13 task_manager/user/forms.py:29
-#: task_manager/user/forms.py:35
+#: task_manager/templates/user/user_list.html:13
 msgid "Username"
 msgstr "Имя пользователя"
 
 #: task_manager/forms.py:18 task_manager/forms.py:21
-#: task_manager/user/forms.py:38 task_manager/user/forms.py:42
-#: task_manager/user/forms.py:50 task_manager/user/models.py:13
 msgid "Password"
 msgstr "Пароль"
 
@@ -38,7 +35,7 @@ msgid "Label name"
 msgstr "Имя"
 
 #: task_manager/label/models.py:7 task_manager/status/models.py:7
-#: task_manager/task/models.py:41
+#: task_manager/task/models.py:42
 msgid "Created"
 msgstr "Создать"
 
@@ -144,41 +141,41 @@ msgstr "Только свои задачи"
 msgid "Label filter"
 msgstr "Метка"
 
-#: task_manager/task/models.py:10 task_manager/templates/task/task_list.html:29
+#: task_manager/task/models.py:11 task_manager/templates/task/task_list.html:29
 msgid "Task name"
 msgstr "Имя"
 
-#: task_manager/task/models.py:12
+#: task_manager/task/models.py:13
 msgid "Description"
 msgstr "Описание"
 
-#: task_manager/task/models.py:17
+#: task_manager/task/models.py:18
 #: task_manager/templates/task/task_detail.html:25
 #: task_manager/templates/task/task_list.html:30
 msgid "Status"
 msgstr "Статус"
 
-#: task_manager/task/models.py:23
+#: task_manager/task/models.py:24
 #: task_manager/templates/task/task_detail.html:17
 #: task_manager/templates/task/task_list.html:31
 msgid "Author"
 msgstr "Автор"
 
-#: task_manager/task/models.py:31
+#: task_manager/task/models.py:32
 #: task_manager/templates/task/task_detail.html:21
 #: task_manager/templates/task/task_list.html:32
 msgid "Executor"
 msgstr "Исполнитель"
 
-#: task_manager/task/models.py:38
+#: task_manager/task/models.py:39
 msgid "Label"
 msgstr "Метка"
 
-#: task_manager/task/models.py:47
+#: task_manager/task/models.py:48
 msgid "=Task="
 msgstr "Задача"
 
-#: task_manager/task/models.py:48
+#: task_manager/task/models.py:49
 msgid "=Tasks="
 msgstr "Задачи"
 
@@ -240,7 +237,7 @@ msgstr "Узнать больше"
 msgid "Task manager"
 msgstr "Менеджер задач"
 
-#: task_manager/templates/index.html:33 task_manager/user/views.py:17
+#: task_manager/templates/index.html:33 task_manager/user/views.py:18
 msgid "Users"
 msgstr "Пользователи"
 
@@ -248,12 +245,11 @@ msgstr "Пользователи"
 msgid "Exit"
 msgstr "Выход"
 
-#: task_manager/templates/index.html:50 task_manager/templates/login.html:7
+#: task_manager/templates/index.html:50 task_manager/views.py:50
 msgid "Sign in"
 msgstr "Вход"
 
-#: task_manager/templates/index.html:53
-#: task_manager/templates/user/create.html:11 task_manager/user/views.py:25
+#: task_manager/templates/index.html:53 task_manager/user/views.py:26
 msgid "Sign up"
 msgstr "Регистрация"
 
@@ -287,10 +283,6 @@ msgstr "Изменить"
 msgid "Delete"
 msgstr "Удалить"
 
-#: task_manager/templates/login.html:11
-msgid "Login"
-msgstr "Вход"
-
 #: task_manager/templates/task/task_detail.html:46
 msgid "Remove"
 msgstr "Удалить"
@@ -299,47 +291,19 @@ msgstr "Удалить"
 msgid "Show"
 msgstr "Показать"
 
-#: task_manager/templates/user/create.html:7 task_manager/user/views.py:25
-msgid "Registration"
-msgstr "Регистрация"
-
 #: task_manager/templates/user/user_list.html:14
 msgid "Full name"
 msgstr "Полное имя"
 
-#: task_manager/user/models.py:8
+#: task_manager/user/forms.py:13
 msgid "Your password must contain at least 3 characters."
 msgstr "Ваш пароль должен содержать как минимум 3 символа."
 
-#: task_manager/user/forms.py:19
-msgid "First name"
-msgstr "Имя"
-
-#: task_manager/user/forms.py:22
-msgid "Name"
-msgstr "Имя"
-
-#: task_manager/user/forms.py:24 task_manager/user/forms.py:27
-msgid "Last name"
-msgstr "Фамилия"
-
-#: task_manager/user/forms.py:32
-msgid ""
-"Required field. No more than 150 characters. \n"
-"                    Only letters, numbers and symbols @/./+/-/_."
-msgstr ""
-"Обязательное поле. Не более 150 символов. Только буквы, цифры и символы @/./"
-"+/-/_."
-
-#: task_manager/user/forms.py:46 task_manager/user/models.py:19
-msgid "Confirm password"
-msgstr "Подтверждение пароля"
-
-#: task_manager/user/forms.py:48 task_manager/user/models.py:20
-msgid "To confirm, please enter your password again."
-msgstr "Для подтверждения введите, пожалуйста, пароль ещё раз."
-
 #: task_manager/user/views.py:26
+msgid "Registration"
+msgstr "Регистрация"
+
+#: task_manager/user/views.py:27
 msgid "User was registered successfully."
 msgstr "Пользователь успешно зарегистрирован"
 
@@ -375,21 +339,44 @@ msgstr "Пользователь успешно удален"
 msgid "Can't delete, user in use"
 msgstr "Невозможно удалить пользователя, потому что он используется"
 
-#: task_manager/views.py:18
+#: task_manager/views.py:19
 msgid "You are not authenticated."
 msgstr "Вы не залогинены"
 
-#: task_manager/views.py:34
+#: task_manager/views.py:35
 msgid "You haven't permission for changing another user."
 msgstr "У вас нет прав для изменения другого пользователя."
 
-#: task_manager/views.py:60
+#: task_manager/views.py:50
+msgid "Login"
+msgstr "Вход"
+
+#: task_manager/views.py:51
 msgid "You were login"
 msgstr "Вы залогинены"
 
-#: task_manager/views.py:68
+#: task_manager/views.py:58
 msgid "You were logout"
 msgstr "Вы разлогинены"
+
+#~ msgid "First name"
+#~ msgstr "Имя"
+
+#~ msgid "Name"
+#~ msgstr "Имя"
+
+#~ msgid "Last name"
+#~ msgstr "Фамилия"
+
+#~ msgid ""
+#~ "Required field. No more than 150 characters. \n"
+#~ "                    Only letters, numbers and symbols @/./+/-/_."
+#~ msgstr ""
+#~ "Обязательное поле. Не более 150 символов. Только буквы, цифры и символы "
+#~ "@/./+/-/_."
+
+#~ msgid "Confirm password"
+#~ msgstr "Подтверждение пароля"
 
 #, fuzzy
 #~| msgid "Sign up"

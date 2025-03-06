@@ -52,10 +52,9 @@ class LoginUser(SuccessMessageMixin, LoginView):
 
 
 class LogoutUser(View):
-    def post(self, request, *args, **kwargs):
-        return logout(request)
 
     def get(self, request, *args, **kwargs):
+        logout(request)
         messages.info(request, _("You were logout"))
         return redirect(reverse_lazy('home'))
 
