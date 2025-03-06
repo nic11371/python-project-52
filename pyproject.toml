@@ -11,15 +11,15 @@ dependencies = [
     "django-filter",
     "gunicorn>=23.0.0",
     "load-dotenv>=0.1.0",
-    "numpy>=2.2.2",
     "psycopg2-binary>=2.9.10",
     "python-dotenv>=1.0.1",
+    "rollbar>=1.2.0",
     "uvicorn>=0.34.0",
     "whitenoise>=6.9.0",
 ]
 
 [dependency-groups]
 dev = [
-    "rollbar>=1.2.0",
+    "coverage>=7.6.12",
     "ruff>=0.9.4",
 ]
