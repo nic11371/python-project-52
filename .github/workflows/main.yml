@@ -29,6 +29,7 @@ jobs:
           SECRET_KEY: ${{ secrets.SECRET_KEY }}
         run: |
           pip install django
+          pip install dj_database_url
           make tests
       - name: Test & publish code coverage
         uses: paambaati/codeclimate-action@v5.0.0
