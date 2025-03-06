@@ -25,6 +25,8 @@ jobs:
         run: |
           make check
       - name: Run Tests
+        env:
+          SECRET_KEY: ${{ secrets.SECRET_KEY }}
         run: |
           pip install django
           pip install dj_database_url
@@ -39,6 +41,7 @@ jobs:
         uses: paambaati/codeclimate-action@v5.0.0
         if: github.ref_name == 'main'
         env:
+          SECRET_KEY: ${{ secrets.SECRET_KEY }}
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
         with:
           coverageCommand: make tests-cov
