@@ -45,4 +45,3 @@ tests:
 
 tests-cov:
 	uv run coverage run ./manage.py test
-	uv run coverage xml
