@@ -40,7 +40,7 @@ translate-compile:
 translate-makemessages:
 	django-admin makemessages -l ru
 
-test:
+tests:
 	python manage.py test
 
 tests-cov:
