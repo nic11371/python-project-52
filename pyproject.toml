@@ -7,7 +7,6 @@ requires-python = ">=3.12"
 dependencies = [
     "dj-database-url>=2.3.0",
     "django>=5.1.6",
-    "django-admin>=2.0.2",
     "django-bootstrap5>=24.3",
     "django-filter",
     "gunicorn>=23.0.0",
