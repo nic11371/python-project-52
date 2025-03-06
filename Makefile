@@ -45,4 +45,4 @@ tests:
 
 tests-cov:
 	uv run coverage run ./manage.py test
-	cc-test-reporter after-build
+	uv run coverage xml
