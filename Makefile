@@ -42,3 +42,7 @@ translate-makemessages:
 
 test:
 	python manage.py test
+
+tests-cov:
+	uv run coverage run ./manage.py test
+	uv run coverage xml
