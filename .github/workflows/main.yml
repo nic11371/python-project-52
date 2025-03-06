@@ -28,8 +28,7 @@ jobs:
         env:
           SECRET_KEY: ${{ secrets.SECRET_KEY }}
         run: |
-          uv venv
-          uv pip install -r requirements.txt
+          pip install django
           make tests
       - name: Test & publish code coverage
         uses: paambaati/codeclimate-action@v5.0.0
