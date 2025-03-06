@@ -21,7 +21,7 @@ jobs:
       - name: Install dependencies
         run: |
           curl -LsSf https://astral.sh/uv/install.sh | sh
-          make install
+          make build
       - name: Run linter and pytest
         run: |
           make check
