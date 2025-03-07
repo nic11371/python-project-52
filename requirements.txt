@@ -10,7 +10,7 @@ click==8.1.8
     # via uvicorn
 dj-database-url==2.3.0
     # via hexlet-code (pyproject.toml)
-django==5.1.6
+django==5.1.7
     # via
     #   hexlet-code (pyproject.toml)
     #   dj-database-url

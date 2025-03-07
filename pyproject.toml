@@ -26,6 +26,3 @@ dev = [
 
 [tool.uv]
 package = true
-
-[tool.setuptools]
-py-modules = []
