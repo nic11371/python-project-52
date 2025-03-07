@@ -94,7 +94,7 @@ WSGI_APPLICATION = 'task_manager.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-DATABASE_TYPE = os.getenv('DATABASE_TYPE', default='sqlite3')
+DATABASE_TYPE = os.getenv('DATABASE_TYPE', default='postgresql')
 DATABASE_URL = os.getenv('DATABASE_URL', default='DATABASE_URL')
 
 

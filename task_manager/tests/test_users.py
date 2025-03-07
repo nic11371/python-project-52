@@ -53,7 +53,8 @@ class UserTestCase(TestCase):
                 'first_name': 'Petya',
                 'last_name': 'Piter',
                 'username': 'Petr1',
-                'password': 'Te1@',
+                'password1': 'Te1@',
+                'password2': 'Te1@',
             }
         )
         self.assertEqual(resp.status_code, 302)
