@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-07 20:32+0300\n"
+"POT-Creation-Date: 2025-03-07 20:38+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -104,9 +104,13 @@ msgstr "Статусы"
 msgid "Create status"
 msgstr "Создать статус"
 
-#: status/views.py:26 status/views.py:32
+#: status/views.py:26
 msgid "Status created successfully"
 msgstr "Статус успешно создан"
+
+#: status/views.py:32
+msgid "Status changed successfully"
+msgstr "Статус успешно изменен"
 
 #: status/views.py:34
 msgid "Changing status"

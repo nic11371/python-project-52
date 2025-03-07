@@ -29,7 +29,7 @@ class CreateStatus(StatusMixin, CreateView):
 
 
 class UpdateStatus(StatusMixin, UpdateView):
-    success_message = _("Status created successfully")
+    success_message = _("Status changed successfully")
     template_name = 'general/general_form.html'
     extra_context = {'title': _('Changing status'), 'button': _('Change')}
 
