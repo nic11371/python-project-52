@@ -47,7 +47,7 @@ class HomePageView(View):
 class LoginUser(SuccessMessageMixin, LoginView):
     form_class = AuthenticationForm
     template_name = 'general/general_form.html'
-    extra_context = {'title': _("Login"), 'button': _("Sign in")}
+    extra_context = {'title': _("Login"), 'button': _("Enter")}
     success_message = _('You were login')
 
 
