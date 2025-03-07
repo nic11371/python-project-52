@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-07 18:58+0300\n"
+"POT-Creation-Date: 2025-03-07 19:42+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -64,8 +64,7 @@ msgstr "Создать"
 msgid "Editing label"
 msgstr "Изменение метки"
 
-#: label/views.py:34 status/views.py:34 task/views.py:62 user/views.py:35
-#: user/views.py:49
+#: label/views.py:34 status/views.py:34 task/views.py:62 user/views.py:34
 msgid "Change"
 msgstr "Изменить"
 
@@ -73,9 +72,9 @@ msgstr "Изменить"
 msgid "Deleting label"
 msgstr "Удаление метки"
 
-#: label/views.py:39 status/views.py:39 task/views.py:67 user/views.py:57
+#: label/views.py:39 status/views.py:39 task/views.py:67
 msgid "Yes,delete"
-msgstr "Да,удалить"
+msgstr "Да, удалить"
 
 #: label/views.py:44
 msgid "Label was deleted successfully"
@@ -224,7 +223,7 @@ msgstr "Узнать больше"
 msgid "Task manager"
 msgstr "Менеджер задач"
 
-#: templates/index.html:33 user/views.py:18
+#: templates/index.html:33 user/views.py:17
 msgid "Users"
 msgstr "Пользователи"
 
@@ -278,47 +277,39 @@ msgstr "Полное имя"
 msgid "Your password must contain at least 3 characters."
 msgstr "Ваш пароль должен содержать как минимум 3 символа."
 
-#: user/views.py:26
+#: user/views.py:25
 msgid "Registration"
 msgstr "Регистрация"
 
-#: user/views.py:26
+#: user/views.py:25
 msgid "To sign up"
 msgstr "Зарегистрировать"
 
-#: user/views.py:27
+#: user/views.py:26
 msgid "User was registered successfully."
 msgstr "Пользователь успешно зарегистрирован"
 
-#: user/views.py:34
+#: user/views.py:33
 msgid "Changing user"
 msgstr "Изменение пользователя"
 
-#: user/views.py:36
-msgid "Change password"
-msgstr "Изменить пароль"
-
-#: user/views.py:41
+#: user/views.py:40
 msgid "User was changed successfully"
 msgstr "Пользователь успешно изменен"
 
-#: user/views.py:49
-msgid "Changing password"
-msgstr "Изменение пароля"
-
-#: user/views.py:51
-msgid "Password of the user was changed successfully"
-msgstr "Пароль пользователя успешно изменен"
-
-#: user/views.py:57
+#: user/views.py:46
 msgid "Deleting user"
 msgstr "Удаление пользователя"
 
-#: user/views.py:63
+#: user/views.py:46
+msgid "Yes,_delete"
+msgstr "Да, удалить"
+
+#: user/views.py:52
 msgid "User was deleted successfully"
 msgstr "Пользователь успешно удален"
 
-#: user/views.py:68
+#: user/views.py:57
 msgid "Can't delete, user in use"
 msgstr "Невозможно удалить пользователя, потому что он используется"
 
@@ -345,6 +336,20 @@ msgstr "Вы залогинены"
 #: views.py:58
 msgid "You were logout"
 msgstr "Вы разлогинены"
+
+#, fuzzy
+#~| msgid "Yes,delete"
+#~ msgid "Yes, delete"
+#~ msgstr "Да, удалить"
+
+#~ msgid "Change password"
+#~ msgstr "Изменить пароль"
+
+#~ msgid "Changing password"
+#~ msgstr "Изменение пароля"
+
+#~ msgid "Password of the user was changed successfully"
+#~ msgstr "Пароль пользователя успешно изменен"
 
 #~ msgid "First name"
 #~ msgstr "Имя"
@@ -393,7 +398,7 @@ msgstr "Вы разлогинены"
 #, fuzzy
 #~| msgid "Yes,delete"
 #~ msgid "Yes, delete this!"
-#~ msgstr "Да,удалить"
+#~ msgstr "Да, удалить"
 
 #, fuzzy
 #~| msgid "Statuses"
