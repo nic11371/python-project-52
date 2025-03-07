@@ -36,7 +36,7 @@ class UpdateStatus(StatusMixin, UpdateView):
 
 class DeleteStatus(StatusMixin, DeleteView):
     template_name = 'general/general_delete_confirm.html'
-    extra_context = {'title': _('Deleting status'), 'button': _('Yes,delete')}
+    extra_context = {'title': _('Deleting status'), 'button': _('Yes, delete')}
 
     def post(self, request, *args, **kwargs):
         try:

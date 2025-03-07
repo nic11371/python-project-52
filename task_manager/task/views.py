@@ -64,6 +64,6 @@ class UpdateTask(TaskMixin, UpdateView):
 
 
 class DeleteTask(TaskMixin, AuthorizationTaskMixin, DeleteView):
-    extra_context = {'title': _('Deleting task'), 'button': _('Yes,delete')}
+    extra_context = {'title': _('Deleting task'), 'button': _('Yes, delete')}
     success_message = _('Task successfully deleted')
     template_name = 'general/general_delete_confirm.html'

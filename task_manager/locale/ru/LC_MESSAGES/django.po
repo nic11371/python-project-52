@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-07 19:42+0300\n"
+"POT-Creation-Date: 2025-03-07 20:32+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -72,8 +72,8 @@ msgstr "Изменить"
 msgid "Deleting label"
 msgstr "Удаление метки"
 
-#: label/views.py:39 status/views.py:39 task/views.py:67
-msgid "Yes,delete"
+#: label/views.py:39 status/views.py:39 task/views.py:67 user/views.py:46
+msgid "Yes, delete"
 msgstr "Да, удалить"
 
 #: label/views.py:44
@@ -301,10 +301,6 @@ msgstr "Пользователь успешно изменен"
 msgid "Deleting user"
 msgstr "Удаление пользователя"
 
-#: user/views.py:46
-msgid "Yes,_delete"
-msgstr "Да, удалить"
-
 #: user/views.py:52
 msgid "User was deleted successfully"
 msgstr "Пользователь успешно удален"
@@ -337,9 +333,10 @@ msgstr "Вы залогинены"
 msgid "You were logout"
 msgstr "Вы разлогинены"
 
-#, fuzzy
-#~| msgid "Yes,delete"
-#~ msgid "Yes, delete"
+#~ msgid "Yes,delete"
+#~ msgstr "Да, удалить"
+
+#~ msgid "Yes,_delete"
 #~ msgstr "Да, удалить"
 
 #~ msgid "Change password"

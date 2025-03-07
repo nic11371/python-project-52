@@ -43,7 +43,7 @@ class UpdateUser(
 class DeleteUser(
     AuthenticationMixin, AuthorizationMixin, SuccessMessageMixin, DeleteView):
     model = User
-    extra_context = {'title': _('Deleting user'), 'button': _("Yes,_delete")}
+    extra_context = {'title': _('Deleting user'), 'button': _("Yes, delete")}
     template_name = 'general/general_delete_confirm.html'
 
     def post(self, request, *args, **kwargs):
