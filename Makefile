@@ -41,7 +41,7 @@ translate-makemessages:
 	django-admin makemessages -l ru
 
 tests:
-	pytest
+	python manage.py test
 
 tests-cov:
 	uv run coverage run ./manage.py test
