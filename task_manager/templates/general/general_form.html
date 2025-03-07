@@ -9,9 +9,6 @@
             {% csrf_token %}
             {% bootstrap_form form %}
             {% if update_user %}
-            <div class="mb-3">
-                <a href="{% url 'user_update_password' user.id %}">{{ link }}</a>
-            </div>
             {% endif %}
             <input class="btn btn-primary" type="submit" value="{{ button }}">
         </form>
