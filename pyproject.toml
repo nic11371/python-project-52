@@ -24,5 +24,8 @@ dev = [
     "ruff>=0.9.4",
 ]
 
+[tool.uv]
+package = true
+
 [tool.setuptools]
 py-modules = []
