@@ -29,7 +29,7 @@ class CreateLabel(LabelMixin, CreateView):
 
 
 class UpdateLabel(LabelMixin, UpdateView):
-    success_message = _("Label created successfully")
+    success_message = _("Label was changed successfully")
     template_name = 'general/general_form.html'
     extra_context = {'title': _('Editing label'), 'button': _('Change')}
 

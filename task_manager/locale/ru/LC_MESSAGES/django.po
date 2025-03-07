@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-07 20:38+0300\n"
+"POT-Creation-Date: 2025-03-07 20:45+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -52,13 +52,17 @@ msgstr "Метки"
 msgid "Create label"
 msgstr "Создать метку"
 
-#: label/views.py:26 label/views.py:32
+#: label/views.py:26
 msgid "Label created successfully"
 msgstr "Метка успешно создана"
 
 #: label/views.py:28 status/views.py:27 task/views.py:47
 msgid "Create"
 msgstr "Создать"
+
+#: label/views.py:32
+msgid "Label was changed successfully"
+msgstr "Метка успешно изменена"
 
 #: label/views.py:34
 msgid "Editing label"
