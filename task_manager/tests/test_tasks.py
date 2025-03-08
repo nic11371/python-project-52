@@ -43,7 +43,7 @@ class TaskTestCase(TestCase):
             'description': 'My first project',
             'status': 2,
             'executor': 1,
-            'label': 1,
+            'labels': 1,
             'author': 'IvGroz'
         })
         self.assertEqual(resp.status_code, 302)
@@ -89,7 +89,7 @@ class TaskTestCase(TestCase):
                 'description': '',
                 'status': 2,
                 'executor': 2,
-                'label': 2,
+                'labels': 2,
             })
         self.assertEqual(resp.status_code, 302)
         task.refresh_from_db()
