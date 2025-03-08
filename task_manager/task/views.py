@@ -1,32 +1,12 @@
-from django.contrib import messages
-from django.contrib.auth.mixins import UserPassesTestMixin
 from django.contrib.messages.views import SuccessMessageMixin
-from django.shortcuts import redirect
+from ..mixins import AuthenticationMixin, AuthorizationTaskMixin
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import CreateView, DeleteView, DetailView, UpdateView
 from django_filters.views import FilterView
 
-from ..views import AuthenticationMixin
 from .filters import TaskFilter
 from .models import Task
-
-
-class AuthorizationTaskMixin(UserPassesTestMixin):
-
-    def test_func(self):
-        return self.get_object().author.pk == self.request.user.pk
-
-    def dispatch(self, request, *args, **kwargs):
-        if not self.test_func():
-            messages.error(
-                request,
-                messages.error(
-                    self.request, _(
-                        "The task can only be deleted by its author."))
-            )
-            return redirect(reverse_lazy("tasks"))
-        return super().dispatch(request, *args, **kwargs)
 
 
 class TaskMixin(AuthenticationMixin, SuccessMessageMixin):

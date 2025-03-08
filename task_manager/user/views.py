@@ -1,13 +1,13 @@
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
+from ..mixins import AuthenticationMixin, AuthorizationMixin
 from django.db.models import ProtectedError
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import CreateView, DeleteView, ListView, UpdateView
 
-from ..views import AuthenticationMixin, AuthorizationMixin
-from .forms import UserRegisterForm
+from .forms import UserForm
 from .models import User
 
 
@@ -19,7 +19,7 @@ class ListUsers(ListView):
 
 class SignUpUser(SuccessMessageMixin, CreateView):
     model = User
-    form_class = UserRegisterForm
+    form_class = UserForm
     success_url = reverse_lazy("login")
     template_name = 'general/general_form.html'
     extra_context = {'title': _('Registration'), 'button': _("To sign up")}
@@ -33,7 +33,7 @@ class UpdateUser(
         'title': _('Changing user'),
         'button': _("Change"),
     }
-    form_class = UserRegisterForm
+    form_class = UserForm
     context_object_name = 'update_user'
     template_name = 'general/general_form.html'
     success_url = reverse_lazy('users')
