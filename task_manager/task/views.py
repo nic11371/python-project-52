@@ -22,7 +22,8 @@ class AuthorizationTaskMixin(UserPassesTestMixin):
             messages.error(
                 request,
                 messages.error(
-                    self.request, _("The task can only be deleted by its author."))
+                    self.request, _(
+                        "The task can only be deleted by its author."))
             )
             return redirect(reverse_lazy("tasks"))
         return super().dispatch(request, *args, **kwargs)

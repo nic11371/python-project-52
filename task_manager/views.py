@@ -19,7 +19,8 @@ class AuthenticationMixin(LoginRequiredMixin):
                 messages.error(self.request, _("You are not authenticated."))
             )
             return redirect(reverse_lazy("login"))
-        return super(LoginRequiredMixin, self).dispatch(request, *args, **kwargs)
+        return super(
+            LoginRequiredMixin, self).dispatch(request, *args, **kwargs)
 
 
 class AuthorizationMixin(UserPassesTestMixin):
@@ -32,10 +33,12 @@ class AuthorizationMixin(UserPassesTestMixin):
             messages.error(
                 request,
                 messages.error(
-                    self.request, _("You haven't permission for changing another user."))
+                    self.request, _(
+                        "You haven't permission for changing another user."))
             )
             return redirect(reverse_lazy("users"))
-        return super(UserPassesTestMixin, self).dispatch(request, *args, **kwargs)
+        return super(
+            UserPassesTestMixin, self).dispatch(request, *args, **kwargs)
 
 
 class HomePageView(View):

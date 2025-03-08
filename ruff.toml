@@ -3,7 +3,7 @@ exclude = [
     "settings.py"    
 ]
 
-line-length = 90
+line-length = 80
 
 [lint.per-file-ignores]
   # init modules can contain the local imports, logic, unused imports
