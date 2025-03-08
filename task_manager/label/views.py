@@ -1,12 +1,12 @@
 from django.contrib import messages
 from django.contrib.messages.views import SuccessMessageMixin
-from ..mixins import AuthenticationMixin
 from django.db.models import ProtectedError
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import CreateView, DeleteView, ListView, UpdateView
 
+from ..mixins import AuthenticationMixin
 from .models import Label
 
 
