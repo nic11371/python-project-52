@@ -17,7 +17,7 @@ class TaskFilter(django_filters.FilterSet):
         widget=forms.CheckboxInput,
         label=_('Show own tasks'),
     )
-    label = django_filters.ModelChoiceFilter(
+    labels = django_filters.ModelChoiceFilter(
         queryset=Label.objects.all(),
         label=_('Label filter'),
         widget=forms.Select(attrs={
@@ -27,4 +27,4 @@ class TaskFilter(django_filters.FilterSet):
 
     class Meta:
         model = Task
-        fields = ['status', 'executor', 'label']
+        fields = ['status', 'executor', 'labels']
