@@ -174,7 +174,7 @@ msgstr "Задачи"
 
 #: task/views.py:25
 msgid "The task can only be deleted by its author."
-msgstr "Задача может быть удалена только ее автором"
+msgstr "Задачу может удалить только ее автор"
 
 #: task/views.py:33 task/views.py:40 templates/index.html:43
 msgid "Tasks"
