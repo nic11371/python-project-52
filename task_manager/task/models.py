@@ -37,7 +37,7 @@ class Task(models.Model):
         blank=True,
         through='TaskRelationLabel',
         through_fields=('task', 'label'),
-        verbose_name=_('Label'),
+        verbose_name=_('Labels'),
     )
     created_at = models.DateTimeField(
         auto_now_add=True, verbose_name=_('Created'))

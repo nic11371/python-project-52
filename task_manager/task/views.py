@@ -9,7 +9,6 @@ from django_filters.views import FilterView
 
 from ..views import AuthenticationMixin
 from .filters import TaskFilter
-from .forms import TaskForm
 from .models import Task
 
 
@@ -33,6 +32,7 @@ class TaskMixin(AuthenticationMixin, SuccessMessageMixin):
     model = Task
     extra_context = {'title': _("Tasks"), 'button': _("Create task")}
     success_url = reverse_lazy('tasks')
+    fields = ['name', 'description', 'status', 'executor', 'label']
 
 
 class ListTask(TaskMixin, FilterView):
@@ -46,7 +46,6 @@ class CreateTask(TaskMixin, CreateView):
     success_message = _("Task created successfully")
     extra_context = {'title': _("Create task"), 'button': _("Create")}
     template_name = 'general/general_form.html'
-    form_class = TaskForm
 
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -62,7 +61,6 @@ class UpdateTask(TaskMixin, UpdateView):
     success_message = _("Task edited successfully")
     extra_context = {'title': _('Changing task'), 'button': _('Change')}
     template_name = 'general/general_form.html'
-    form_class = TaskForm
 
 
 class DeleteTask(TaskMixin, AuthorizationTaskMixin, DeleteView):

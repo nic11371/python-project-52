@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-07 20:45+0300\n"
+"POT-Creation-Date: 2025-03-08 09:53+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -32,7 +32,7 @@ msgstr "Пароль"
 msgid "Label name"
 msgstr "Имя"
 
-#: label/models.py:7 status/models.py:7 task/models.py:42
+#: label/models.py:7 status/models.py:7 task/models.py:43
 msgid "Created"
 msgstr "Создать"
 
@@ -44,7 +44,8 @@ msgstr "Метка"
 msgid "=Labels="
 msgstr "Метки"
 
-#: label/views.py:15 templates/index.html:40 templates/task/task_detail.html:34
+#: label/views.py:15 task/models.py:40 templates/index.html:40
+#: templates/task/task_detail.html:34
 msgid "Labels"
 msgstr "Метки"
 
@@ -163,15 +164,11 @@ msgstr "Автор"
 msgid "Executor"
 msgstr "Исполнитель"
 
-#: task/models.py:39
-msgid "Label"
-msgstr "Метка"
-
-#: task/models.py:48
+#: task/models.py:49
 msgid "=Task="
 msgstr "Задача"
 
-#: task/models.py:49
+#: task/models.py:50
 msgid "=Tasks="
 msgstr "Задачи"
 
@@ -340,6 +337,9 @@ msgstr "Вы залогинены"
 #: views.py:58
 msgid "You were logout"
 msgstr "Вы разлогинены"
+
+#~ msgid "Label"
+#~ msgstr "Метка"
 
 #~ msgid "Yes,delete"
 #~ msgstr "Да, удалить"
