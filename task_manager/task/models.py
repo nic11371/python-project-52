@@ -1,6 +1,6 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
-
+from django import forms
 from task_manager.label.models import Label
 from task_manager.status.models import Status
 from task_manager.user.models import User
@@ -36,7 +36,8 @@ class Task(models.Model):
         related_name="label",
         blank=True,
         through='TaskRelationLabel',
-        verbose_name=_('Label')
+        through_fields=('task', 'label'),
+        verbose_name=_('Label'),
     )
     created_at = models.DateTimeField(
         auto_now_add=True, verbose_name=_('Created'))
