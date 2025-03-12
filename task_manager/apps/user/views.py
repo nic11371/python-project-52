@@ -6,7 +6,7 @@ from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import CreateView, DeleteView, ListView, UpdateView
 
-from ..mixins import AuthenticationMixin, AuthorizationMixin
+from ...mixins import AuthenticationMixin, AuthorizationMixin
 from .forms import UserForm
 from .models import User
 

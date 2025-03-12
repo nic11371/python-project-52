@@ -6,7 +6,7 @@ from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import CreateView, DeleteView, ListView, UpdateView
 
-from ..mixins import AuthenticationMixin
+from ...mixins import AuthenticationMixin
 from .models import Label
 
 

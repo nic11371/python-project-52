@@ -43,10 +43,10 @@ ALLOWED_HOSTS = [
 
 INSTALLED_APPS = [
     'task_manager',
-    'task_manager.user',
-    'task_manager.status',
-    'task_manager.task',
-    'task_manager.label',
+    'task_manager.apps.user',
+    'task_manager.apps.status',
+    'task_manager.apps.task',
+    'task_manager.apps.label',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -137,8 +137,12 @@ LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = ''
 
 FIXTURE_DIRS = [
-    BASE_DIR / 'user' / 'fixtures' / 'user_test.json',
-    BASE_DIR / 'user' / 'fixtures' / 'user_signup_test.json'
+    BASE_DIR / 'apps' / 'user' / 'fixtures' / 'user_test.json',
+    BASE_DIR / 'apps' / 'user' / 'fixtures' / 'user_signup_test.json',
+    BASE_DIR / 'apps' / 'task' / 'fixtures' / 'task_test.json',
+    BASE_DIR / 'apps' / 'status' / 'fixtures' / 'status_test.json',
+    BASE_DIR / 'apps' / 'label' / 'fixtures' / 'label_test.json'
+    
 ]
 
 STORAGES = {

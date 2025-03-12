@@ -1,8 +1,8 @@
 from django.test import TestCase
 from django.urls import reverse
 
-from task_manager.task.models import Task
-from task_manager.user.models import User
+from task_manager.apps.task.models import Task
+from task_manager.apps.user.models import User
 
 
 class TaskTestCase(TestCase):
