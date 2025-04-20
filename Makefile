@@ -46,3 +46,30 @@ tests:
 tests-cov:
 	uv run coverage run ./manage.py test
 	uv run coverage xml
+
+setup:
+	docker compose run --rm app make setup
+
+up-exist:
+	docker compose up --abort-on-container-exist
+
+ci-start:
+	docker compose up
+
+down:
+	docker compose down
+
+ci:
+	docker compose -f docker-compose.yml up --abort-on-container-exit
+
+ci-test:
+	docker compose -f docker-compose.yml up --abort-on-container-exit
+
+ci-build:
+	docker compose -f docker-compose.yml build app
+
+push:
+	docker compose -f docker-compose.yml push app
+
+up-development:
+	docker run -p 8080:8080 -e NODE_ENV=development nic11371/python-project-52 make dev
