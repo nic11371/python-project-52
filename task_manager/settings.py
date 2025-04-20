@@ -26,18 +26,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv('SECRET_KEY', 'default_secret_key_value')
+SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'default_secret_key_value')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = bool(os.environ.get("DEBUG", default=0))
 
-ALLOWED_HOSTS = [
-    "webserver",
-    "127.0.0.1",
-    "localhost",
-    "python-project-52-jsnv.onrender.com",
-    "python-project-52-0cql.onrender.com"
-]
+ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "127.0.0.1").split(",")
 
 # Application definition
 
@@ -94,19 +88,32 @@ WSGI_APPLICATION = 'task_manager.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
+      'default': {
+          'ENGINE': 'django.db.backends.{}'.format(
+              os.getenv('DATABASE_ENGINE', 'sqlite3')
+          ),
+          'NAME': os.getenv('DATABASE_NAME'),
+          'USER': os.getenv('DATABASE_USERNAME'),
+          'PASSWORD': os.getenv('DATABASE_PASSWORD'),
+          'HOST': os.getenv('DATABASE_HOST'),
+          'PORT': os.getenv('DATABASE_PORT'),
+      }
+  }
 
 
-DATABASE_URL = os.getenv('DATABASE_URL')
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
 
-if DATABASE_URL:
-    DATABASES['default'] = dj_database_url.parse(DATABASE_URL)
+
+# DATABASE_URL = os.getenv('DATABASE_URL')
+
+# if DATABASE_URL:
+#     DATABASES['default'] = dj_database_url.parse(DATABASE_URL)
 
 
 # Password validation

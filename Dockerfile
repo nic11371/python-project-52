@@ -7,9 +7,7 @@ RUN apt-get update && apt-get install make
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
     UV_COMPILE_BYTECODE=1 \
-    UV_LINK_MODE=copy \
-    FASTIFY_ADDRESS=0.0.0.0 \
-    VERSION=1
+    UV_LINK_MODE=copy
 
 WORKDIR /app
 
@@ -27,4 +25,4 @@ RUN --mount=type=cache,target=/root/.cache/uv \
 
 EXPOSE 8000
 
-CMD ["uv", "run", "python", "manage.py", "runserver"]
+CMD ["uv", "run", "python3", "manage.py", "runserver"]
