@@ -8,6 +8,7 @@ bin/
 .coverage
 coverage.xml
 .env
+.env_prod
 .python-version
 .ruff_cache
 .pytest_cache

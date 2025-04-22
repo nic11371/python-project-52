@@ -12,7 +12,7 @@ services:
         ports:
             - "8000:8000"
         env_file:
-            - .env
+            - .env_prod
         depends_on:
             - db
         command: >
@@ -22,7 +22,7 @@ services:
         image: postgres
         restart: unless-stopped
         env_file:
-            - .env
+            - .env_prod
 
 volumes:
     postgres_data:
