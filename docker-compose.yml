@@ -5,24 +5,25 @@ services:
         build:
             dockerfile: Dockerfile
             context: .
+        image: nic11371/python-project-52
         container_name: task-manager
         restart: unless-stopped
         volumes:
             - .:/app
         ports:
             - "8000:8000"
-        env_file:
-            - .env_prod
+        environment:
+            POSTGRES_URL: postgres://user:password@db:5432/my-database
         depends_on:
             - db
         command: >
-            bash -c "uv run python3 manage.py migrate && uv run python3 manage.py runserver 0.0.0.0:8000"
+            bash -c "uv run python manage.py migrate && uv run python3 manage.py runserver 0.0.0.0:8000"
 
     db:
         image: postgres
+        environment:
+            POSTGRES_URL: postgres://user:password@db:5432/my-database
         restart: unless-stopped
-        env_file:
-            - .env_prod
 
 volumes:
     postgres_data:

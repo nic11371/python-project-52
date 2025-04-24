@@ -53,23 +53,29 @@ setup:
 up-exist:
 	docker compose up --abort-on-container-exist
 
-ci-start:
+compose-start:
 	docker compose up
 
-down:
+compose-down:
 	docker compose down
 
-ci:
+compose:
 	docker compose -f docker-compose.yml up --abort-on-container-exit
 
-ci-test:
+compose-test:
 	docker compose -f docker-compose.yml up --abort-on-container-exit
 
-ci-build:
-	docker compose -f docker-compose.yml build app
+compose-build:
+	docker compose -f docker-compose.yml build task-manager
+
+compose-build-override:
+	docker compose -f docker-compose.override.yml build task-manager
 
 push:
-	docker compose -f docker-compose.yml push app
+	docker compose -f docker-compose.yml push task-manager
 
 up-development:
-	docker run -p 8080:8080 -e NODE_ENV=development nic11371/python-project-52 make dev
+	docker run -p 8000:8000 -e NODE_ENV=development nic11371/python-project-52 make start
+
+docker-push:
+	docker push nic11371/python-project-52

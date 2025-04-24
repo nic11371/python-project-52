@@ -7,7 +7,8 @@ RUN apt-get update && apt-get install make
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
     UV_COMPILE_BYTECODE=1 \
-    UV_LINK_MODE=copy
+    UV_LINK_MODE=copy \
+    FASTIFY_ADDRESS=0.0.0.0
 
 WORKDIR /app
 
