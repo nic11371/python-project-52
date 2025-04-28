@@ -79,3 +79,6 @@ up-development:
 
 docker-push:
 	docker push nic11371/python-project-52
+
+playbook:
+	ansible-playbook -i inventory.yml playbook.yml

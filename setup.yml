@@ -1,0 +1,20 @@
+---
+- hosts: all
+  become: true
+  roles:
+    - role: geerlingguy.pip
+      vars:
+        pip_install_packages:
+          - name: docker
+            state: present
+    - role: bodsch.docker
+    # - role: datadog.datadog
+    #   vars:
+    #     datadog_api_key: '{{ DD_API_KEY }}'
+    #     datadog_site: datadoghq.eu
+    #     datadog_checks:
+    #       http_check:
+    #         init_config:
+    #         instances:
+    #           - name: Check application health
+    #             url: http://185.84.163.102:3000/

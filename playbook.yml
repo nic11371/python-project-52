@@ -1,0 +1,23 @@
+---
+- hosts: webservers
+  become: true
+  roles:
+    - role: geerlingguy.pip
+    - role: geerlingguy.docker
+  vars:
+    docker_image: "nic11371/python-project-52"
+    docker_compose_path: "docker-compose.yml"
+
+  tasks:
+    - name: Pull docker image
+      docker_image:
+        name: "{{ docker_image }}"
+        source: pull
+    - name: docker-compose copy
+      ansible.builtin.template:
+        src: "{{ docker_compose_path }}"
+        dest: "{{root_dir}}/docker-compose.yml"
+    - name: Running docker-compose up
+      ansible.builtin.command:
+        cmd: docker compose up
+      become: yes
