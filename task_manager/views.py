@@ -5,10 +5,10 @@ from django.contrib.auth.views import LoginView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.http import HttpResponse
 from django.shortcuts import redirect
-from django.views.generic import TemplateView
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from django.views import View
+from django.views.generic import TemplateView
 
 
 class HomePageView(TemplateView):
