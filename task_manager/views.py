@@ -4,16 +4,21 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.views import LoginView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.http import HttpResponse
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect
+from django.views.generic import TemplateView
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from django.views import View
 
 
-class HomePageView(View):
+class HomePageView(TemplateView):
+    template_name = 'home.html'
 
-    def get(self, request, *args, **kwargs):
-        return render(request, 'home.html')
+    def head(self, *args, **kwargs):
+        """Обработка HEAD запросов от балансировщика"""
+        response = HttpResponse()
+        response['Content-Length'] = 0
+        return response
 
 
 class LoginUser(SuccessMessageMixin, LoginView):

@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 import os
 import dj_database_url
+import socket
 from dotenv import load_dotenv
 from pathlib import Path
 
@@ -32,6 +33,15 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'default_secret_key_value')
 DEBUG = bool(os.environ.get("DEBUG", default=0))
 
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '127.0.0.1').split(",")
+try:
+    hostname = socket.gethostname()
+    # Добавляем стандартное FQDN ВМ
+    ALLOWED_HOSTS.append(hostname)
+    # Добавляем специальное имя для health check (первые 20 символов hostname)
+    yandex_healthcheck_host = f"{hostname[:20]}.mysite-backend"
+    ALLOWED_HOSTS.append(yandex_healthcheck_host)
+except:
+    pass
 
 # Application definition
 
@@ -62,7 +72,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'task_manager.rollbar_middleware.CustomRollbarNotifierMiddleware'
+    'task_manager.rollbar_middleware.CustomRollbarNotifierMiddleware',
 ]
 
 ROOT_URLCONF = 'task_manager.urls'
@@ -88,22 +98,36 @@ WSGI_APPLICATION = 'task_manager.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-# DATABASES = {
-#       'default': {
-#           'ENGINE': 'django.db.backends.{}'.format(
-#               os.getenv('DATABASE_ENGINE', 'sqlite3')
-#           ),
-#           'NAME': os.getenv('DATABASE_NAME', 'postgres'),
-#           'USER': os.getenv('DATABASE_USERNAME', 'postgres'),
-#           'PASSWORD': os.getenv('POSTGRES_PASSWORD', 'password'),
-#           'HOST': os.getenv('DATABASE_HOST', '127.0.0.1'),
-#           'PORT': os.getenv('DATABASE_PORT', '5432'),
-#       }
-#   }
-
 DATABASES = {
-    'default': dj_database_url.config(default='sqlite:///db.sqlite3')
-}
+      'default': {
+          'ENGINE': 'django.db.backends.{}'.format(
+              os.getenv('DATABASE_ENGINE', 'sqlite3')
+          ),
+          'NAME': os.getenv('DATABASE_NAME', 'postgres'),
+          'USER': os.getenv('DATABASE_USERNAME', 'postgres'),
+          'PASSWORD': os.getenv('POSTGRES_PASSWORD', 'password'),
+          'HOST': os.getenv('DATABASE_HOST', '127.0.0.1'),
+          'PORT': os.getenv('DATABASE_PORT', '5432'),
+      }
+  }
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://" + os.getenv('ALLOWED_HOSTS', ''),
+    "http://localhost:8000",   # для локального тестирования
+    "https://" + os.getenv('SERVER_HOST', ''),  # внутренний адрес Yandex Cloud
+]
+
+CSRF_COOKIE_SECURE = True  # если используете HTTPS
+SESSION_COOKIE_SECURE = True  # тоже рекомендуется
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+CORS_ALLOWED_ORIGINS = [
+    "https://" + os.getenv('ALLOWED_HOSTS', ''),
+]
+CORS_ALLOW_CREDENTIALS = True
+
+# DATABASES = {
+#     'default': dj_database_url.config(default='sqlite:///db.sqlite3')
+# }
 
 # DATABASES = {
 #     'default': {
