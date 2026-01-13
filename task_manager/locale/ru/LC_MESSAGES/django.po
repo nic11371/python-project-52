@@ -213,12 +213,12 @@ msgid "Are you sure that want to delete"
 msgstr "Вы уверены, что хотите удалить "
 
 #: templates/home.html:11
-msgid "Hello from Hexlet"
-msgstr "Привет от Хекслета"
+msgid "Welcome to the task manager"
+msgstr "Добро пожаловать в менеджер задач"
 
 #: templates/home.html:12
-msgid "The practic courses by a programming"
-msgstr "Практические курсы по программированию"
+msgid "This is need for manage user's tasks"
+msgstr "Менеджер нужен для управления задачами пользователяа"
 
 #: templates/home.html:14
 msgid "To know is large"
