@@ -8,6 +8,6 @@ build:
   useCache: true
 run:
   scriptName: null
-  command: python manage.py runserver 0.0.0.0:8000
+  command: python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8000
   persistenceMount: /data
   containerPort: "8000"
