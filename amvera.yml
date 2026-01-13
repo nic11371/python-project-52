@@ -8,6 +8,6 @@ build:
   useCache: true
 run:
   scriptName: null
-  command:  gunicorn --bind 0.0.0.0:80 task_manager.wsgi:application
+  command:  manage.py runserver 0.0.0.0:8000
   persistenceMount: /data
   containerPort: "80"
